@@ -1,0 +1,205 @@
+.section-card {
+  background:      var(--rz-glass-bg);
+  border:          1px solid var(--rz-glass-border);
+  border-radius:   var(--rz-radius-lg);
+  box-shadow:      var(--rz-glass-shadow);
+  backdrop-filter: blur(var(--rz-glass-blur));
+  padding:         1.5rem 2rem;
+}
+
+.section-title {
+  margin:         0 0 1.5rem;
+  font-size:      1.25rem;
+  font-weight:    700;
+  color:          var(--rz-primary);
+  padding-bottom: 0.5rem;
+  border-bottom:  2px solid var(--rz-border);
+  letter-spacing: 0.01em;
+}
+
+// ── Timeline ─────────────────────────────────────────────────────────────────
+.timeline {
+  position:      relative;
+  display:       flex;
+  flex-direction: column;
+  gap:           1.5rem;
+  padding-left:  1.5rem;
+
+  // Vertical line
+  &::before {
+    content:          '';
+    position:         absolute;
+    left:             0.45rem;
+    top:              0.6rem;
+    bottom:           0.6rem;
+    width:            2px;
+    background:       linear-gradient(
+      to bottom,
+      var(--rz-primary),
+      color-mix(in srgb, var(--rz-primary) 20%, transparent)
+    );
+    border-radius:    var(--rz-radius-full);
+  }
+}
+
+.timeline-entry {
+  position: relative;
+}
+
+.timeline-dot {
+  position:      absolute;
+  left:          calc(-1.5rem + 0.1rem);
+  top:           1.1rem;
+  width:         0.7rem;
+  height:        0.7rem;
+  border-radius: var(--rz-radius-full);
+  background:    var(--rz-primary);
+  border:        2px solid var(--rz-glass-bg);
+  box-shadow:    0 0 0 2px var(--rz-primary);
+  z-index:       1;
+}
+
+// ── Entry card ───────────────────────────────────────────────────────────────
+.entry-card {
+  background:    var(--rz-surface);
+  border:        1px solid var(--rz-border);
+  border-radius: var(--rz-radius-md);
+  padding:       1.1rem 1.4rem;
+  display:       flex;
+  flex-direction: column;
+  gap:           0.6rem;
+  transition:    box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// ── Header row ───────────────────────────────────────────────────────────────
+.entry-header {
+  display:         flex;
+  align-items:     flex-start;
+  justify-content: space-between;
+  gap:             0.75rem;
+  flex-wrap:       wrap;
+}
+
+.entry-meta {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.15rem;
+}
+
+.company-name {
+  margin:      0;
+  font-size:   1.05rem;
+  font-weight: 700;
+  color:       var(--rz-ink);
+}
+
+.location {
+  font-size:  0.8rem;
+  color:      var(--rz-ink-muted);
+  font-style: italic;
+}
+
+.period-badge {
+  flex-shrink:   0;
+  padding:       0.2rem 0.75rem;
+  border-radius: var(--rz-radius-full);
+  font-size:     0.75rem;
+  font-weight:   600;
+  background:    color-mix(in srgb, var(--rz-primary) 12%, transparent);
+  color:         var(--rz-primary);
+  border:        1px solid color-mix(in srgb, var(--rz-primary) 28%, transparent);
+  white-space:   nowrap;
+}
+
+// ── Role row ─────────────────────────────────────────────────────────────────
+.role-row {
+  display:     flex;
+  align-items: center;
+  gap:         0.6rem;
+  flex-wrap:   wrap;
+}
+
+.role-title {
+  font-size:   0.9rem;
+  font-weight: 600;
+  color:       var(--rz-primary);
+}
+
+.type-pill {
+  padding:       0.1rem 0.55rem;
+  border-radius: var(--rz-radius-full);
+  font-size:     0.7rem;
+  font-weight:   600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background:    var(--rz-surface-hover);
+  color:         var(--rz-ink-muted);
+  border:        1px solid var(--rz-border);
+}
+
+// ── Project ──────────────────────────────────────────────────────────────────
+.project-name {
+  margin:    0;
+  font-size: 0.82rem;
+  color:     var(--rz-ink-muted);
+}
+
+.project-label {
+  font-weight: 600;
+  color:       var(--rz-ink);
+}
+
+// ── Task list ────────────────────────────────────────────────────────────────
+.task-list {
+  margin:     0;
+  padding:    0 0 0 1.1rem;
+  list-style: disc;
+  display:    flex;
+  flex-direction: column;
+  gap:        0.3rem;
+
+  li {
+    font-size:   0.85rem;
+    line-height: 1.55;
+    color:       var(--rz-ink);
+  }
+}
+
+// ── Sub-roles (VERMEG) ───────────────────────────────────────────────────────
+.sub-roles {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.9rem;
+  border-top:     1px solid var(--rz-border);
+  padding-top:    0.75rem;
+  margin-top:     0.15rem;
+}
+
+.sub-role {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.4rem;
+}
+
+.sub-role-header {
+  display:     flex;
+  align-items: center;
+  gap:         0.7rem;
+  flex-wrap:   wrap;
+}
+
+.sub-role-title {
+  font-size:   0.85rem;
+  font-weight: 700;
+  color:       var(--rz-ink);
+}
+
+.sub-period {
+  font-size:   0.75rem;
+  color:       var(--rz-ink-muted);
+  font-style:  italic;
+}

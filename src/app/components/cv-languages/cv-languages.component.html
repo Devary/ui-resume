@@ -1,0 +1,27 @@
+<section class="section-card">
+  <h2 class="section-title">Languages</h2>
+
+  <div class="lang-list">
+    @for (lang of languages; track lang.name) {
+      <div class="lang-row" [class.mother-tongue]="lang.motherTongue">
+        <div class="lang-name-col">
+          <span class="lang-name">{{ lang.name }}</span>
+          @if (lang.motherTongue) {
+            <span class="native-badge">Mother Tongue</span>
+          }
+        </div>
+
+        @if (!lang.motherTongue && lang.skills) {
+          <div class="cefr-chips">
+            @for (skill of cefrOrder; track skill.key) {
+              <div class="cefr-chip" [attr.data-level]="cefrLevel(lang, skill.key)">
+                <span class="skill-label">{{ skill.label }}</span>
+                <span class="skill-level">{{ cefrLevel(lang, skill.key) }}</span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>

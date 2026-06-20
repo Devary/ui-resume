@@ -1,0 +1,97 @@
+.section-card {
+  background:      var(--rz-glass-bg);
+  border:          1px solid var(--rz-glass-border);
+  border-radius:   var(--rz-radius-lg);
+  box-shadow:      var(--rz-glass-shadow);
+  backdrop-filter: blur(var(--rz-glass-blur));
+  padding:         1.5rem 2rem;
+}
+
+.section-title {
+  margin:         0 0 1.25rem;
+  font-size:      1.25rem;
+  font-weight:    700;
+  color:          var(--rz-primary);
+  padding-bottom: 0.5rem;
+  border-bottom:  2px solid var(--rz-border);
+  letter-spacing: 0.01em;
+}
+
+// ── Grid ─────────────────────────────────────────────────────────────────────
+.works-grid {
+  display:        flex;
+  flex-direction: column;
+  gap:            1rem;
+}
+
+// ── Work card ────────────────────────────────────────────────────────────────
+.work-card {
+  background:     var(--rz-surface);
+  border:         1px solid var(--rz-border);
+  border-radius:  var(--rz-radius-md);
+  padding:        1rem 1.25rem;
+  display:        flex;
+  flex-direction: column;
+  gap:            0.6rem;
+  border-left:    3px solid var(--rz-primary);
+  transition:     background 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    background:  var(--rz-surface-hover);
+    box-shadow:  0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// ── Header ───────────────────────────────────────────────────────────────────
+.work-header {
+  display:         flex;
+  align-items:     flex-start;
+  justify-content: space-between;
+  gap:             0.75rem;
+  flex-wrap:       wrap;
+}
+
+.work-title-row {
+  display:     flex;
+  align-items: center;
+  gap:         0.6rem;
+  flex-wrap:   wrap;
+}
+
+.work-title {
+  font-size:   0.92rem;
+  font-weight: 700;
+  color:       var(--rz-ink);
+}
+
+.context-pill {
+  padding:        0.1rem 0.55rem;
+  border-radius:  var(--rz-radius-full);
+  font-size:      0.7rem;
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background:     var(--rz-surface-hover);
+  color:          var(--rz-ink-muted);
+  border:         1px solid var(--rz-border);
+}
+
+// ── Year badge ───────────────────────────────────────────────────────────────
+.year-badge {
+  flex-shrink:   0;
+  padding:       0.2rem 0.7rem;
+  border-radius: var(--rz-radius-full);
+  font-size:     0.75rem;
+  font-weight:   700;
+  background:    var(--rz-gradient);
+  color:         #fff;
+  white-space:   nowrap;
+}
+
+// ── Description ──────────────────────────────────────────────────────────────
+.work-description {
+  margin:      0;
+  font-size:   0.84rem;
+  line-height: 1.6;
+  color:       var(--rz-ink-muted);
+}

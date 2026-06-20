@@ -1,0 +1,17 @@
+<div class="cv-page">
+  @if (isStandalone) {
+    <button type="button" class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'">
+      {{ isDark() ? '☀️' : '🌙' }}
+    </button>
+  }
+
+  <div class="cv-container">
+    <app-cv-hero />
+    <app-cv-about />
+    <app-cv-skills />
+    <app-cv-experience />
+    <app-cv-education />
+    <app-cv-creative />
+    <app-cv-languages />
+  </div>
+</div>

@@ -1,0 +1,65 @@
+.section-card {
+  background:      var(--rz-glass-bg);
+  border:          1px solid var(--rz-glass-border);
+  border-radius:   var(--rz-radius-lg);
+  box-shadow:      var(--rz-glass-shadow);
+  backdrop-filter: blur(var(--rz-glass-blur));
+  padding:         1.5rem 2rem;
+}
+
+.section-title {
+  margin:         0 0 1.25rem;
+  font-size:      1.25rem;
+  font-weight:    700;
+  color:          var(--rz-primary);
+  padding-bottom: 0.5rem;
+  border-bottom:  2px solid var(--rz-border);
+  letter-spacing: 0.01em;
+}
+
+.groups {
+  display:        flex;
+  flex-direction: column;
+  gap:            1.1rem;
+}
+
+.skill-group {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.5rem;
+}
+
+.group-label {
+  margin:      0;
+  font-size:   0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color:       var(--rz-ink-muted);
+}
+
+.badge-row {
+  display:   flex;
+  flex-wrap: wrap;
+  gap:       0.4rem;
+}
+
+.badge {
+  display:       inline-flex;
+  align-items:   center;
+  padding:       0.25rem 0.7rem;
+  border-radius: var(--rz-radius-full);
+  font-size:     0.78rem;
+  font-weight:   500;
+  line-height:   1.4;
+  background:    color-mix(in srgb, var(--rz-primary) 12%, transparent);
+  color:         var(--rz-primary);
+  border:        1px solid color-mix(in srgb, var(--rz-primary) 25%, transparent);
+  transition:    background 0.15s ease, transform 0.1s ease;
+  cursor:        default;
+
+  &:hover {
+    background: color-mix(in srgb, var(--rz-primary) 20%, transparent);
+    transform:  translateY(-1px);
+  }
+}

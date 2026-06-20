@@ -1,0 +1,100 @@
+.hero-card {
+  background:      var(--rz-glass-bg);
+  border:          1px solid var(--rz-glass-border);
+  border-radius:   var(--rz-radius-lg);
+  box-shadow:      var(--rz-glass-shadow);
+  backdrop-filter: blur(var(--rz-glass-blur));
+  padding:         2rem 2.5rem;
+  display:         flex;
+  flex-direction:  column;
+  gap:             1.75rem;
+}
+
+// ── Top row ──────────────────────────────────────────────────────────────────
+.hero-top {
+  display:     flex;
+  align-items: center;
+  gap:         1.5rem;
+}
+
+.hero-avatar {
+  flex-shrink: 0;
+  width:       4.5rem;
+  height:      4.5rem;
+  border-radius: var(--rz-radius-full);
+  background:  var(--rz-gradient);
+  color:       #fff;
+  font-size:   1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  display:     flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:  0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.hero-identity {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.35rem;
+}
+
+.hero-name {
+  margin:      0;
+  font-size:   clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color:       var(--rz-ink);
+}
+
+.hero-title {
+  margin:      0;
+  font-size:   1rem;
+  font-weight: 500;
+  color:       var(--rz-primary);
+  letter-spacing: 0.01em;
+}
+
+// ── Contact grid ─────────────────────────────────────────────────────────────
+.contact-grid {
+  display:               grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:                   0.65rem 2rem;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-item {
+  display:         flex;
+  align-items:     center;
+  gap:             0.55rem;
+  text-decoration: none;
+  color:           var(--rz-ink);
+  border-radius:   var(--rz-radius-sm);
+  padding:         0.3rem 0.4rem;
+  transition:      background 0.15s ease, color 0.15s ease;
+
+  &[href] {
+    cursor: pointer;
+    &:hover {
+      background: var(--rz-surface-hover);
+      color:      var(--rz-primary);
+    }
+  }
+}
+
+.contact-icon {
+  font-size:   1.05rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-size:   0.88rem;
+  font-weight: 450;
+  color:       inherit;
+  word-break:  break-all;
+}

@@ -1,0 +1,40 @@
+<section class="section-card">
+  <h2 class="section-title">Education</h2>
+
+  <!-- Degrees -->
+  <div class="subsection">
+    <h3 class="subsection-title">Academic Degrees</h3>
+    <div class="degree-list">
+      @for (deg of degrees; track deg.title) {
+        <div class="degree-row">
+          <div class="degree-info">
+            <span class="degree-title">{{ deg.title }}</span>
+            <span class="degree-meta">{{ deg.institution }} &mdash; {{ deg.location }}</span>
+          </div>
+          <span class="period-badge">{{ deg.period }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="subsection">
+    <h3 class="subsection-title">Certifications</h3>
+    <div class="cert-list">
+      @for (cert of certifications; track cert.title) {
+        <div class="cert-row">
+          <div class="cert-info">
+            <span class="cert-title">{{ cert.title }}</span>
+            <span class="cert-issuer">{{ cert.issuer }}</span>
+          </div>
+          <a class="cert-badge"
+             [href]="cert.url"
+             target="_blank"
+             rel="noopener noreferrer">
+            View Certificate ↗
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</section>

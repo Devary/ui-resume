@@ -1,0 +1,16 @@
+<section class="section-card">
+  <h2 class="section-title">Skills</h2>
+
+  <div class="groups">
+    @for (group of skillGroups; track group.label) {
+      <div class="skill-group">
+        <h3 class="group-label">{{ group.label }}</h3>
+        <div class="badge-row">
+          @for (item of group.items; track item) {
+            <span class="badge">{{ item }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,18 @@
+<section class="section-card">
+  <h2 class="section-title">Creative Works</h2>
+
+  <div class="works-grid">
+    @for (work of works; track work.title) {
+      <div class="work-card">
+        <div class="work-header">
+          <div class="work-title-row">
+            <span class="work-title">{{ work.title }}</span>
+            <span class="context-pill">{{ work.context }}</span>
+          </div>
+          <span class="year-badge">{{ work.year }}</span>
+        </div>
+        <p class="work-description">{{ work.description }}</p>
+      </div>
+    }
+  </div>
+</section>

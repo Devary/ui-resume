@@ -1,0 +1,25 @@
+.section-card {
+  background:      var(--rz-glass-bg);
+  border:          1px solid var(--rz-glass-border);
+  border-radius:   var(--rz-radius-lg);
+  box-shadow:      var(--rz-glass-shadow);
+  backdrop-filter: blur(var(--rz-glass-blur));
+  padding:         1.5rem 2rem;
+}
+
+.section-title {
+  margin:        0 0 1rem;
+  font-size:     1.25rem;
+  font-weight:   700;
+  color:         var(--rz-primary);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--rz-border);
+  letter-spacing: 0.01em;
+}
+
+.about-text {
+  margin:      0;
+  font-size:   0.95rem;
+  line-height: 1.75;
+  color:       var(--rz-ink);
+}

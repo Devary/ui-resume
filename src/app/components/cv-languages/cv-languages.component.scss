@@ -1,0 +1,131 @@
+.section-card {
+  background:      var(--rz-glass-bg);
+  border:          1px solid var(--rz-glass-border);
+  border-radius:   var(--rz-radius-lg);
+  box-shadow:      var(--rz-glass-shadow);
+  backdrop-filter: blur(var(--rz-glass-blur));
+  padding:         1.5rem 2rem;
+}
+
+.section-title {
+  margin:         0 0 1.25rem;
+  font-size:      1.25rem;
+  font-weight:    700;
+  color:          var(--rz-primary);
+  padding-bottom: 0.5rem;
+  border-bottom:  2px solid var(--rz-border);
+  letter-spacing: 0.01em;
+}
+
+// ── Language list ─────────────────────────────────────────────────────────────
+.lang-list {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.85rem;
+}
+
+// ── Each language row ─────────────────────────────────────────────────────────
+.lang-row {
+  display:       flex;
+  align-items:   center;
+  gap:           1.25rem;
+  flex-wrap:     wrap;
+  background:    var(--rz-surface);
+  border:        1px solid var(--rz-border);
+  border-radius: var(--rz-radius-md);
+  padding:       0.85rem 1.1rem;
+  transition:    background 0.15s ease;
+
+  &:hover {
+    background: var(--rz-surface-hover);
+  }
+
+  &.mother-tongue {
+    border-left:  3px solid var(--rz-primary);
+    background:   color-mix(in srgb, var(--rz-primary) 6%, var(--rz-surface));
+  }
+}
+
+// ── Language name column ──────────────────────────────────────────────────────
+.lang-name-col {
+  display:     flex;
+  align-items: center;
+  gap:         0.6rem;
+  min-width:   6rem;
+}
+
+.lang-name {
+  font-size:   0.95rem;
+  font-weight: 700;
+  color:       var(--rz-ink);
+}
+
+// ── Native badge ─────────────────────────────────────────────────────────────
+.native-badge {
+  padding:        0.2rem 0.7rem;
+  border-radius:  var(--rz-radius-full);
+  font-size:      0.72rem;
+  font-weight:    700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background:     var(--rz-gradient);
+  color:          #fff;
+}
+
+// ── CEFR chip row ─────────────────────────────────────────────────────────────
+.cefr-chips {
+  display:   flex;
+  flex-wrap: wrap;
+  gap:       0.45rem;
+  flex:      1;
+}
+
+.cefr-chip {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  padding:        0.3rem 0.65rem;
+  border-radius:  var(--rz-radius-sm);
+  border:         1px solid var(--rz-border);
+  background:     color-mix(in srgb, var(--rz-primary) 8%, transparent);
+  min-width:      4.5rem;
+  text-align:     center;
+  transition:     background 0.15s ease, transform 0.1s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--rz-primary) 16%, transparent);
+    transform:  translateY(-1px);
+  }
+
+  // C1 level — stronger highlight
+  &[data-level="C1"] {
+    background: color-mix(in srgb, var(--rz-primary) 18%, transparent);
+    border-color: color-mix(in srgb, var(--rz-primary) 40%, transparent);
+
+    .skill-level {
+      color: var(--rz-primary);
+    }
+  }
+
+  // B2 level — moderate highlight
+  &[data-level="B2"] {
+    background: color-mix(in srgb, var(--rz-primary) 10%, transparent);
+    border-color: color-mix(in srgb, var(--rz-primary) 22%, transparent);
+  }
+}
+
+.skill-label {
+  font-size:   0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color:       var(--rz-ink-muted);
+  line-height: 1.2;
+}
+
+.skill-level {
+  font-size:   0.85rem;
+  font-weight: 800;
+  color:       var(--rz-ink);
+  line-height: 1.3;
+}

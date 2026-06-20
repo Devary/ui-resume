@@ -1,0 +1,121 @@
+.section-card {
+  background:      var(--rz-glass-bg);
+  border:          1px solid var(--rz-glass-border);
+  border-radius:   var(--rz-radius-lg);
+  box-shadow:      var(--rz-glass-shadow);
+  backdrop-filter: blur(var(--rz-glass-blur));
+  padding:         1.5rem 2rem;
+  display:         flex;
+  flex-direction:  column;
+  gap:             1.5rem;
+}
+
+.section-title {
+  margin:         0 0 0.25rem;
+  font-size:      1.25rem;
+  font-weight:    700;
+  color:          var(--rz-primary);
+  padding-bottom: 0.5rem;
+  border-bottom:  2px solid var(--rz-border);
+  letter-spacing: 0.01em;
+}
+
+// ── Subsection ───────────────────────────────────────────────────────────────
+.subsection {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.75rem;
+}
+
+.subsection-title {
+  margin:      0;
+  font-size:   0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color:       var(--rz-ink-muted);
+}
+
+// ── Degree rows ──────────────────────────────────────────────────────────────
+.degree-list,
+.cert-list {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.6rem;
+}
+
+.degree-row,
+.cert-row {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             0.75rem;
+  flex-wrap:       wrap;
+  background:      var(--rz-surface);
+  border:          1px solid var(--rz-border);
+  border-radius:   var(--rz-radius-md);
+  padding:         0.85rem 1.1rem;
+  transition:      background 0.15s ease;
+
+  &:hover {
+    background: var(--rz-surface-hover);
+  }
+}
+
+.degree-info,
+.cert-info {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.2rem;
+}
+
+.degree-title,
+.cert-title {
+  font-size:   0.9rem;
+  font-weight: 600;
+  color:       var(--rz-ink);
+}
+
+.degree-meta {
+  font-size:  0.78rem;
+  color:      var(--rz-ink-muted);
+}
+
+.cert-issuer {
+  font-size:  0.78rem;
+  color:      var(--rz-ink-muted);
+}
+
+.period-badge {
+  flex-shrink:   0;
+  padding:       0.2rem 0.75rem;
+  border-radius: var(--rz-radius-full);
+  font-size:     0.75rem;
+  font-weight:   600;
+  background:    color-mix(in srgb, var(--rz-primary) 12%, transparent);
+  color:         var(--rz-primary);
+  border:        1px solid color-mix(in srgb, var(--rz-primary) 28%, transparent);
+  white-space:   nowrap;
+}
+
+// ── Certification badge link ──────────────────────────────────────────────────
+.cert-badge {
+  flex-shrink:     0;
+  display:         inline-flex;
+  align-items:     center;
+  padding:         0.25rem 0.85rem;
+  border-radius:   var(--rz-radius-full);
+  font-size:       0.75rem;
+  font-weight:     600;
+  text-decoration: none;
+  background:      var(--rz-gradient);
+  color:           #fff;
+  border:          1px solid transparent;
+  transition:      opacity 0.15s ease, transform 0.1s ease;
+  white-space:     nowrap;
+
+  &:hover {
+    opacity:   0.85;
+    transform: translateY(-1px);
+  }
+}

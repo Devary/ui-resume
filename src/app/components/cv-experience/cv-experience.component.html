@@ -1,0 +1,63 @@
+<section class="section-card">
+  <h2 class="section-title">Experience</h2>
+
+  <div class="timeline">
+    @for (exp of experiences; track exp.company + exp.period) {
+      <div class="timeline-entry">
+        <div class="timeline-dot" aria-hidden="true"></div>
+
+        <div class="entry-card">
+          <!-- Header -->
+          <div class="entry-header">
+            <div class="entry-meta">
+              <h3 class="company-name">{{ exp.company }}</h3>
+              <span class="location">{{ exp.location }}</span>
+            </div>
+            <span class="period-badge">{{ exp.period }}</span>
+          </div>
+
+          <!-- Role & type -->
+          <div class="role-row">
+            <span class="role-title">{{ exp.role }}</span>
+            <span class="type-pill">{{ exp.type }}</span>
+          </div>
+
+          <!-- Project -->
+          @if (exp.project) {
+            <p class="project-name">
+              <span class="project-label">Project: </span>{{ exp.project }}
+            </p>
+          }
+
+          <!-- Single flat task list -->
+          @if (exp.tasks && exp.tasks.length > 0) {
+            <ul class="task-list">
+              @for (task of exp.tasks; track task) {
+                <li>{{ task }}</li>
+              }
+            </ul>
+          }
+
+          <!-- Sub-roles (VERMEG pattern) -->
+          @if (exp.subRoles && exp.subRoles.length > 0) {
+            <div class="sub-roles">
+              @for (sub of exp.subRoles; track sub.title) {
+                <div class="sub-role">
+                  <div class="sub-role-header">
+                    <span class="sub-role-title">{{ sub.title }}</span>
+                    <span class="sub-period">{{ sub.period }}</span>
+                  </div>
+                  <ul class="task-list">
+                    @for (task of sub.tasks; track task) {
+                      <li>{{ task }}</li>
+                    }
+                  </ul>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

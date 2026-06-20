@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.cv-page {
+  min-height: 100dvh;
+  background: linear-gradient(160deg, var(--rz-bg-from) 0%, var(--rz-bg-to) 100%);
+  padding: 2rem 1rem 4rem;
+  position: relative;
+  transition: background 0.25s ease;
+}
+
+.cv-container {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--rz-radius-full);
+  border: 1px solid var(--rz-glass-border);
+  background: var(--rz-glass-bg);
+  backdrop-filter: blur(var(--rz-glass-blur));
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s;
+  box-shadow: var(--rz-glass-shadow);
+
+  &:hover {
+    background: var(--rz-surface-active);
+  }
+}
