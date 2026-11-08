@@ -74,6 +74,14 @@ export interface Language {
   skills?:       CefrSkills;
 }
 
+/** An AI tool and how far I go with it. "top" marks the highest level, drawn stronger. */
+export interface AiSkill {
+  tool:   string;
+  vendor: string;
+  level:  string;
+  top?:   boolean;
+}
+
 /** The About section: a short story in three beats, then the two "schools" as tags. */
 export interface Intro {
   /** Beat one: the old-school craft. */
@@ -93,7 +101,7 @@ export interface CvContent {
   label:     string;
   pageTitle: string;
   ui: {
-    about: string; experience: string; skills: string; education: string; creative: string; languages: string;
+    aiSkills: string; about: string; experience: string; skills: string; education: string; creative: string; languages: string;
     degrees: string; certifications: string; verify: string;
     current: string; currently: string; at: string; native: string;
     years: string; companies: string; certs: string;
@@ -110,6 +118,7 @@ export interface CvContent {
     born: string;
   };
   about:          Intro;
+  aiSkills:       AiSkill[];
   experiences:    Experience[];
   skillGroups:    SkillGroup[];
   degrees:        Degree[];
@@ -174,7 +183,7 @@ const EN: CvContent = {
   label: 'English',
   pageTitle: 'Fakher Hammami — Technical Lead',
   ui: {
-    about: 'About', experience: 'Experience', skills: 'Skills', education: 'Education & Certifications',
+    aiSkills: 'AI Skills', about: 'About', experience: 'Experience', skills: 'Skills', education: 'Education & Certifications',
     creative: 'Creative Works', languages: 'Languages',
     degrees: 'Degrees', certifications: 'Certifications', verify: 'Verify on Credly',
     current: 'Current', currently: 'Currently', at: 'at', native: 'Native',
@@ -207,6 +216,10 @@ const EN: CvContent = {
     oldSchool: { label: 'Old school', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
+  aiSkills: [
+    { tool: 'Claude', vendor: 'Anthropic', level: 'Agentic architect', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    level: 'Prompt engineer' },
+  ],
   experiences: experiences('Present', [
     {
       company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'External',
@@ -338,7 +351,7 @@ const FR: CvContent = {
   label: 'Français',
   pageTitle: 'Fakher Hammami — Technical Lead',
   ui: {
-    about: 'À propos', experience: 'Expérience', skills: 'Compétences', education: 'Formation & certifications',
+    aiSkills: 'Compétences IA', about: 'À propos', experience: 'Expérience', skills: 'Compétences', education: 'Formation & certifications',
     creative: 'Réalisations', languages: 'Langues',
     degrees: 'Diplômes', certifications: 'Certifications', verify: 'Vérifier sur Credly',
     current: 'Actuel', currently: 'Actuellement', at: 'chez', native: 'Langue maternelle',
@@ -372,6 +385,10 @@ const FR: CvContent = {
     oldSchool: { label: 'Old school', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
+  aiSkills: [
+    { tool: 'Claude', vendor: 'Anthropic', level: 'Architecte agentique', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    level: 'Prompt engineer' },
+  ],
   experiences: experiences('Aujourd’hui', [
     {
       company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'Externe',
@@ -503,7 +520,7 @@ const AR: CvContent = {
   label: 'العربية',
   pageTitle: 'فاخر الهمامي — قائد تقني',
   ui: {
-    about: 'نبذة', experience: 'الخبرة المهنية', skills: 'المهارات', education: 'التعليم والشهادات',
+    aiSkills: 'مهارات الذكاء الاصطناعي', about: 'نبذة', experience: 'الخبرة المهنية', skills: 'المهارات', education: 'التعليم والشهادات',
     creative: 'مشاريع مميّزة', languages: 'اللغات',
     degrees: 'الشهادات الجامعية', certifications: 'الشهادات المهنية', verify: 'التحقق عبر Credly',
     current: 'حالياً', currently: 'حالياً', at: 'في', native: 'اللغة الأم',
@@ -537,6 +554,10 @@ const AR: CvContent = {
     oldSchool: { label: 'المدرسة القديمة', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'المدرسة الجديدة', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
+  aiSkills: [
+    { tool: 'Claude', vendor: 'Anthropic', level: 'مهندس أنظمة وكيلية', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    level: 'مهندس أوامر (Prompt engineer)' },
+  ],
   experiences: experiences('حتى الآن', [
     {
       company: 'LALUX', location: 'لوكسمبورغ', role: 'قائد تقني', type: 'متعاقد خارجي',

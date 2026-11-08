@@ -66,10 +66,17 @@ describe('App', () => {
     expect([...el.querySelectorAll('.school-label')].map((l) => l.textContent)).toEqual(['Old school', 'New school']);
   });
 
+  it('shows the AI skills under the hero, Claude at the top level', async () => {
+    const { el } = await open();
+    const tools = [...el.querySelectorAll('.tool')].map((t) => `${t.querySelector('.name')?.textContent}: ${t.querySelector('.level')?.textContent}`);
+    expect(tools).toEqual(['Claude: Agentic architect', 'Codex: Prompt engineer']);
+    expect(el.querySelector('.tool.top .name')?.textContent).toBe('Claude');
+  });
+
   it('lists every section, numbered', async () => {
     const { el } = await open();
     const titles = [...el.querySelectorAll('.section-title')].map((t) => t.textContent?.trim());
-    expect(titles).toEqual(['Languages', 'About', 'Experience', 'Skills', 'Education & Certifications', 'Creative Works']);
+    expect(titles).toEqual(['AI Skills', 'Languages', 'About', 'Experience', 'Skills', 'Education & Certifications', 'Creative Works']);
   });
 
   it('switches the CV to French, then to Arabic read right to left', async () => {
@@ -78,7 +85,7 @@ describe('App', () => {
 
     language.setLang('fr');
     harness.detectChanges();
-    expect(el.querySelector('.section-title')?.textContent?.trim()).toBe('Langues');
+    expect(el.querySelector('.section-title')?.textContent?.trim()).toBe('Compétences IA');
     expect(el.querySelector('.now')?.textContent).toContain('Actuel');
     expect(document.documentElement.lang).toBe('fr');
     expect(document.documentElement.dir).toBe('ltr');
@@ -86,7 +93,7 @@ describe('App', () => {
     language.setLang('ar');
     harness.detectChanges();
     expect(el.querySelector('h1')?.textContent).toContain('فاخر');
-    expect(el.querySelector('.section-title')?.textContent?.trim()).toBe('اللغات');
+    expect(el.querySelector('.section-title')?.textContent?.trim()).toBe('مهارات الذكاء الاصطناعي');
     expect(document.documentElement.dir).toBe('rtl');
   });
 
