@@ -1,4 +1,4 @@
-<section class="section-card">
+<section class="section-card" appSpotlight>
   <header class="section-head">
     <span class="section-index">02</span>
     <h2 class="section-title">Experience</h2>
@@ -6,10 +6,11 @@
 
   <ol class="timeline">
     @for (exp of experiences; track exp.company + exp.period) {
-      <li class="entry" [class.is-current]="isCurrent(exp)">
+      <li class="entry" appReveal [class.is-current]="isCurrent(exp)">
         <span class="dot" aria-hidden="true"></span>
 
         <div class="entry-head">
+          <span class="monogram" aria-hidden="true">{{ monogram(exp.company) }}</span>
           <div class="who">
             <h3 class="role">{{ exp.role }}</h3>
             <p class="company">

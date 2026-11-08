@@ -35,6 +35,15 @@ describe('App', () => {
     expect(current[0].querySelector('.now')?.textContent).toContain('Current');
   });
 
+  it('shows the key figures, the website link and a monogram per job', () => {
+    const el = render();
+    const stats = [...el.querySelectorAll('.stat')].map((s) => `${s.querySelector('dd')?.textContent} ${s.querySelector('dt')?.textContent}`);
+    expect(stats).toEqual(['10+ Years', '7 Companies', '2 Certifications']);
+    expect(el.querySelector<HTMLAnchorElement>('.contacts a[href="https://www.fakher.dev"]')?.textContent).toBe('fakher.dev');
+    const monograms = [...el.querySelectorAll('.monogram')].map((m) => m.textContent?.trim());
+    expect(monograms.slice(0, 4)).toEqual(['LA', 'SG', 'EU', 'EP']);
+  });
+
   it('lists every section, numbered', () => {
     const el = render();
     const titles = [...el.querySelectorAll('.section-title')].map((t) => t.textContent?.trim());

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 export interface SkillGroup {
   label: string;
@@ -8,7 +9,7 @@ export interface SkillGroup {
 @Component({
   selector: 'app-cv-skills',
   standalone: true,
-  imports: [],
+  imports: [SpotlightDirective],
   templateUrl: './cv-skills.component.html',
   styleUrl: './cv-skills.component.scss'
 })

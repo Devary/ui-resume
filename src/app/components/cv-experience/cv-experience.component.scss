@@ -61,7 +61,37 @@
   gap: 0.5rem 1rem;
 }
 
-.who { min-width: 0; }
+.who {
+  flex: 1;
+  min-width: 0;
+}
+
+// The company's initials on a tile, tinted with the accent (full gradient for the current job).
+.monogram {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 12px;
+  border: 1px solid var(--cv-accent-ring);
+  background: var(--cv-accent-soft);
+  color: var(--cv-accent);
+  font-family: var(--cv-font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 0.25s;
+
+  .entry:hover & { transform: rotate(-6deg) scale(1.06); }
+
+  .is-current & {
+    border: none;
+    background: var(--cv-gradient);
+    color: #fff;
+    box-shadow: 0 6px 16px var(--cv-accent-ring);
+  }
+}
 
 .role {
   margin: 0;
@@ -196,6 +226,8 @@
   .entry { break-inside: avoid; }
 
   .now-dot { animation: none; }
+
+  .monogram { display: none; }
 
   .sub-role { background: none; }
 }

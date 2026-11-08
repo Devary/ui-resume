@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 export interface CefrSkills {
   listening?:          string;
@@ -17,7 +18,7 @@ export interface Language {
 @Component({
   selector: 'app-cv-languages',
   standalone: true,
-  imports: [],
+  imports: [SpotlightDirective],
   templateUrl: './cv-languages.component.html',
   styleUrl: './cv-languages.component.scss'
 })

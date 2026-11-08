@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RevealDirective } from '../../shared/reveal.directive';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 export interface SubRole {
   title:  string;
@@ -21,7 +23,7 @@ export interface Experience {
 @Component({
   selector: 'app-cv-experience',
   standalone: true,
-  imports: [],
+  imports: [RevealDirective, SpotlightDirective],
   templateUrl: './cv-experience.component.html',
   styleUrl: './cv-experience.component.scss'
 })
@@ -29,6 +31,12 @@ export class CvExperienceComponent {
   /** The job being done now: its period ends with "Present". */
   isCurrent(exp: Experience): boolean {
     return /present$/i.test(exp.period.trim());
+  }
+
+  /** Two letters for the company badge: "European Parliament" → "EP", "LALUX" → "LA". */
+  monogram(company: string): string {
+    const words = company.split(/\s+/).filter((w) => /^[A-Z]/.test(w));
+    return (words.length > 1 ? words[0][0] + words[1][0] : company.slice(0, 2)).toUpperCase();
   }
 
   readonly experiences: Experience[] = [

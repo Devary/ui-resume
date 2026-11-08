@@ -21,16 +21,32 @@
 
 .avatar-wrap {
   position: relative;
-  width: 108px;
-  height: 108px;
+  width: 112px;
+  height: 112px;
   margin: 0 auto 1rem;
-  padding: 3px;
+  padding: 5px;
   border-radius: 50%;
   background: var(--cv-surface);
   box-shadow: var(--cv-shadow-lg);
 }
 
+// A slowly turning gradient ring around the photo.
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--cv-accent), var(--cv-accent-2), transparent 40%, var(--cv-accent-2), var(--cv-accent));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+  animation: spin 9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .avatar {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
@@ -41,10 +57,58 @@
 .name {
   margin: 0;
   font-family: var(--cv-font-display);
-  font-size: 1.75rem;
+  font-size: 1.85rem;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   line-height: 1.15;
+  background: linear-gradient(120deg, var(--cv-ink) 30%, var(--cv-accent) 75%, var(--cv-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+// Key figures: three tiles in a row.
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 1.35rem 0 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0.6rem 0.3rem;
+  border: 1px solid var(--cv-border);
+  border-radius: var(--cv-radius);
+  background: var(--cv-surface-2);
+  transition: transform 0.2s, border-color 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--cv-accent-ring);
+  }
+
+  dd {
+    margin: 0;
+    font-family: var(--cv-font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.1;
+    background: var(--cv-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  dt {
+    margin-top: 0.15rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cv-ink-muted);
+  }
 }
 
 .title {
@@ -157,6 +221,14 @@
     height: 72px;
     margin: 0 1rem 0 0;
     box-shadow: none;
+  }
+
+  .ring,
+  .stats { display: none; }
+
+  .name {
+    background: none;
+    color: var(--cv-ink);
   }
 
   .current { margin-top: 0.5rem; }

@@ -1,5 +1,6 @@
-<section class="hero section-card">
+<section class="hero section-card" appSpotlight>
   <div class="avatar-wrap">
+    <span class="ring" aria-hidden="true"></span>
     <img class="avatar" src="profile.jpg" alt="Fakher Hammami" width="104" height="104" />
   </div>
 
@@ -10,6 +11,15 @@
     <span class="pulse" aria-hidden="true"></span>
     <span>Currently <strong>{{ current.role }}</strong> at <strong>{{ current.company }}</strong></span>
   </p>
+
+  <dl class="stats">
+    @for (s of stats; track s.label) {
+      <div class="stat">
+        <dt>{{ s.label }}</dt>
+        <dd>{{ s.value }}</dd>
+      </div>
+    }
+  </dl>
 
   <ul class="contacts">
     @for (c of contacts; track c.icon) {

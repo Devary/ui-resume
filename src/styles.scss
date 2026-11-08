@@ -99,6 +99,14 @@ a { color: inherit; }
   border-radius: var(--cv-radius-lg);
   box-shadow: var(--cv-shadow);
   padding: 1.75rem 1.9rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--cv-accent-ring);
+      box-shadow: var(--cv-shadow-lg);
+    }
+  }
 }
 
 // "01  Experience": a small numbered eyebrow above each section's title.
@@ -151,6 +159,42 @@ a { color: inherit; }
   white-space: nowrap;
 }
 
+// ── Spotlight: a soft light under the mouse (SpotlightDirective sets the position) ──
+.spotlight {
+  position: relative;
+  isolation: isolate;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--spot-x, 50%) var(--spot-y, 0%), var(--cv-accent-soft), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) {
+    &:hover::after { opacity: 1; }
+  }
+}
+
+// ── Scroll reveal (RevealDirective): fade and rise the first time it comes into view ──
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
+
+  &.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 // ── Motion: sections rise in once, unless the reader asks for less motion ──────
 @keyframes cv-rise {
   from { opacity: 0; transform: translateY(10px); }
@@ -163,6 +207,7 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -196,5 +241,7 @@ a { color: inherit; }
   }
 
   .rise { animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .spotlight::after { display: none; }
   .no-print { display: none !important; }
 }

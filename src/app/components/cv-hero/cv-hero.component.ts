@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 /** A contact line of the side card: its icon, text, and link (none for plain facts). */
 interface Contact {
@@ -17,12 +18,13 @@ const ICONS = {
   linkedin: 'M4 4h16v16H4zM8 10v6M8 7.5v.01M12 16v-3.5a2 2 0 014 0V16M12 10v6',
   badge:    'M4 5h16v14H4zM8 10a2 2 0 104 0 2 2 0 00-4 0M6.5 16a3.5 3.5 0 017 0M15 9h3M15 13h3',
   calendar: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',
+  globe:    'M12 21a9 9 0 100-18 9 9 0 000 18zM3 12h18M12 3c2.5 2.6 3.5 5.6 3.5 9s-1 6.4-3.5 9c-2.5-2.6-3.5-5.6-3.5-9s1-6.4 3.5-9',
 } as const;
 
 @Component({
   selector: 'app-cv-hero',
   standalone: true,
-  imports: [],
+  imports: [SpotlightDirective],
   templateUrl: './cv-hero.component.html',
   styleUrl: './cv-hero.component.scss'
 })
@@ -39,12 +41,22 @@ export class CvHeroComponent {
   readonly workPermit = 'Luxembourgish';
   readonly dob        = '15 / 10 / 1992';
 
+  readonly website    = 'fakher.dev';
+
   readonly icons = ICONS;
+
+  /** Key figures under the "Currently" badge. */
+  readonly stats = [
+    { value: '10+', label: 'Years' },
+    { value: '7',   label: 'Companies' },
+    { value: '2',   label: 'Certifications' },
+  ];
 
   readonly contacts: Contact[] = [
     { icon: 'mail',     label: this.email,                    href: `mailto:${this.email}` },
     { icon: 'phone',    label: this.phone,                    href: `tel:${this.whatsapp}` },
     { icon: 'chat',     label: 'WhatsApp',                    href: `https://wa.me/${this.whatsapp}`, external: true },
+    { icon: 'globe',    label: this.website,                  href: `https://www.${this.website}`, external: true },
     { icon: 'linkedin', label: `linkedin.com/in/${this.linkedin}`, href: `https://www.linkedin.com/in/${this.linkedin}`, external: true },
     { icon: 'pin',      label: this.location },
     { icon: 'badge',    label: `Work permit: ${this.workPermit}` },

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 @Component({
   selector: 'app-cv-about',
   standalone: true,
-  imports: [],
+  imports: [SpotlightDirective],
   templateUrl: './cv-about.component.html',
   styleUrl: './cv-about.component.scss'
 })
