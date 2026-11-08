@@ -63,6 +63,8 @@ describe('App', () => {
     expect(el.querySelector('.intro .lead')?.textContent).toContain('Old-school gem');
     expect(el.querySelector('.intro .twist')?.textContent).toContain('not really old school');
     expect(el.querySelector('.intro .body')?.textContent).toContain('agentic architect');
+    expect(el.querySelector('.intro .body')?.textContent).toContain('With AI or without it');
+    expect(el.querySelector('.intro .lab')?.textContent).toContain('enterprise-grade personal lab with AI agents');
     expect([...el.querySelectorAll('.school-label')].map((l) => l.textContent)).toEqual(['Old school', 'New school']);
   });
 
