@@ -159,6 +159,58 @@
   100% { transform: scale(1.6); opacity: 0; }
 }
 
+// Download the CV: the PDF as the main button, Word and ATS beside it.
+.downloads {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+}
+
+.dl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--cv-border-strong);
+  border-radius: var(--cv-radius);
+  background: var(--cv-surface);
+  color: var(--cv-ink-2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--cv-accent-ring);
+    color: var(--cv-accent);
+  }
+
+  &.primary {
+    flex: 1;
+    border: none;
+    background: var(--cv-gradient);
+    color: #fff;
+    box-shadow: 0 6px 18px var(--cv-accent-ring);
+
+    &:hover {
+      color: #fff;
+      box-shadow: 0 10px 24px var(--cv-accent-ring);
+    }
+  }
+
+  svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
 .contacts {
   margin: 1.5rem 0 0;
   padding: 1.25rem 0 0;
