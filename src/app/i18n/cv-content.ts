@@ -191,6 +191,7 @@ const EN: CvContent = {
   experiences: experiences('Present', [
     {
       company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'External',
+      project: 'EasyApp — Main mobile, web and backend application',
       tasks: [
         'Lead a Quarkus backend team of two senior developers',
         'Own and maintain the codebase: code reviews, coding standards and technical decisions',
@@ -348,6 +349,7 @@ const FR: CvContent = {
   experiences: experiences('Aujourd’hui', [
     {
       company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'Externe',
+      project: 'EasyApp — Application principale mobile, web et backend',
       tasks: [
         'Direction d’une équipe backend Quarkus de deux développeurs seniors',
         'Responsable de la base de code : revues de code, standards de développement et décisions techniques',
@@ -504,6 +506,7 @@ const AR: CvContent = {
   experiences: experiences('حتى الآن', [
     {
       company: 'LALUX', location: 'لوكسمبورغ', role: 'قائد تقني', type: 'متعاقد خارجي',
+      project: 'EasyApp — التطبيق الرئيسي للهاتف المحمول والويب والواجهة الخلفية',
       tasks: [
         'قيادة فريق backend يعمل بـ Quarkus ويضم مطوّرَين اثنين من ذوي الخبرة',
         'الإشراف على الشيفرة المصدرية وصيانتها: مراجعة الشيفرة ومعايير البرمجة والقرارات التقنية',
