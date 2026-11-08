@@ -92,6 +92,8 @@ export interface Intro {
   twist:     string;
   /** Beat three: the agentic architect. */
   body:      string;
+  /** What I am building right now, shown as a live callout. */
+  lab:       { label: string; text: string };
   /** Where and with what, in one line. */
   context:   string;
   oldSchool: { label: string; items: string[] };
@@ -213,7 +215,12 @@ const EN: CvContent = {
     twist: 'Buuut… I’m not really old school.',
     body:
       'I’m also an agentic architect. I pair 10+ years of Java engineering with AI models and agents to push ' +
-      'creativity further — and to make your Java systems more stable, faster and more elegant.',
+      'creativity further — and to make your Java systems more stable, faster and more elegant. With AI or ' +
+      'without it, the engineering stays solid: I know when to hand a task to an agent, and when to write it myself.',
+    lab: {
+      label: 'Right now',
+      text: 'Running an enterprise-grade personal lab with AI agents: identity management, Kubernetes, CI/CD and mail, built and operated end to end.',
+    },
     context: 'Banking, insurance and EU institutions · Quarkus, Spring, Kafka, Kubernetes and OpenShift.',
     oldSchool: { label: 'Old school', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
@@ -326,6 +333,11 @@ const EN: CvContent = {
   certifications: CERTIFICATIONS('scrum.org'),
   works: [
     {
+      slug: 'my-lab',
+      title: 'My Lab', year: 'Since 2024', context: 'Personal',
+      description: 'Enterprise-grade personal lab run with AI agents: identity management with FreeIPA and integrated DNS, a Kubernetes (k3s) cluster behind Traefik, Jenkins CI/CD and a mail server, designed, built and operated end to end.',
+    },
+    {
       slug: 'jqcd',
       title: 'JQCD — Jira Query Centralized Database', year: '2023', context: 'Vermeg',
       description: 'Tool to extract and centralize all Jira queries delivered to Vermeg clients from 2008 to the present, enabling cross-project analysis and reporting.',
@@ -382,7 +394,12 @@ const FR: CvContent = {
     twist: 'Maaais… je ne suis pas vraiment old school.',
     body:
       'Je suis aussi architecte agentique. J’allie plus de 10 ans d’ingénierie Java aux modèles et agents d’IA pour ' +
-      'pousser la créativité plus loin — et rendre vos systèmes Java plus stables, plus rapides et plus élégants.',
+      'pousser la créativité plus loin — et rendre vos systèmes Java plus stables, plus rapides et plus élégants. ' +
+      'Avec ou sans IA, l’ingénierie reste solide : je sais quand confier une tâche à un agent, et quand l’écrire moi-même.',
+    lab: {
+      label: 'En ce moment',
+      text: 'Je fais tourner un lab personnel de niveau entreprise avec des agents IA : gestion des identités, Kubernetes, CI/CD et messagerie, construits et exploités de bout en bout.',
+    },
     context: 'Banque, assurance et institutions européennes · Quarkus, Spring, Kafka, Kubernetes et OpenShift.',
     oldSchool: { label: 'Old school', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
@@ -495,6 +512,11 @@ const FR: CvContent = {
   certifications: CERTIFICATIONS('scrum.org'),
   works: [
     {
+      slug: 'my-lab',
+      title: 'Mon lab', year: 'Depuis 2024', context: 'Personnel',
+      description: 'Lab personnel de niveau entreprise piloté avec des agents IA : gestion des identités avec FreeIPA et DNS intégré, cluster Kubernetes (k3s) derrière Traefik, CI/CD Jenkins et serveur de messagerie, conçus, construits et exploités de bout en bout.',
+    },
+    {
       slug: 'jqcd',
       title: 'JQCD — Base centralisée des requêtes Jira', year: '2023', context: 'Vermeg',
       description: 'Outil d’extraction et de centralisation de toutes les requêtes Jira livrées aux clients de Vermeg depuis 2008, permettant l’analyse et le reporting transverses aux projets.',
@@ -551,7 +573,12 @@ const AR: CvContent = {
     twist: 'لكن… لستُ من المدرسة القديمة تماماً.',
     body:
       'أنا أيضاً مهندس أنظمة وكيلية (Agentic Architect). أجمع بين أكثر من 10 سنوات من هندسة Java ونماذج الذكاء ' +
-      'الاصطناعي ووكلائه لأدفع الإبداع إلى الأمام، ولأجعل أنظمة Java لديكم أكثر استقراراً وسرعةً وأناقة.',
+      'الاصطناعي ووكلائه لأدفع الإبداع إلى الأمام، ولأجعل أنظمة Java لديكم أكثر استقراراً وسرعةً وأناقة. ' +
+      'مع الذكاء الاصطناعي أو بدونه، تبقى الهندسة متينة: أعرف متى أُسند المهمة إلى وكيل، ومتى أكتبها بنفسي.',
+    lab: {
+      label: 'حالياً',
+      text: 'أدير مختبراً شخصياً بمستوى المؤسسات مع وكلاء الذكاء الاصطناعي: إدارة الهويات وKubernetes وCI/CD والبريد الإلكتروني، أبنيها وأشغّلها من البداية إلى النهاية.',
+    },
     context: 'القطاع البنكي والتأمين والمؤسسات الأوروبية · Quarkus وSpring وKafka وKubernetes وOpenShift.',
     oldSchool: { label: 'المدرسة القديمة', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'المدرسة الجديدة', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
@@ -663,6 +690,11 @@ const AR: CvContent = {
   ],
   certifications: CERTIFICATIONS('scrum.org'),
   works: [
+    {
+      slug: 'my-lab',
+      title: 'مختبري', year: 'منذ 2024', context: 'شخصي',
+      description: 'مختبر شخصي بمستوى المؤسسات أديره مع وكلاء الذكاء الاصطناعي: إدارة الهويات عبر FreeIPA مع DNS مدمج، وعنقود Kubernetes (k3s) خلف Traefik، وخطوط CI/CD عبر Jenkins، وخادم بريد إلكتروني، صمّمتها وبنيتها وأشغّلها من البداية إلى النهاية.',
+    },
     {
       slug: 'jqcd',
       title: 'JQCD — قاعدة بيانات مركزية لاستعلامات Jira', year: '2023', context: 'Vermeg',

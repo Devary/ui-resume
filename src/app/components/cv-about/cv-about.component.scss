@@ -50,6 +50,52 @@
   line-height: 1.7;
 }
 
+// "Right now": what I'm building, with a live dot like the current job.
+.lab {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.75rem;
+  margin: 1.1rem 0 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--cv-success) 30%, transparent);
+  border-inline-start: 3px solid var(--cv-success);
+  border-radius: var(--cv-radius);
+  background: color-mix(in srgb, var(--cv-success) 8%, transparent);
+}
+
+.lab-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--cv-success);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.live {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0 currentColor;
+  animation: live 2s ease-out infinite;
+}
+
+@keyframes live {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--cv-success) 60%, transparent); }
+  100% { box-shadow: 0 0 0 7px transparent; }
+}
+
+.lab-text {
+  flex: 1 1 18rem;
+  color: var(--cv-ink-2);
+  font-size: 0.95rem;
+}
+
 // Old school + new school: the two sets of tags side by side.
 .schools {
   display: grid;
