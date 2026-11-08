@@ -1,16 +1,16 @@
 <section class="section-card" appSpotlight>
   <header class="section-head">
     <span class="section-index">03</span>
-    <h2 class="section-title">Skills</h2>
+    <h2 class="section-title">{{ t().ui.skills }}</h2>
   </header>
 
   <div class="groups">
-    @for (group of skillGroups; track group.label) {
+    @for (group of t().skillGroups; track $index) {
       <div class="group" [class.wide]="group.items.length > 12">
         <h3 class="group-label">{{ group.label }}</h3>
         <div class="chips">
           @for (item of group.items; track item) {
-            <span class="chip" [class.core]="isCore(item)">{{ item }}</span>
+            <span class="chip" [class.core]="isCore(item)"><bdi>{{ item }}</bdi></span>
           }
         </div>
       </div>

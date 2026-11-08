@@ -1,11 +1,11 @@
 <section class="section-card" appSpotlight>
   <header class="section-head">
     <span class="section-index">05</span>
-    <h2 class="section-title">Creative Works</h2>
+    <h2 class="section-title">{{ t().ui.creative }}</h2>
   </header>
 
   <div class="works">
-    @for (work of works; track work.title) {
+    @for (work of t().works; track work.slug) {
       <article class="work">
         <div class="work-top">
           <span class="chip">{{ work.context }}</span>
@@ -13,6 +13,10 @@
         </div>
         <h3 class="work-title">{{ work.title }}</h3>
         <p class="work-text">{{ work.description }}</p>
+        <a class="work-link no-print" [routerLink]="['/works', work.slug]">
+          {{ t().ui.details }}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
       </article>
     }
   </div>

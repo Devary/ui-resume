@@ -1,0 +1,125 @@
+:host { display: block; }
+
+// The image in the page: click to open it full screen.
+.thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--cv-border);
+  border-radius: var(--cv-radius);
+  background: #fff;
+  overflow: hidden;
+  cursor: zoom-in;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.35s;
+  }
+
+  &:hover img { transform: scale(1.02); }
+}
+
+.thumb-hint {
+  position: absolute;
+  inset-block-end: 0.6rem;
+  inset-inline-end: 0.6rem;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  color: #fff;
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+}
+
+// ── Full screen ──
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(8, 10, 16, 0.92);
+  backdrop-filter: blur(6px);
+  animation: fade 0.2s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  touch-action: none;
+  cursor: zoom-in;
+
+  &.zoomed { cursor: grab; }
+  &.zoomed:active { cursor: grabbing; }
+
+  img {
+    max-width: 92vw;
+    max-height: 84vh;
+    border-radius: var(--cv-radius-sm);
+    background: #fff;
+    user-select: none;
+    transform-origin: center;
+    will-change: transform;
+  }
+}
+
+.controls {
+  position: absolute;
+  inset-block-end: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  button {
+    min-width: 2.4rem;
+    height: 2.4rem;
+    padding: 0 0.6rem;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover { background: rgba(255, 255, 255, 0.16); }
+  }
+
+  .pct {
+    min-width: 4rem;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.divider {
+  width: 1px;
+  height: 1.4rem;
+  margin: 0 0.2rem;
+  background: rgba(255, 255, 255, 0.2);
+}

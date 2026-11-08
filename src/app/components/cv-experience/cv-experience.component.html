@@ -1,16 +1,20 @@
 <section class="section-card" appSpotlight>
   <header class="section-head">
     <span class="section-index">02</span>
-    <h2 class="section-title">Experience</h2>
+    <h2 class="section-title">{{ t().ui.experience }}</h2>
   </header>
 
   <ol class="timeline">
-    @for (exp of experiences; track exp.company + exp.period) {
-      <li class="entry" appReveal [class.is-current]="isCurrent(exp)">
+    @for (exp of t().experiences; track exp.monogram + exp.period) {
+      <li class="entry" appReveal [class.is-current]="exp.current">
         <span class="dot" aria-hidden="true"></span>
 
         <div class="entry-head">
-          <span class="monogram" aria-hidden="true">{{ monogram(exp.company) }}</span>
+          @if (exp.logo) {
+            <span class="badge logo"><img [src]="exp.logo" [alt]="exp.company" loading="lazy" /></span>
+          } @else {
+            <span class="badge monogram" aria-hidden="true">{{ exp.monogram }}</span>
+          }
           <div class="who">
             <h3 class="role">{{ exp.role }}</h3>
             <p class="company">
@@ -20,10 +24,10 @@
             </p>
           </div>
           <div class="when">
-            @if (isCurrent(exp)) {
-              <span class="now"><span class="now-dot" aria-hidden="true"></span>Current</span>
+            @if (exp.current) {
+              <span class="now"><span class="now-dot" aria-hidden="true"></span>{{ t().ui.current }}</span>
             }
-            <span class="period">{{ exp.period }}</span>
+            <span class="period"><bdi>{{ exp.period }}</bdi></span>
             <span class="chip type">{{ exp.type }}</span>
           </div>
         </div>
@@ -46,7 +50,7 @@
               <div class="sub-role">
                 <div class="sub-head">
                   <h4 class="sub-title">{{ sub.title }}</h4>
-                  <span class="period">{{ sub.period }}</span>
+                  <span class="period"><bdi>{{ sub.period }}</bdi></span>
                 </div>
                 <ul class="tasks">
                   @for (task of sub.tasks; track task) {

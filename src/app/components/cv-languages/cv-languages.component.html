@@ -1,15 +1,15 @@
 <section class="section-card" appSpotlight>
   <header class="section-head">
-    <h2 class="section-title small">Languages</h2>
+    <h2 class="section-title small">{{ t().ui.languages }}</h2>
   </header>
 
   <div class="langs">
-    @for (lang of languages; track lang.name) {
+    @for (lang of t().languages; track $index) {
       <div class="lang">
         <div class="lang-head">
           <span class="lang-name">{{ lang.name }}</span>
           @if (lang.motherTongue) {
-            <span class="chip native">Native</span>
+            <span class="chip native">{{ t().ui.native }}</span>
           } @else {
             <span class="chip">{{ overall(lang) }}</span>
           }
@@ -17,7 +17,7 @@
 
         @if (!lang.motherTongue && lang.skills) {
           <ul class="skills">
-            @for (skill of cefrOrder; track skill.key) {
+            @for (skill of cefrOrder(); track skill.key) {
               <li>
                 <span class="skill-label">{{ skill.label }}</span>
                 <span class="bar" [attr.aria-label]="skill.label + ': ' + cefrLevel(lang, skill.key)">

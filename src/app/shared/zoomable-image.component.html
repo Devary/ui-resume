@@ -1,0 +1,29 @@
+<button type="button" class="thumb" (click)="show()" [attr.aria-label]="labels().open">
+  <img [src]="src()" [alt]="alt()" loading="lazy" />
+  <span class="thumb-hint" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M11 18a7 7 0 100-14 7 7 0 000 14zM20 20l-4-4M11 8v6M8 11h6" /></svg>
+  </span>
+</button>
+
+@if (open()) {
+  <div class="viewer" role="dialog" aria-modal="true" [attr.aria-label]="alt()">
+    <div #stage class="stage"
+         [class.zoomed]="scale() > 1"
+         (wheel)="onWheel($event, stage)"
+         (dblclick)="onDoubleClick($event, stage)"
+         (pointerdown)="onPointerDown($event)"
+         (pointermove)="onPointerMove($event, stage)"
+         (pointerup)="onPointerUp($event)"
+         (pointercancel)="onPointerUp($event)">
+      <img [src]="src()" [alt]="alt()" [style.transform]="transform()" draggable="false" />
+    </div>
+
+    <div class="controls" dir="ltr">
+      <button type="button" (click)="zoomBy(1 / 1.25)" [attr.aria-label]="labels().zoomOut" [title]="labels().zoomOut">−</button>
+      <button type="button" class="pct" (click)="reset()" [attr.aria-label]="labels().reset" [title]="labels().reset">{{ percent() }}%</button>
+      <button type="button" (click)="zoomBy(1.25)" [attr.aria-label]="labels().zoomIn" [title]="labels().zoomIn">+</button>
+      <span class="divider" aria-hidden="true"></span>
+      <button type="button" (click)="close()" [attr.aria-label]="labels().close" [title]="labels().close">✕</button>
+    </div>
+  </div>
+}

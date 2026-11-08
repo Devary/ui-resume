@@ -1,0 +1,51 @@
+:host { display: block; }
+
+// ── Layout: a sticky side column and the main column ──
+.cv-layout {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.cv-side {
+  position: sticky;
+  top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cv-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+// A tablet or a phone: one column; the side column scrolls with the page.
+@media (max-width: 980px) {
+  .cv-layout { grid-template-columns: minmax(0, 1fr); }
+
+  .cv-side { position: static; }
+}
+
+@media print {
+  .cv-layout {
+    display: block;
+    max-width: none;
+  }
+
+  .cv-side { position: static; }
+
+  .cv-side,
+  .cv-main {
+    gap: 1rem;
+  }
+
+  .cv-main { margin-top: 1rem; }
+}

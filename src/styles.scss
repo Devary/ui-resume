@@ -57,6 +57,19 @@
   --cv-radius-full:  999px;
 }
 
+// Arabic: a font made for it (Latin words inside keep Inter), and no letter-spacing, which
+// would break the joined letters apart.
+[lang="ar"] {
+  --cv-font:         'IBM Plex Sans Arabic', 'Inter', ui-sans-serif, system-ui, 'Segoe UI', Tahoma, sans-serif;
+  --cv-font-display: 'IBM Plex Sans Arabic', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  body { line-height: 1.75; }
+
+  .section-title,
+  .section-index,
+  h1, h2, h3, h4, dt { letter-spacing: 0 !important; }
+}
+
 // ── Base ───────────────────────────────────────────────────────────────────────
 *,
 *::before,
