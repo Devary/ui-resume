@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RevealDirective } from '../../shared/reveal.directive';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 export interface SubRole {
   title:  string;
@@ -21,16 +23,44 @@ export interface Experience {
 @Component({
   selector: 'app-cv-experience',
   standalone: true,
-  imports: [],
+  imports: [RevealDirective, SpotlightDirective],
   templateUrl: './cv-experience.component.html',
   styleUrl: './cv-experience.component.scss'
 })
 export class CvExperienceComponent {
+  /** The job being done now: its period ends with "Present". */
+  isCurrent(exp: Experience): boolean {
+    return /present$/i.test(exp.period.trim());
+  }
+
+  /** Two letters for the company badge: "European Parliament" → "EP", "LALUX" → "LA". */
+  monogram(company: string): string {
+    const words = company.split(/\s+/).filter((w) => /^[A-Z]/.test(w));
+    return (words.length > 1 ? words[0][0] + words[1][0] : company.slice(0, 2)).toUpperCase();
+  }
+
   readonly experiences: Experience[] = [
+    {
+      company:  'LALUX',
+      location: 'Luxembourg',
+      period:   '06/2026 – Present',
+      role:     'Technical Lead',
+      type:     'External',
+      tasks: [
+        'Lead a Quarkus backend team of two senior developers',
+        'Own and maintain the codebase: code reviews, coding standards and technical decisions',
+        'Drive performance and security across the services',
+        'Configure Quarkus integrations with Keycloak, Oracle Database, Kafka Streams and Grafana',
+        'Implement XML processing with XSD validation and SOAP web services',
+        'Lead production investigations and root-cause analysis',
+        'Manage dev, test and production environments on OpenShift',
+        'Set up and maintain CI/CD pipelines with GitHub Actions'
+      ]
+    },
     {
       company:  'Societe Generale',
       location: 'Esch-sur-Alzette, Luxembourg',
-      period:   '09/2025 – Present',
+      period:   '09/2025 – 06/2026',
       role:     'Technical Expert',
       type:     'External',
       project:  'Main Banking Payments Platform',

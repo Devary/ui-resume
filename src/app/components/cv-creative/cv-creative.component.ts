@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 export interface CreativeWork {
   title:       string;
@@ -10,7 +11,7 @@ export interface CreativeWork {
 @Component({
   selector: 'app-cv-creative',
   standalone: true,
-  imports: [],
+  imports: [SpotlightDirective],
   templateUrl: './cv-creative.component.html',
   styleUrl: './cv-creative.component.scss'
 })

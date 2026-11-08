@@ -1,63 +1,63 @@
-<section class="section-card">
-  <h2 class="section-title">Experience</h2>
+<section class="section-card" appSpotlight>
+  <header class="section-head">
+    <span class="section-index">02</span>
+    <h2 class="section-title">Experience</h2>
+  </header>
 
-  <div class="timeline">
+  <ol class="timeline">
     @for (exp of experiences; track exp.company + exp.period) {
-      <div class="timeline-entry">
-        <div class="timeline-dot" aria-hidden="true"></div>
+      <li class="entry" appReveal [class.is-current]="isCurrent(exp)">
+        <span class="dot" aria-hidden="true"></span>
 
-        <div class="entry-card">
-          <!-- Header -->
-          <div class="entry-header">
-            <div class="entry-meta">
-              <h3 class="company-name">{{ exp.company }}</h3>
-              <span class="location">{{ exp.location }}</span>
-            </div>
-            <span class="period-badge">{{ exp.period }}</span>
-          </div>
-
-          <!-- Role & type -->
-          <div class="role-row">
-            <span class="role-title">{{ exp.role }}</span>
-            <span class="type-pill">{{ exp.type }}</span>
-          </div>
-
-          <!-- Project -->
-          @if (exp.project) {
-            <p class="project-name">
-              <span class="project-label">Project: </span>{{ exp.project }}
+        <div class="entry-head">
+          <span class="monogram" aria-hidden="true">{{ monogram(exp.company) }}</span>
+          <div class="who">
+            <h3 class="role">{{ exp.role }}</h3>
+            <p class="company">
+              <strong>{{ exp.company }}</strong>
+              <span class="sep" aria-hidden="true">·</span>
+              <span>{{ exp.location }}</span>
             </p>
-          }
-
-          <!-- Single flat task list -->
-          @if (exp.tasks && exp.tasks.length > 0) {
-            <ul class="task-list">
-              @for (task of exp.tasks; track task) {
-                <li>{{ task }}</li>
-              }
-            </ul>
-          }
-
-          <!-- Sub-roles (VERMEG pattern) -->
-          @if (exp.subRoles && exp.subRoles.length > 0) {
-            <div class="sub-roles">
-              @for (sub of exp.subRoles; track sub.title) {
-                <div class="sub-role">
-                  <div class="sub-role-header">
-                    <span class="sub-role-title">{{ sub.title }}</span>
-                    <span class="sub-period">{{ sub.period }}</span>
-                  </div>
-                  <ul class="task-list">
-                    @for (task of sub.tasks; track task) {
-                      <li>{{ task }}</li>
-                    }
-                  </ul>
-                </div>
-              }
-            </div>
-          }
+          </div>
+          <div class="when">
+            @if (isCurrent(exp)) {
+              <span class="now"><span class="now-dot" aria-hidden="true"></span>Current</span>
+            }
+            <span class="period">{{ exp.period }}</span>
+            <span class="chip type">{{ exp.type }}</span>
+          </div>
         </div>
-      </div>
+
+        @if (exp.project) {
+          <p class="project">{{ exp.project }}</p>
+        }
+
+        @if (exp.tasks && exp.tasks.length > 0) {
+          <ul class="tasks">
+            @for (task of exp.tasks; track task) {
+              <li>{{ task }}</li>
+            }
+          </ul>
+        }
+
+        @if (exp.subRoles && exp.subRoles.length > 0) {
+          <div class="sub-roles">
+            @for (sub of exp.subRoles; track sub.title) {
+              <div class="sub-role">
+                <div class="sub-head">
+                  <h4 class="sub-title">{{ sub.title }}</h4>
+                  <span class="period">{{ sub.period }}</span>
+                </div>
+                <ul class="tasks">
+                  @for (task of sub.tasks; track task) {
+                    <li>{{ task }}</li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+        }
+      </li>
     }
-  </div>
+  </ol>
 </section>

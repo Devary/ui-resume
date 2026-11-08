@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 export interface Degree {
   title:       string;
@@ -16,7 +17,7 @@ export interface Certification {
 @Component({
   selector: 'app-cv-education',
   standalone: true,
-  imports: [],
+  imports: [SpotlightDirective],
   templateUrl: './cv-education.component.html',
   styleUrl: './cv-education.component.scss'
 })

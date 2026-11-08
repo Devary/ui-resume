@@ -1,65 +1,58 @@
-.section-card {
-  background:      var(--rz-glass-bg);
-  border:          1px solid var(--rz-glass-border);
-  border-radius:   var(--rz-radius-lg);
-  box-shadow:      var(--rz-glass-shadow);
-  backdrop-filter: blur(var(--rz-glass-blur));
-  padding:         1.5rem 2rem;
-}
-
-.section-title {
-  margin:         0 0 1.25rem;
-  font-size:      1.25rem;
-  font-weight:    700;
-  color:          var(--rz-primary);
-  padding-bottom: 0.5rem;
-  border-bottom:  2px solid var(--rz-border);
-  letter-spacing: 0.01em;
+:host {
+  display: block;
 }
 
 .groups {
-  display:        flex;
-  flex-direction: column;
-  gap:            1.1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
 }
 
-.skill-group {
-  display:        flex;
-  flex-direction: column;
-  gap:            0.5rem;
+// A long group spans both columns.
+.group.wide {
+  grid-column: 1 / -1;
 }
 
 .group-label {
-  margin:      0;
-  font-size:   0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  margin: 0 0 0.55rem;
+  color: var(--cv-ink-muted);
+  font-size: 0.72rem;
+  font-weight: 650;
   letter-spacing: 0.08em;
-  color:       var(--rz-ink-muted);
+  text-transform: uppercase;
 }
 
-.badge-row {
-  display:   flex;
+.chips {
+  display: flex;
   flex-wrap: wrap;
-  gap:       0.4rem;
+  gap: 0.4rem;
 }
 
-.badge {
-  display:       inline-flex;
-  align-items:   center;
-  padding:       0.25rem 0.7rem;
-  border-radius: var(--rz-radius-full);
-  font-size:     0.78rem;
-  font-weight:   500;
-  line-height:   1.4;
-  background:    color-mix(in srgb, var(--rz-primary) 12%, transparent);
-  color:         var(--rz-primary);
-  border:        1px solid color-mix(in srgb, var(--rz-primary) 25%, transparent);
-  transition:    background 0.15s ease, transform 0.1s ease;
-  cursor:        default;
+.chip {
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
 
   &:hover {
-    background: color-mix(in srgb, var(--rz-primary) 20%, transparent);
-    transform:  translateY(-1px);
+    border-color: var(--cv-accent-ring);
+    color: var(--cv-accent);
+  }
+
+  &.core {
+    border-color: var(--cv-accent-ring);
+    background: var(--cv-accent-soft);
+    color: var(--cv-accent);
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 640px) {
+  .groups { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media print {
+  .groups { gap: 0.6rem 1.25rem; }
+
+  .chip {
+    padding: 0.05rem 0.45rem;
+    font-size: 0.75rem;
   }
 }

@@ -29,6 +29,12 @@ export class App implements OnInit {
   readonly isStandalone = window.self === window.top;
   readonly isDark       = this.themeStore.isDark;
   readonly toggleTheme  = () => this.themeStore.toggle();
+  readonly year         = new Date().getFullYear();
+
+  /** "PDF": the browser's print dialog, where the print styles lay the CV out as one clean column. */
+  print(): void {
+    window.print();
+  }
 
   ngOnInit(): void {
     if (this.isStandalone) return;

@@ -1,25 +1,34 @@
-<section class="section-card">
-  <h2 class="section-title">Languages</h2>
+<section class="section-card" appSpotlight>
+  <header class="section-head">
+    <h2 class="section-title small">Languages</h2>
+  </header>
 
-  <div class="lang-list">
+  <div class="langs">
     @for (lang of languages; track lang.name) {
-      <div class="lang-row" [class.mother-tongue]="lang.motherTongue">
-        <div class="lang-name-col">
+      <div class="lang">
+        <div class="lang-head">
           <span class="lang-name">{{ lang.name }}</span>
           @if (lang.motherTongue) {
-            <span class="native-badge">Mother Tongue</span>
+            <span class="chip native">Native</span>
+          } @else {
+            <span class="chip">{{ overall(lang) }}</span>
           }
         </div>
 
         @if (!lang.motherTongue && lang.skills) {
-          <div class="cefr-chips">
+          <ul class="skills">
             @for (skill of cefrOrder; track skill.key) {
-              <div class="cefr-chip" [attr.data-level]="cefrLevel(lang, skill.key)">
+              <li>
                 <span class="skill-label">{{ skill.label }}</span>
-                <span class="skill-level">{{ cefrLevel(lang, skill.key) }}</span>
-              </div>
+                <span class="bar" [attr.aria-label]="skill.label + ': ' + cefrLevel(lang, skill.key)">
+                  @for (step of steps; track step) {
+                    <i [class.on]="step <= levelIndex(cefrLevel(lang, skill.key))"></i>
+                  }
+                </span>
+                <span class="level">{{ cefrLevel(lang, skill.key) }}</span>
+              </li>
             }
-          </div>
+          </ul>
         }
       </div>
     }
