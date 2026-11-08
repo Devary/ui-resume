@@ -191,9 +191,11 @@ const EN: CvContent = {
   experiences: experiences('Present', [
     {
       company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'External',
-      project: 'EasyApp — Main mobile, web and backend application',
+      project: 'EasyApp (main mobile, web and backend application) & DKV',
       tasks: [
         'Lead a Quarkus backend team of two senior developers',
+        'Decommission the DKV services',
+        'Work on reimbursements, claims, insurance policies, mobile payments, documents and document management systems (DMS)',
         'Own and maintain the codebase: code reviews, coding standards and technical decisions',
         'Drive performance and security across the services',
         'Configure Quarkus integrations with Keycloak, Oracle Database, Kafka Streams and Grafana',
@@ -349,9 +351,11 @@ const FR: CvContent = {
   experiences: experiences('Aujourd’hui', [
     {
       company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'Externe',
-      project: 'EasyApp — Application principale mobile, web et backend',
+      project: 'EasyApp (application principale mobile, web et backend) & DKV',
       tasks: [
         'Direction d’une équipe backend Quarkus de deux développeurs seniors',
+        'Décommissionnement des services DKV',
+        'Travail sur les remboursements, les sinistres, les polices, les paiements mobiles, les documents et les systèmes GED',
         'Responsable de la base de code : revues de code, standards de développement et décisions techniques',
         'Pilotage de la performance et de la sécurité des services',
         'Configuration des intégrations Quarkus avec Keycloak, Oracle Database, Kafka Streams et Grafana',
@@ -506,9 +510,11 @@ const AR: CvContent = {
   experiences: experiences('حتى الآن', [
     {
       company: 'LALUX', location: 'لوكسمبورغ', role: 'قائد تقني', type: 'متعاقد خارجي',
-      project: 'EasyApp — التطبيق الرئيسي للهاتف المحمول والويب والواجهة الخلفية',
+      project: 'EasyApp (التطبيق الرئيسي للهاتف المحمول والويب والواجهة الخلفية) و DKV',
       tasks: [
         'قيادة فريق backend يعمل بـ Quarkus ويضم مطوّرَين اثنين من ذوي الخبرة',
+        'الإيقاف التدريجي لخدمات DKV (decommissioning)',
+        'العمل على التعويضات والمطالبات ووثائق التأمين والدفع عبر الهاتف المحمول والمستندات وأنظمة إدارة الوثائق (GED)',
         'الإشراف على الشيفرة المصدرية وصيانتها: مراجعة الشيفرة ومعايير البرمجة والقرارات التقنية',
         'قيادة جهود الأداء والأمان في مختلف الخدمات',
         'إعداد تكامل Quarkus مع Keycloak وOracle Database وKafka Streams وGrafana',
