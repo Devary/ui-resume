@@ -69,3 +69,39 @@
     break-inside: avoid;
   }
 }
+
+// "Technical details →": to the work's own page; the arrow nudges forward on hover.
+.work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  color: var(--cv-accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  // Makes the whole card the link's click area.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  svg {
+    width: 0.95rem;
+    height: 0.95rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s;
+
+    [dir='rtl'] & { transform: scaleX(-1); }
+  }
+
+  .work:hover & svg { transform: translateX(3px); }
+  [dir='rtl'] .work:hover & svg { transform: scaleX(-1) translateX(3px); }
+}

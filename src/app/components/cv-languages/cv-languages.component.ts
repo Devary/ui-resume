@@ -1,19 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { SpotlightDirective } from '../../shared/spotlight.directive';
-
-export interface CefrSkills {
-  listening?:          string;
-  reading?:            string;
-  writing?:            string;
-  spokenProduction?:   string;
-  spokenInteraction?:  string;
-}
-
-export interface Language {
-  name:          string;
-  motherTongue?: boolean;
-  skills?:       CefrSkills;
-}
+import { CefrSkills, Language } from '../../i18n/cv-content';
+import { LanguageStore } from '../../i18n/language.store';
 
 @Component({
   selector: 'app-cv-languages',
@@ -23,40 +11,11 @@ export interface Language {
   styleUrl: './cv-languages.component.scss'
 })
 export class CvLanguagesComponent {
-  readonly languages: Language[] = [
-    {
-      name:         'Arabic',
-      motherTongue: true
-    },
-    {
-      name: 'English',
-      skills: {
-        listening:         'C1',
-        reading:           'C1',
-        writing:           'C1',
-        spokenProduction:  'B2',
-        spokenInteraction: 'C1'
-      }
-    },
-    {
-      name: 'French',
-      skills: {
-        listening:         'C1',
-        reading:           'C1',
-        writing:           'C1',
-        spokenProduction:  'B2',
-        spokenInteraction: 'B2'
-      }
-    }
-  ];
+  readonly t = inject(LanguageStore).content;
 
-  readonly cefrOrder: { key: keyof CefrSkills; label: string }[] = [
-    { key: 'listening',         label: 'Listening' },
-    { key: 'reading',           label: 'Reading' },
-    { key: 'writing',           label: 'Writing' },
-    { key: 'spokenProduction',  label: 'Spoken Production' },
-    { key: 'spokenInteraction', label: 'Spoken Interaction' }
-  ];
+  private readonly cefrKeys: (keyof CefrSkills)[] = ['listening', 'reading', 'writing', 'spokenProduction', 'spokenInteraction'];
+
+  readonly cefrOrder = computed(() => this.cefrKeys.map((key) => ({ key, label: this.t().ui.cefr[key] })));
 
   cefrLevel(lang: Language, key: keyof CefrSkills): string {
     return lang.skills?.[key] ?? '';
@@ -74,7 +33,7 @@ export class CvLanguagesComponent {
   /** The level most of the language's skills are at (the higher one on a tie). */
   overall(lang: Language): string {
     const counts = new Map<string, number>();
-    for (const { key } of this.cefrOrder) {
+    for (const key of this.cefrKeys) {
       const level = this.cefrLevel(lang, key);
       if (level) {
         counts.set(level, (counts.get(level) ?? 0) + 1);

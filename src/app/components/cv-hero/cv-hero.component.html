@@ -1,45 +1,43 @@
 <section class="hero section-card" appSpotlight>
   <div class="avatar-wrap">
     <span class="ring" aria-hidden="true"></span>
-    <img class="avatar" src="profile.jpg" alt="Fakher Hammami" width="104" height="104" />
+    <img class="avatar" src="profile.jpg" [alt]="t().hero.name" width="104" height="104" />
   </div>
 
-  <h1 class="name">{{ name }}</h1>
-  <p class="title">{{ title }}</p>
+  <h1 class="name">{{ t().hero.name }}</h1>
+  <p class="title">{{ t().hero.title }}</p>
 
   <p class="current">
     <span class="pulse" aria-hidden="true"></span>
-    <span>Currently <strong>{{ current.role }}</strong> at <strong>{{ current.company }}</strong></span>
+    <span>{{ t().ui.currently }} <strong>{{ t().hero.role }}</strong> {{ t().ui.at }} <strong>{{ company }}</strong></span>
   </p>
 
   <dl class="stats">
-    @for (s of stats; track s.label) {
+    @for (s of stats(); track $index) {
       <div class="stat">
         <dt>{{ s.label }}</dt>
-        <dd>{{ s.value }}</dd>
+        <dd><bdi>{{ s.value }}</bdi></dd>
       </div>
     }
   </dl>
 
   <div class="downloads no-print">
-    <a class="dl primary" href="cv/Fakher-Hammami-CV.pdf" download>
+    <a class="dl primary" href="cv/Fakher-Hammami-CV.pdf" download="Fakher-Hammami-CV.pdf" [attr.title]="t().ui.filesNote || null">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.download" /></svg>
-      Download CV
+      {{ t().ui.downloadCv }}
     </a>
-    <a class="dl" href="cv/Fakher-Hammami-CV.docx" download title="Word version">Word</a>
-    <a class="dl" href="cv/Fakher-Hammami-CV-ATS.pdf" download title="Plain version for applicant tracking systems">ATS</a>
   </div>
 
   <ul class="contacts">
-    @for (c of contacts; track c.icon) {
+    @for (c of contacts(); track c.icon) {
       <li>
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons[c.icon]" /></svg>
         @if (c.href) {
           <a [href]="c.href"
              [attr.target]="c.external ? '_blank' : null"
-             [attr.rel]="c.external ? 'noopener noreferrer' : null">{{ c.label }}</a>
+             [attr.rel]="c.external ? 'noopener noreferrer' : null"><bdi>{{ c.label }}</bdi></a>
         } @else {
-          <span>{{ c.label }}</span>
+          <span><bdi>{{ c.label }}</bdi></span>
         }
       </li>
     }

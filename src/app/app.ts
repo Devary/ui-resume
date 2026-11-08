@@ -1,39 +1,52 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { ThemeStore } from './theme.store';
-import { CvHeroComponent } from './components/cv-hero/cv-hero.component';
-import { CvAboutComponent } from './components/cv-about/cv-about.component';
-import { CvSkillsComponent } from './components/cv-skills/cv-skills.component';
-import { CvExperienceComponent } from './components/cv-experience/cv-experience.component';
-import { CvEducationComponent } from './components/cv-education/cv-education.component';
-import { CvCreativeComponent } from './components/cv-creative/cv-creative.component';
-import { CvLanguagesComponent } from './components/cv-languages/cv-languages.component';
+import { LanguageStore } from './i18n/language.store';
+import { Lang } from './i18n/cv-content';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CvHeroComponent,
-    CvAboutComponent,
-    CvSkillsComponent,
-    CvExperienceComponent,
-    CvEducationComponent,
-    CvCreativeComponent,
-    CvLanguagesComponent,
-  ],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
   private readonly themeStore = inject(ThemeStore);
+  private readonly language   = inject(LanguageStore);
 
   readonly isStandalone = window.self === window.top;
   readonly isDark       = this.themeStore.isDark;
   readonly toggleTheme  = () => this.themeStore.toggle();
   readonly year         = new Date().getFullYear();
 
+  readonly t           = this.language.content;
+  readonly lang        = this.language.lang;
+  readonly langOptions = this.language.options;
+  /** The language menu is open. */
+  readonly langOpen    = signal(false);
+
   /** "PDF": the browser's print dialog, where the print styles lay the CV out as one clean column. */
   print(): void {
     window.print();
+  }
+
+  chooseLang(lang: Lang): void {
+    this.language.setLang(lang);
+    this.langOpen.set(false);
+  }
+
+  /** A click anywhere outside the language menu closes it; so does Escape. */
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (this.langOpen() && !(event.target as HTMLElement).closest('.lang-switch')) {
+      this.langOpen.set(false);
+    }
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.langOpen.set(false);
   }
 
   ngOnInit(): void {

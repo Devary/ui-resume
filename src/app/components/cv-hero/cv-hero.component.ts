@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { SpotlightDirective } from '../../shared/spotlight.directive';
+import { LanguageStore } from '../../i18n/language.store';
 
 /** A contact line of the side card: its icon, text, and link (none for plain facts). */
 interface Contact {
@@ -19,7 +20,7 @@ const ICONS = {
   badge:    'M4 5h16v14H4zM8 10a2 2 0 104 0 2 2 0 00-4 0M6.5 16a3.5 3.5 0 017 0M15 9h3M15 13h3',
   calendar: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',
   download: 'M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2',
-  globe:'M12 21a9 9 0 100-18 9 9 0 000 18zM3 12h18M12 3c2.5 2.6 3.5 5.6 3.5 9s-1 6.4-3.5 9c-2.5-2.6-3.5-5.6-3.5-9s1-6.4 3.5-9',
+  globe:    'M12 21a9 9 0 100-18 9 9 0 000 18zM3 12h18M12 3c2.5 2.6 3.5 5.6 3.5 9s-1 6.4-3.5 9c-2.5-2.6-3.5-5.6-3.5-9s1-6.4 3.5-9',
 } as const;
 
 @Component({
@@ -30,37 +31,39 @@ const ICONS = {
   styleUrl: './cv-hero.component.scss'
 })
 export class CvHeroComponent {
-  readonly name       = 'Fakher Hammami';
-  readonly title      = 'Technical Lead · Senior Java Engineer · 10+ Years';
-  /** Shown as "Currently" under the title. */
-  readonly current    = { role: 'Technical Lead', company: 'LALUX' };
-  readonly location   = 'Luxembourg';
-  readonly email      = 'hfekher@gmail.com';
-  readonly phone      = '(+352) 661 151 092';
-  readonly linkedin   = 'fakher-hammami';
-  readonly whatsapp   = '+352661151092';
-  readonly workPermit = 'Luxembourgish';
-  readonly dob        = '15 / 10 / 1992';
+  private readonly language = inject(LanguageStore);
+  readonly t = this.language.content;
 
-  readonly website    = 'fakher.dev';
+  readonly company   = 'LALUX';
+  readonly email     = 'hfekher@gmail.com';
+  readonly phone     = '(+352) 661 151 092';
+  readonly linkedin  = 'fakher-hammami';
+  readonly whatsapp  = '+352661151092';
+  readonly website   = 'fakher.dev';
 
   readonly icons = ICONS;
 
   /** Key figures under the "Currently" badge. */
-  readonly stats = [
-    { value: '10+', label: 'Years' },
-    { value: '7',   label: 'Companies' },
-    { value: '2',   label: 'Certifications' },
-  ];
+  readonly stats = computed(() => {
+    const ui = this.t().ui;
+    return [
+      { value: '10+', label: ui.years },
+      { value: '7',   label: ui.companies },
+      { value: '2',   label: ui.certs },
+    ];
+  });
 
-  readonly contacts: Contact[] = [
-    { icon: 'mail',     label: this.email,                    href: `mailto:${this.email}` },
-    { icon: 'phone',    label: this.phone,                    href: `tel:${this.whatsapp}` },
-    { icon: 'chat',     label: 'WhatsApp',                    href: `https://wa.me/${this.whatsapp}`, external: true },
-    { icon: 'globe',    label: this.website,                  href: `https://www.${this.website}`, external: true },
-    { icon: 'linkedin', label: `linkedin.com/in/${this.linkedin}`, href: `https://www.linkedin.com/in/${this.linkedin}`, external: true },
-    { icon: 'pin',      label: this.location },
-    { icon: 'badge',    label: `Work permit: ${this.workPermit}` },
-    { icon: 'calendar', label: `Born ${this.dob}` },
-  ];
+  readonly contacts = computed<Contact[]>(() => {
+    const hero = this.t().hero;
+    return [
+      { icon: 'mail',     label: this.email,   href: `mailto:${this.email}` },
+      { icon: 'phone',    label: this.phone,   href: `tel:${this.whatsapp}` },
+      { icon: 'chat',     label: 'WhatsApp',   href: `https://wa.me/${this.whatsapp}`, external: true },
+      { icon: 'globe',    label: this.website, href: `https://www.${this.website}`, external: true },
+      { icon: 'linkedin', label: `linkedin.com/in/${this.linkedin}`, href: `https://www.linkedin.com/in/${this.linkedin}`, external: true },
+      { icon: 'pin',      label: hero.location },
+      { icon: 'badge',    label: hero.workPermit },
+      { icon: 'calendar', label: hero.born },
+    ];
+  });
 }

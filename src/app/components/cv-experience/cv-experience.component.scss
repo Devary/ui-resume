@@ -2,11 +2,12 @@
   display: block;
 }
 
-// A rail down the left, a dot per job.
+// A rail down the start side, a dot per job.
 .timeline {
   position: relative;
   margin: 0;
-  padding: 0 0 0 1.6rem;
+  padding: 0;
+  padding-inline-start: 1.6rem;
   list-style: none;
 
   &::before {
@@ -14,7 +15,7 @@
     position: absolute;
     top: 0.5rem;
     bottom: 0.5rem;
-    left: 0.4rem;
+    inset-inline-start: 0.4rem;
     width: 2px;
     border-radius: 2px;
     background: linear-gradient(to bottom, var(--cv-accent-ring), var(--cv-border) 30%);
@@ -38,10 +39,10 @@
 .dot {
   position: absolute;
   top: 0.35rem;
-  left: -1.6rem;
+  inset-inline-start: -1.6rem;
   width: 0.95rem;
   height: 0.95rem;
-  margin-left: -0.075rem;
+  margin-inline-start: -0.075rem;
   border-radius: 50%;
   background: var(--cv-surface);
   border: 2px solid var(--cv-border-strong);
@@ -66,14 +67,38 @@
   min-width: 0;
 }
 
-// The company's initials on a tile, tinted with the accent (full gradient for the current job).
-.monogram {
+// The employer's badge: its logo on a white tile, or its initials tinted with the accent.
+.badge {
   flex: none;
   display: grid;
   place-items: center;
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 12px;
+  transition: transform 0.25s;
+
+  .entry:hover & { transform: rotate(-6deg) scale(1.06); }
+}
+
+// Logos keep their own colours, so the tile stays white in dark mode too.
+.logo {
+  padding: 0.35rem;
+  border: 1px solid var(--cv-border);
+  background: #fff;
+  box-shadow: var(--cv-shadow);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .is-current & {
+    box-shadow: 0 0 0 3px var(--cv-accent-soft), 0 6px 16px var(--cv-accent-ring);
+  }
+}
+
+.monogram {
   border: 1px solid var(--cv-accent-ring);
   background: var(--cv-accent-soft);
   color: var(--cv-accent);
@@ -81,16 +106,6 @@
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  transition: transform 0.25s;
-
-  .entry:hover & { transform: rotate(-6deg) scale(1.06); }
-
-  .is-current & {
-    border: none;
-    background: var(--cv-gradient);
-    color: #fff;
-    box-shadow: 0 6px 16px var(--cv-accent-ring);
-  }
 }
 
 .role {
@@ -173,7 +188,7 @@
 
   li {
     position: relative;
-    padding-left: 1.15rem;
+    padding-inline-start: 1.15rem;
     color: var(--cv-ink-2);
     font-size: 0.92rem;
 
@@ -182,7 +197,7 @@
       content: '';
       position: absolute;
       top: 0.7em;
-      left: 0;
+      inset-inline-start: 0;
       width: 0.5rem;
       height: 2px;
       border-radius: 2px;
@@ -227,7 +242,7 @@
 
   .now-dot { animation: none; }
 
-  .monogram { display: none; }
+  .badge { display: none; }
 
   .sub-role { background: none; }
 }
