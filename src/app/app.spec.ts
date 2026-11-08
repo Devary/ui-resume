@@ -45,7 +45,9 @@ describe('App', () => {
     const { el } = await open();
     const stats = [...el.querySelectorAll('.stat')].map((s) => `${s.querySelector('dd')?.textContent} ${s.querySelector('dt')?.textContent}`);
     expect(stats).toEqual(['10+ Years', '7 Companies', '2 Certifications']);
-    expect(el.querySelector<HTMLAnchorElement>('.contacts a[href="https://www.fakher.dev"]')?.textContent).toBe('fakher.dev');
+    expect(el.querySelector<HTMLAnchorElement>('.contacts a[href="https://www.veegine.com"]')?.textContent).toBe('www.veegine.com');
+    expect(el.querySelector('.contacts')?.textContent).toMatch(/Born 1992 \(\d{2}\)/);
+    expect(el.querySelector('.contacts')?.textContent).not.toContain('661 151 092');
 
     const downloads = [...el.querySelectorAll<HTMLAnchorElement>('.downloads a')].map((a) => a.getAttribute('href'));
     expect(downloads).toEqual(['cv/Fakher-Hammami-CV.pdf']);

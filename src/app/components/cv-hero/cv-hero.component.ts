@@ -13,7 +13,6 @@ interface Contact {
 /** Line icons (24×24, stroked), so the contacts look the same on every system. */
 const ICONS = {
   mail:     'M4 6h16v12H4zM4 7l8 6 8-6',
-  phone:    'M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2',
   pin:      'M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 100-5 2.5 2.5 0 000 5',
   chat:     'M4 20l1.4-4.2A8 8 0 1112 20a8 8 0 01-3.8-1L4 20z',
   linkedin: 'M4 4h16v16H4zM8 10v6M8 7.5v.01M12 16v-3.5a2 2 0 014 0V16M12 10v6',
@@ -36,10 +35,19 @@ export class CvHeroComponent {
 
   readonly company   = 'LALUX';
   readonly email     = 'hfekher@gmail.com';
-  readonly phone     = '(+352) 661 151 092';
   readonly linkedin  = 'fakher-hammami';
   readonly whatsapp  = '+352661151092';
-  readonly website   = 'fakher.dev';
+  readonly website   = 'www.veegine.com';
+  /** Day of birth; only the year and the age are shown. */
+  private readonly birthDate = new Date(1992, 9, 15);
+
+  /** Whole years since the day of birth. */
+  readonly age = (() => {
+    const now = new Date();
+    const hadBirthday = now.getMonth() > this.birthDate.getMonth()
+      || (now.getMonth() === this.birthDate.getMonth() && now.getDate() >= this.birthDate.getDate());
+    return now.getFullYear() - this.birthDate.getFullYear() - (hadBirthday ? 0 : 1);
+  })();
 
   readonly icons = ICONS;
 
@@ -57,13 +65,12 @@ export class CvHeroComponent {
     const hero = this.t().hero;
     return [
       { icon: 'mail',     label: this.email,   href: `mailto:${this.email}` },
-      { icon: 'phone',    label: this.phone,   href: `tel:${this.whatsapp}` },
       { icon: 'chat',     label: 'WhatsApp',   href: `https://wa.me/${this.whatsapp}`, external: true },
-      { icon: 'globe',    label: this.website, href: `https://www.${this.website}`, external: true },
+      { icon: 'globe',    label: this.website, href: `https://${this.website}`, external: true },
       { icon: 'linkedin', label: `linkedin.com/in/${this.linkedin}`, href: `https://www.linkedin.com/in/${this.linkedin}`, external: true },
       { icon: 'pin',      label: hero.location },
       { icon: 'badge',    label: hero.workPermit },
-      { icon: 'calendar', label: hero.born },
+      { icon: 'calendar', label: hero.born.replace('{age}', String(this.age)) },
     ];
   });
 }

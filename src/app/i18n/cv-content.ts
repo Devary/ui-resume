@@ -91,7 +91,9 @@ export interface CvContent {
   };
   hero: {
     name: string; title: string; role: string;
-    location: string; workPermit: string; born: string;
+    location: string; workPermit: string;
+    /** "{age}" is replaced by the age today. */
+    born: string;
   };
   about:          string;
   experiences:    Experience[];
@@ -173,11 +175,11 @@ const EN: CvContent = {
   },
   hero: {
     name: 'Fakher Hammami',
-    title: 'Technical Lead · Senior Java Engineer · 10+ Years',
+    title: 'Technical Lead · Senior Java Engineer in Java eco-system',
     role: 'Technical Lead',
     location: 'Luxembourg',
     workPermit: 'Work permit: Luxembourgish',
-    born: 'Born 15 / 10 / 1992',
+    born: 'Born 1992 ({age})',
   },
   about:
     'Technical lead and senior Java engineer with 10+ years of experience designing and evolving enterprise ' +
@@ -330,11 +332,11 @@ const FR: CvContent = {
   },
   hero: {
     name: 'Fakher Hammami',
-    title: 'Technical Lead · Ingénieur Java senior · 10+ ans d’expérience',
+    title: 'Technical Lead · Ingénieur Java senior dans l’écosystème Java',
     role: 'Technical Lead',
     location: 'Luxembourg',
     workPermit: 'Permis de travail : luxembourgeois',
-    born: 'Né le 15 / 10 / 1992',
+    born: 'Né en 1992 ({age} ans)',
   },
   about:
     'Technical lead et ingénieur Java senior avec plus de 10 ans d’expérience dans la conception et l’évolution ' +
@@ -487,11 +489,11 @@ const AR: CvContent = {
   },
   hero: {
     name: 'فاخر الهمامي',
-    title: 'قائد تقني · مهندس Java أول · أكثر من 10 سنوات خبرة',
+    title: 'قائد تقني · مهندس Java أول في منظومة Java',
     role: 'قائد تقني',
     location: 'لوكسمبورغ',
     workPermit: 'تصريح العمل: لوكسمبورغي',
-    born: 'تاريخ الميلاد: 15 / 10 / 1992',
+    born: 'مواليد 1992 ({age} سنة)',
   },
   about:
     'قائد تقني ومهندس Java أول بخبرة تزيد عن 10 سنوات في تصميم أنظمة المؤسسات وتطويرها في القطاع البنكي ' +
