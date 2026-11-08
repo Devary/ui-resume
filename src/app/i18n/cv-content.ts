@@ -333,6 +333,11 @@ const EN: CvContent = {
   certifications: CERTIFICATIONS('scrum.org'),
   works: [
     {
+      slug: 'my-lab',
+      title: 'My Lab', year: 'Since 2024', context: 'Personal',
+      description: 'Enterprise-grade personal lab run with AI agents: identity management with FreeIPA and integrated DNS, a Kubernetes (k3s) cluster behind Traefik, Jenkins CI/CD and a mail server, designed, built and operated end to end.',
+    },
+    {
       slug: 'jqcd',
       title: 'JQCD — Jira Query Centralized Database', year: '2023', context: 'Vermeg',
       description: 'Tool to extract and centralize all Jira queries delivered to Vermeg clients from 2008 to the present, enabling cross-project analysis and reporting.',
@@ -507,6 +512,11 @@ const FR: CvContent = {
   certifications: CERTIFICATIONS('scrum.org'),
   works: [
     {
+      slug: 'my-lab',
+      title: 'Mon lab', year: 'Depuis 2024', context: 'Personnel',
+      description: 'Lab personnel de niveau entreprise piloté avec des agents IA : gestion des identités avec FreeIPA et DNS intégré, cluster Kubernetes (k3s) derrière Traefik, CI/CD Jenkins et serveur de messagerie, conçus, construits et exploités de bout en bout.',
+    },
+    {
       slug: 'jqcd',
       title: 'JQCD — Base centralisée des requêtes Jira', year: '2023', context: 'Vermeg',
       description: 'Outil d’extraction et de centralisation de toutes les requêtes Jira livrées aux clients de Vermeg depuis 2008, permettant l’analyse et le reporting transverses aux projets.',
@@ -680,6 +690,11 @@ const AR: CvContent = {
   ],
   certifications: CERTIFICATIONS('scrum.org'),
   works: [
+    {
+      slug: 'my-lab',
+      title: 'مختبري', year: 'منذ 2024', context: 'شخصي',
+      description: 'مختبر شخصي بمستوى المؤسسات أديره مع وكلاء الذكاء الاصطناعي: إدارة الهويات عبر FreeIPA مع DNS مدمج، وعنقود Kubernetes (k3s) خلف Traefik، وخطوط CI/CD عبر Jenkins، وخادم بريد إلكتروني، صمّمتها وبنيتها وأشغّلها من البداية إلى النهاية.',
+    },
     {
       slug: 'jqcd',
       title: 'JQCD — قاعدة بيانات مركزية لاستعلامات Jira', year: '2023', context: 'Vermeg',

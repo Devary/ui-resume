@@ -4,7 +4,8 @@
 
 .works {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  // Two by two: an even count of works lines up without a lone card.
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   gap: 0.9rem;
 }
 

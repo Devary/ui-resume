@@ -118,7 +118,7 @@ describe('App', () => {
   it('links each creative work to its own page', async () => {
     const { el } = await open();
     const links = [...el.querySelectorAll<HTMLAnchorElement>('.work-link')].map((a) => a.getAttribute('href'));
-    expect(links).toEqual(['/works/jqcd', '/works/virtual-links', '/works/devops-system']);
+    expect(links).toEqual(['/works/my-lab', '/works/jqcd', '/works/virtual-links', '/works/devops-system']);
   });
 
   it('opens a work page, ready for its description and diagram', async () => {
