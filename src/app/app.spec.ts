@@ -71,6 +71,7 @@ describe('App', () => {
     const tools = [...el.querySelectorAll('.tool')].map((t) => `${t.querySelector('.name')?.textContent}: ${t.querySelector('.level')?.textContent}`);
     expect(tools).toEqual(['Claude: Agentic architect', 'Codex: Prompt engineer']);
     expect(el.querySelector('.tool.top .name')?.textContent).toBe('Claude');
+    expect([...el.querySelectorAll<HTMLImageElement>('.tool .tile img')].map((i) => i.getAttribute('src'))).toEqual(['logos/claude.svg', 'logos/openai.svg']);
   });
 
   it('lists every section, numbered', async () => {

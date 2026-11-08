@@ -40,18 +40,24 @@
   }
 }
 
+// The tool's logo on a white tile, which stays white in dark mode so the mark keeps its colours.
 .tile {
   flex: none;
   display: grid;
   place-items: center;
   width: 2.2rem;
   height: 2.2rem;
+  padding: 0.4rem;
   border-radius: 10px;
-  border: 1px solid var(--cv-accent-ring);
-  background: var(--cv-accent-soft);
-  color: var(--cv-accent);
-  font-family: var(--cv-font-display);
-  font-weight: 700;
+  border: 1px solid var(--cv-border);
+  background: #fff;
+  box-shadow: var(--cv-shadow);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
 .who {
@@ -84,23 +90,25 @@
   white-space: nowrap;
 }
 
-// The highest level: the gradient on the tile and the level.
+// The highest level: a ring round the logo, and the gradient on the level.
 .top {
   border-color: var(--cv-accent-ring);
 
-  .tile,
+  .tile { box-shadow: 0 0 0 3px var(--cv-accent-soft), 0 6px 16px var(--cv-accent-ring); }
+
   .level {
     border: none;
     background: var(--cv-gradient);
     color: #fff;
+    box-shadow: 0 4px 12px var(--cv-accent-ring);
   }
-
-  .level { box-shadow: 0 4px 12px var(--cv-accent-ring); }
 }
 
 @media print {
   .tool { padding: 0.3rem 0; border: none; background: none; }
 
-  .top .tile,
+  .tile,
+  .top .tile { box-shadow: none; }
+
   .top .level { background: none; color: var(--cv-accent); border: 1px solid var(--cv-accent-ring); box-shadow: none; }
 }

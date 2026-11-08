@@ -7,7 +7,7 @@
   <ul class="tools">
     @for (skill of t().aiSkills; track skill.tool) {
       <li class="tool" [class.top]="skill.top">
-        <span class="tile" aria-hidden="true">{{ skill.tool[0] }}</span>
+        <span class="tile"><img [src]="skill.logo" [alt]="skill.vendor + ' ' + skill.tool" loading="lazy" /></span>
         <span class="who">
           <span class="name">{{ skill.tool }}</span>
           <span class="vendor">{{ skill.vendor }}</span>

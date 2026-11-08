@@ -79,6 +79,8 @@ export interface AiSkill {
   tool:   string;
   vendor: string;
   level:  string;
+  /** Its logo, under public/logos. */
+  logo:   string;
   top?:   boolean;
 }
 
@@ -217,8 +219,8 @@ const EN: CvContent = {
     newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
   aiSkills: [
-    { tool: 'Claude', vendor: 'Anthropic', level: 'Agentic architect', top: true },
-    { tool: 'Codex',  vendor: 'OpenAI',    level: 'Prompt engineer' },
+    { tool: 'Claude', vendor: 'Anthropic', logo: 'logos/claude.svg', level: 'Agentic architect', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    logo: 'logos/openai.svg', level: 'Prompt engineer' },
   ],
   experiences: experiences('Present', [
     {
@@ -386,8 +388,8 @@ const FR: CvContent = {
     newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
   aiSkills: [
-    { tool: 'Claude', vendor: 'Anthropic', level: 'Architecte agentique', top: true },
-    { tool: 'Codex',  vendor: 'OpenAI',    level: 'Prompt engineer' },
+    { tool: 'Claude', vendor: 'Anthropic', logo: 'logos/claude.svg', level: 'Architecte agentique', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    logo: 'logos/openai.svg', level: 'Prompt engineer' },
   ],
   experiences: experiences('Aujourd’hui', [
     {
@@ -555,8 +557,8 @@ const AR: CvContent = {
     newSchool: { label: 'المدرسة الجديدة', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
   aiSkills: [
-    { tool: 'Claude', vendor: 'Anthropic', level: 'مهندس أنظمة وكيلية', top: true },
-    { tool: 'Codex',  vendor: 'OpenAI',    level: 'مهندس أوامر (Prompt engineer)' },
+    { tool: 'Claude', vendor: 'Anthropic', logo: 'logos/claude.svg', level: 'مهندس أنظمة وكيلية', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    logo: 'logos/openai.svg', level: 'مهندس أوامر (Prompt engineer)' },
   ],
   experiences: experiences('حتى الآن', [
     {
