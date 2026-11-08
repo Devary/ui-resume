@@ -1,7 +1,37 @@
-<section class="section-card" appSpotlight>
+<section class="section-card intro" appSpotlight>
   <header class="section-head">
     <span class="section-index">01</span>
     <h2 class="section-title">{{ t().ui.about }}</h2>
   </header>
-  <p class="about-text">{{ t().about }}</p>
+
+  <p class="lead">{{ t().about.lead }}</p>
+
+  <p class="twist">
+    <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></svg>
+    <span>{{ t().about.twist }}</span>
+  </p>
+
+  <p class="body">{{ t().about.body }}</p>
+
+  <div class="schools">
+    <div class="school old">
+      <span class="school-label">{{ t().about.oldSchool.label }}</span>
+      <div class="chips">
+        @for (item of t().about.oldSchool.items; track item) {
+          <span class="chip"><bdi>{{ item }}</bdi></span>
+        }
+      </div>
+    </div>
+    <span class="plus" aria-hidden="true">+</span>
+    <div class="school new">
+      <span class="school-label">{{ t().about.newSchool.label }}</span>
+      <div class="chips">
+        @for (item of t().about.newSchool.items; track item) {
+          <span class="chip"><bdi>{{ item }}</bdi></span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <p class="context">{{ t().about.context }}</p>
 </section>

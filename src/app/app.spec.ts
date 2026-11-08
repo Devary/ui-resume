@@ -58,6 +58,14 @@ describe('App', () => {
     expect(monograms).toEqual(['DG', 'GE']);
   });
 
+  it('tells the intro as old school, the twist, then the agentic architect', async () => {
+    const { el } = await open();
+    expect(el.querySelector('.intro .lead')?.textContent).toContain('Old-school gem');
+    expect(el.querySelector('.intro .twist')?.textContent).toContain('not really old school');
+    expect(el.querySelector('.intro .body')?.textContent).toContain('agentic architect');
+    expect([...el.querySelectorAll('.school-label')].map((l) => l.textContent)).toEqual(['Old school', 'New school']);
+  });
+
   it('lists every section, numbered', async () => {
     const { el } = await open();
     const titles = [...el.querySelectorAll('.section-title')].map((t) => t.textContent?.trim());
