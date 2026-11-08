@@ -1,205 +1,201 @@
-.section-card {
-  background:      var(--rz-glass-bg);
-  border:          1px solid var(--rz-glass-border);
-  border-radius:   var(--rz-radius-lg);
-  box-shadow:      var(--rz-glass-shadow);
-  backdrop-filter: blur(var(--rz-glass-blur));
-  padding:         1.5rem 2rem;
+:host {
+  display: block;
 }
 
-.section-title {
-  margin:         0 0 1.5rem;
-  font-size:      1.25rem;
-  font-weight:    700;
-  color:          var(--rz-primary);
-  padding-bottom: 0.5rem;
-  border-bottom:  2px solid var(--rz-border);
-  letter-spacing: 0.01em;
-}
-
-// ── Timeline ─────────────────────────────────────────────────────────────────
+// A rail down the left, a dot per job.
 .timeline {
-  position:      relative;
-  display:       flex;
-  flex-direction: column;
-  gap:           1.5rem;
-  padding-left:  1.5rem;
-
-  // Vertical line
-  &::before {
-    content:          '';
-    position:         absolute;
-    left:             0.45rem;
-    top:              0.6rem;
-    bottom:           0.6rem;
-    width:            2px;
-    background:       linear-gradient(
-      to bottom,
-      var(--rz-primary),
-      color-mix(in srgb, var(--rz-primary) 20%, transparent)
-    );
-    border-radius:    var(--rz-radius-full);
-  }
-}
-
-.timeline-entry {
   position: relative;
-}
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+  list-style: none;
 
-.timeline-dot {
-  position:      absolute;
-  left:          calc(-1.5rem + 0.1rem);
-  top:           1.1rem;
-  width:         0.7rem;
-  height:        0.7rem;
-  border-radius: var(--rz-radius-full);
-  background:    var(--rz-primary);
-  border:        2px solid var(--rz-glass-bg);
-  box-shadow:    0 0 0 2px var(--rz-primary);
-  z-index:       1;
-}
-
-// ── Entry card ───────────────────────────────────────────────────────────────
-.entry-card {
-  background:    var(--rz-surface);
-  border:        1px solid var(--rz-border);
-  border-radius: var(--rz-radius-md);
-  padding:       1.1rem 1.4rem;
-  display:       flex;
-  flex-direction: column;
-  gap:           0.6rem;
-  transition:    box-shadow 0.2s ease;
-
-  &:hover {
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.4rem;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, var(--cv-accent-ring), var(--cv-border) 30%);
   }
 }
 
-// ── Header row ───────────────────────────────────────────────────────────────
-.entry-header {
-  display:         flex;
-  align-items:     flex-start;
+.entry {
+  position: relative;
+  padding: 0 0 1.75rem;
+
+  &:last-child { padding-bottom: 0.25rem; }
+
+  & + .entry {
+    border-top: 1px dashed var(--cv-border);
+    padding-top: 1.5rem;
+
+    .dot { top: 1.85rem; }
+  }
+}
+
+.dot {
+  position: absolute;
+  top: 0.35rem;
+  left: -1.6rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-left: -0.075rem;
+  border-radius: 50%;
+  background: var(--cv-surface);
+  border: 2px solid var(--cv-border-strong);
+}
+
+.is-current .dot {
+  border: none;
+  background: var(--cv-gradient);
+  box-shadow: 0 0 0 4px var(--cv-accent-soft);
+}
+
+.entry-head {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap:             0.75rem;
-  flex-wrap:       wrap;
+  align-items: flex-start;
+  gap: 0.5rem 1rem;
 }
 
-.entry-meta {
-  display:        flex;
-  flex-direction: column;
-  gap:            0.15rem;
+.who { min-width: 0; }
+
+.role {
+  margin: 0;
+  font-family: var(--cv-font-display);
+  font-size: 1.12rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--cv-ink);
 }
 
-.company-name {
-  margin:      0;
-  font-size:   1.05rem;
-  font-weight: 700;
-  color:       var(--rz-ink);
+.company {
+  margin: 0.15rem 0 0;
+  color: var(--cv-ink-muted);
+  font-size: 0.9rem;
+
+  strong {
+    color: var(--cv-accent);
+    font-weight: 650;
+  }
+
+  .sep { margin: 0 0.35rem; }
 }
 
-.location {
-  font-size:  0.8rem;
-  color:      var(--rz-ink-muted);
-  font-style: italic;
-}
-
-.period-badge {
-  flex-shrink:   0;
-  padding:       0.2rem 0.75rem;
-  border-radius: var(--rz-radius-full);
-  font-size:     0.75rem;
-  font-weight:   600;
-  background:    color-mix(in srgb, var(--rz-primary) 12%, transparent);
-  color:         var(--rz-primary);
-  border:        1px solid color-mix(in srgb, var(--rz-primary) 28%, transparent);
-  white-space:   nowrap;
-}
-
-// ── Role row ─────────────────────────────────────────────────────────────────
-.role-row {
-  display:     flex;
+.when {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap:         0.6rem;
-  flex-wrap:   wrap;
+  gap: 0.5rem;
 }
 
-.role-title {
-  font-size:   0.9rem;
-  font-weight: 600;
-  color:       var(--rz-primary);
+.type {
+  font-size: 0.72rem;
+  padding: 0.12rem 0.55rem;
 }
 
-.type-pill {
-  padding:       0.1rem 0.55rem;
-  border-radius: var(--rz-radius-full);
-  font-size:     0.7rem;
-  font-weight:   600;
+.now {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.12rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--cv-success) 14%, transparent);
+  color: var(--cv-success);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background:    var(--rz-surface-hover);
-  color:         var(--rz-ink-muted);
-  border:        1px solid var(--rz-border);
 }
 
-// ── Project ──────────────────────────────────────────────────────────────────
-.project-name {
-  margin:    0;
+.now-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.3; }
+}
+
+.project {
+  display: inline-block;
+  margin: 0.7rem 0 0;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--cv-radius-sm);
+  background: var(--cv-surface-2);
+  color: var(--cv-ink-2);
   font-size: 0.82rem;
-  color:     var(--rz-ink-muted);
+  font-weight: 500;
 }
 
-.project-label {
-  font-weight: 600;
-  color:       var(--rz-ink);
-}
-
-// ── Task list ────────────────────────────────────────────────────────────────
-.task-list {
-  margin:     0;
-  padding:    0 0 0 1.1rem;
-  list-style: disc;
-  display:    flex;
-  flex-direction: column;
-  gap:        0.3rem;
+.tasks {
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
 
   li {
-    font-size:   0.85rem;
-    line-height: 1.55;
-    color:       var(--rz-ink);
+    position: relative;
+    padding-left: 1.15rem;
+    color: var(--cv-ink-2);
+    font-size: 0.92rem;
+
+    // A short accent dash as the bullet.
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.7em;
+      left: 0;
+      width: 0.5rem;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--cv-accent);
+      opacity: 0.75;
+    }
   }
 }
 
-// ── Sub-roles (VERMEG) ───────────────────────────────────────────────────────
 .sub-roles {
-  display:        flex;
-  flex-direction: column;
-  gap:            0.9rem;
-  border-top:     1px solid var(--rz-border);
-  padding-top:    0.75rem;
-  margin-top:     0.15rem;
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
 }
 
 .sub-role {
-  display:        flex;
-  flex-direction: column;
-  gap:            0.4rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--cv-border);
+  border-radius: var(--cv-radius);
+  background: var(--cv-surface-2);
+
+  .tasks { margin-top: 0.5rem; }
 }
 
-.sub-role-header {
-  display:     flex;
-  align-items: center;
-  gap:         0.7rem;
-  flex-wrap:   wrap;
+.sub-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
 }
 
-.sub-role-title {
-  font-size:   0.85rem;
-  font-weight: 700;
-  color:       var(--rz-ink);
+.sub-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--cv-ink);
 }
 
-.sub-period {
-  font-size:   0.75rem;
-  color:       var(--rz-ink-muted);
-  font-style:  italic;
+@media print {
+  .entry { break-inside: avoid; }
+
+  .now-dot { animation: none; }
+
+  .sub-role { background: none; }
 }

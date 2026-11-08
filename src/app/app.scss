@@ -4,40 +4,152 @@
 }
 
 .cv-page {
-  min-height: 100dvh;
-  background: linear-gradient(160deg, var(--rz-bg-from) 0%, var(--rz-bg-to) 100%);
-  padding: 2rem 1rem 4rem;
   position: relative;
-  transition: background 0.25s ease;
+  min-height: 100dvh;
+  padding: 3rem 1.5rem 2rem;
+  overflow-x: clip;
+  background: var(--cv-bg);
+  transition: background-color 0.25s ease;
 }
 
-.cv-container {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+// Two soft colour glows behind everything.
+.glow {
+  position: fixed;
+  z-index: 0;
+  width: 46rem;
+  height: 46rem;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
 }
 
-.theme-toggle {
+.glow-1 {
+  top: -18rem;
+  left: -14rem;
+  background: var(--cv-glow-1);
+}
+
+.glow-2 {
+  right: -16rem;
+  bottom: -20rem;
+  background: var(--cv-glow-2);
+}
+
+// ── Toolbar: PDF + theme, top right ──
+.toolbar {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 100;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--rz-radius-full);
-  border: 1px solid var(--rz-glass-border);
-  background: var(--rz-glass-bg);
-  backdrop-filter: blur(var(--rz-glass-blur));
+  z-index: 20;
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.3rem;
+  border: 1px solid var(--cv-border);
+  border-radius: var(--cv-radius-full);
+  background: color-mix(in srgb, var(--cv-surface) 80%, transparent);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--cv-shadow);
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 2.1rem;
+  padding: 0 0.8rem;
+  border: none;
+  border-radius: var(--cv-radius-full);
+  background: transparent;
+  color: var(--cv-ink-2);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 1.1rem;
-  display: grid;
-  place-items: center;
-  transition: background 0.2s;
-  box-shadow: var(--rz-glass-shadow);
+  transition: background 0.15s, color 0.15s;
+
+  &.icon-only {
+    width: 2.1rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
 
   &:hover {
-    background: var(--rz-surface-active);
+    background: var(--cv-accent-soft);
+    color: var(--cv-accent);
   }
+}
+
+// ── Layout: a sticky side column and the main column ──
+.cv-layout {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.cv-side {
+  position: sticky;
+  top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cv-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.cv-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--cv-ink-faint);
+}
+
+// A tablet or a phone: one column; the side column scrolls with the page.
+@media (max-width: 980px) {
+  .cv-page { padding: 4.25rem 1rem 1.5rem; }
+
+  .cv-layout { grid-template-columns: minmax(0, 1fr); }
+
+  .cv-side { position: static; }
+}
+
+@media print {
+  .cv-page { padding: 0; }
+
+  .glow { display: none; }
+
+  .cv-layout {
+    display: block;
+    max-width: none;
+  }
+
+  .cv-side { position: static; }
+
+  .cv-side,
+  .cv-main {
+    gap: 1rem;
+  }
+
+  .cv-main { margin-top: 1rem; }
 }

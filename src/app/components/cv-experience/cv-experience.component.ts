@@ -26,11 +26,33 @@ export interface Experience {
   styleUrl: './cv-experience.component.scss'
 })
 export class CvExperienceComponent {
+  /** The job being done now: its period ends with "Present". */
+  isCurrent(exp: Experience): boolean {
+    return /present$/i.test(exp.period.trim());
+  }
+
   readonly experiences: Experience[] = [
+    {
+      company:  'LALUX',
+      location: 'Luxembourg',
+      period:   '06/2026 – Present',
+      role:     'Technical Lead',
+      type:     'External',
+      tasks: [
+        'Lead a Quarkus backend team of two senior developers',
+        'Own and maintain the codebase: code reviews, coding standards and technical decisions',
+        'Drive performance and security across the services',
+        'Configure Quarkus integrations with Keycloak, Oracle Database, Kafka Streams and Grafana',
+        'Implement XML processing with XSD validation and SOAP web services',
+        'Lead production investigations and root-cause analysis',
+        'Manage dev, test and production environments on OpenShift',
+        'Set up and maintain CI/CD pipelines with GitHub Actions'
+      ]
+    },
     {
       company:  'Societe Generale',
       location: 'Esch-sur-Alzette, Luxembourg',
-      period:   '09/2025 – Present',
+      period:   '09/2025 – 06/2026',
       role:     'Technical Expert',
       type:     'External',
       project:  'Main Banking Payments Platform',

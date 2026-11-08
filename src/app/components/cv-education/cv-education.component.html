@@ -1,40 +1,47 @@
 <section class="section-card">
-  <h2 class="section-title">Education</h2>
+  <header class="section-head">
+    <span class="section-index">04</span>
+    <h2 class="section-title">Education &amp; Certifications</h2>
+  </header>
 
-  <!-- Degrees -->
-  <div class="subsection">
-    <h3 class="subsection-title">Academic Degrees</h3>
-    <div class="degree-list">
-      @for (deg of degrees; track deg.title) {
-        <div class="degree-row">
-          <div class="degree-info">
-            <span class="degree-title">{{ deg.title }}</span>
-            <span class="degree-meta">{{ deg.institution }} &mdash; {{ deg.location }}</span>
-          </div>
-          <span class="period-badge">{{ deg.period }}</span>
-        </div>
-      }
+  <div class="columns">
+    <div>
+      <h3 class="group-label">Degrees</h3>
+      <ul class="items">
+        @for (deg of degrees; track deg.title) {
+          <li class="item">
+            <span class="item-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5L2 9zM6 11v5c3 2 9 2 12 0v-5M22 9v6" /></svg>
+            </span>
+            <div class="item-body">
+              <p class="item-title">{{ deg.title }}</p>
+              <p class="item-meta">{{ deg.institution }} · {{ deg.location }}</p>
+              <span class="period">{{ deg.period }}</span>
+            </div>
+          </li>
+        }
+      </ul>
     </div>
-  </div>
 
-  <!-- Certifications -->
-  <div class="subsection">
-    <h3 class="subsection-title">Certifications</h3>
-    <div class="cert-list">
-      @for (cert of certifications; track cert.title) {
-        <div class="cert-row">
-          <div class="cert-info">
-            <span class="cert-title">{{ cert.title }}</span>
-            <span class="cert-issuer">{{ cert.issuer }}</span>
-          </div>
-          <a class="cert-badge"
-             [href]="cert.url"
-             target="_blank"
-             rel="noopener noreferrer">
-            View Certificate ↗
-          </a>
-        </div>
-      }
+    <div>
+      <h3 class="group-label">Certifications</h3>
+      <ul class="items">
+        @for (cert of certifications; track cert.title) {
+          <li class="item">
+            <span class="item-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 15a6 6 0 100-12 6 6 0 000 12zM8.5 13.5L7 21l5-3 5 3-1.5-7.5" /></svg>
+            </span>
+            <div class="item-body">
+              <p class="item-title">{{ cert.title }}</p>
+              <p class="item-meta">{{ cert.issuer }}</p>
+              <a class="verify no-print" [href]="cert.url" target="_blank" rel="noopener noreferrer">
+                Verify on Credly
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+              </a>
+            </div>
+          </li>
+        }
+      </ul>
     </div>
   </div>
 </section>

@@ -1,18 +1,19 @@
 <section class="section-card">
-  <h2 class="section-title">Creative Works</h2>
+  <header class="section-head">
+    <span class="section-index">05</span>
+    <h2 class="section-title">Creative Works</h2>
+  </header>
 
-  <div class="works-grid">
+  <div class="works">
     @for (work of works; track work.title) {
-      <div class="work-card">
-        <div class="work-header">
-          <div class="work-title-row">
-            <span class="work-title">{{ work.title }}</span>
-            <span class="context-pill">{{ work.context }}</span>
-          </div>
-          <span class="year-badge">{{ work.year }}</span>
+      <article class="work">
+        <div class="work-top">
+          <span class="chip">{{ work.context }}</span>
+          <span class="period">{{ work.year }}</span>
         </div>
-        <p class="work-description">{{ work.description }}</p>
-      </div>
+        <h3 class="work-title">{{ work.title }}</h3>
+        <p class="work-text">{{ work.description }}</p>
+      </article>
     }
   </div>
 </section>

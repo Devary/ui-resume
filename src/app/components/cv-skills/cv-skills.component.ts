@@ -13,14 +13,22 @@ export interface SkillGroup {
   styleUrl: './cv-skills.component.scss'
 })
 export class CvSkillsComponent {
+  /** The main stack: highlighted among the chips. */
+  private readonly core = new Set(['Java 8–17', 'Quarkus', 'Spring Boot', 'Kafka Streams', 'Microservices', 'Oracle', 'OpenShift', 'Kubernetes']);
+
+  isCore(item: string): boolean {
+    return this.core.has(item);
+  }
+
   readonly skillGroups: SkillGroup[] = [
     {
       label: 'Languages & Frameworks',
       items: [
         'Java 8–17', 'Java EE', 'Spring Core', 'Spring Boot', 'Spring MVC',
         'Spring Security', 'Spring Data', 'Spring AOP', 'Quarkus',
+        'Kafka Streams', 'Keycloak',
         'JavaScript', 'jQuery', 'NodeJS', 'ExpressJS',
-        'RESTful API', 'HTML5', 'CSS', 'JSON', 'XML', 'WSDL', 'XSD', 'XPDL'
+        'RESTful API', 'SOAP', 'HTML5', 'CSS', 'JSON', 'XML', 'WSDL', 'XSD', 'XPDL'
       ]
     },
     {
@@ -37,7 +45,10 @@ export class CvSkillsComponent {
     },
     {
       label: 'DevOps',
-      items: ['Docker', 'Kubernetes', 'Jenkins', 'Rundeck', 'XLDeploy', 'XL Release', 'Containerization']
+      items: [
+        'Docker', 'Kubernetes', 'OpenShift', 'GitHub Actions', 'Jenkins', 'Grafana',
+        'Rundeck', 'XLDeploy', 'XL Release', 'Containerization'
+      ]
     },
     {
       label: 'Dev Practices',
