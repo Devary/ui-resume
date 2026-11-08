@@ -74,12 +74,36 @@ export interface Language {
   skills?:       CefrSkills;
 }
 
+/** An AI tool and how far I go with it. "top" marks the highest level, drawn stronger. */
+export interface AiSkill {
+  tool:   string;
+  vendor: string;
+  level:  string;
+  /** Its logo, under public/logos. */
+  logo:   string;
+  top?:   boolean;
+}
+
+/** The About section: a short story in three beats, then the two "schools" as tags. */
+export interface Intro {
+  /** Beat one: the old-school craft. */
+  lead:      string;
+  /** Beat two: the twist, set large. */
+  twist:     string;
+  /** Beat three: the agentic architect. */
+  body:      string;
+  /** Where and with what, in one line. */
+  context:   string;
+  oldSchool: { label: string; items: string[] };
+  newSchool: { label: string; items: string[] };
+}
+
 export interface CvContent {
   /** The name of this language in itself, for the switcher. */
   label:     string;
   pageTitle: string;
   ui: {
-    about: string; experience: string; skills: string; education: string; creative: string; languages: string;
+    aiSkills: string; about: string; experience: string; skills: string; education: string; creative: string; languages: string;
     degrees: string; certifications: string; verify: string;
     current: string; currently: string; at: string; native: string;
     years: string; companies: string; certs: string;
@@ -95,7 +119,8 @@ export interface CvContent {
     /** "{age}" is replaced by the age today. */
     born: string;
   };
-  about:          string;
+  about:          Intro;
+  aiSkills:       AiSkill[];
   experiences:    Experience[];
   skillGroups:    SkillGroup[];
   degrees:        Degree[];
@@ -160,7 +185,7 @@ const EN: CvContent = {
   label: 'English',
   pageTitle: 'Fakher Hammami — Technical Lead',
   ui: {
-    about: 'About', experience: 'Experience', skills: 'Skills', education: 'Education & Certifications',
+    aiSkills: 'AI Skills', about: 'About', experience: 'Experience', skills: 'Skills', education: 'Education & Certifications',
     creative: 'Creative Works', languages: 'Languages',
     degrees: 'Degrees', certifications: 'Certifications', verify: 'Verify on Credly',
     current: 'Current', currently: 'Currently', at: 'at', native: 'Native',
@@ -181,13 +206,22 @@ const EN: CvContent = {
     workPermit: 'Work permit: Luxembourgish',
     born: 'Born 1992 ({age})',
   },
-  about:
-    'Technical lead and senior Java engineer with 10+ years of experience designing and evolving enterprise ' +
-    'systems in banking, insurance, and institutional environments. Leads backend teams as codebase owner and ' +
-    'reviewer, setting the bar for code quality, performance, and security. Specialized in modernizing legacy ' +
-    'platforms into scalable Quarkus and Spring microservices, and in running them reliably from development ' +
-    'to production on Kubernetes and OpenShift. Hands-on profile combining development, production ' +
-    'investigation, and technical decision-making across multi-team contexts.',
+  about: {
+    lead:
+      'Old-school gem. I learned the craft before AI started writing code: clean architecture, SOLID, design ' +
+      'patterns, TDD, honest code reviews, and the discipline of shipping to production without surprises.',
+    twist: 'Buuut… I’m not really old school.',
+    body:
+      'I’m also an agentic architect. I pair 10+ years of Java engineering with AI models and agents to push ' +
+      'creativity further — and to make your Java systems more stable, faster and more elegant.',
+    context: 'Banking, insurance and EU institutions · Quarkus, Spring, Kafka, Kubernetes and OpenShift.',
+    oldSchool: { label: 'Old school', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
+    newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
+  },
+  aiSkills: [
+    { tool: 'Claude', vendor: 'Anthropic', logo: 'logos/claude.svg', level: 'Agentic architect', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    logo: 'logos/openai.svg', level: 'Prompt engineer' },
+  ],
   experiences: experiences('Present', [
     {
       company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'External',
@@ -319,7 +353,7 @@ const FR: CvContent = {
   label: 'Français',
   pageTitle: 'Fakher Hammami — Technical Lead',
   ui: {
-    about: 'À propos', experience: 'Expérience', skills: 'Compétences', education: 'Formation & certifications',
+    aiSkills: 'Compétences IA', about: 'À propos', experience: 'Expérience', skills: 'Compétences', education: 'Formation & certifications',
     creative: 'Réalisations', languages: 'Langues',
     degrees: 'Diplômes', certifications: 'Certifications', verify: 'Vérifier sur Credly',
     current: 'Actuel', currently: 'Actuellement', at: 'chez', native: 'Langue maternelle',
@@ -341,13 +375,22 @@ const FR: CvContent = {
     workPermit: 'Permis de travail : luxembourgeois',
     born: 'Né en 1992 ({age} ans)',
   },
-  about:
-    'Technical lead et ingénieur Java senior avec plus de 10 ans d’expérience dans la conception et l’évolution ' +
-    'de systèmes d’entreprise dans la banque, l’assurance et les institutions européennes. Dirige des équipes backend ' +
-    'en tant que responsable et relecteur du code, en fixant le niveau d’exigence en qualité, performance et sécurité. ' +
-    'Spécialisé dans la modernisation de plateformes historiques en microservices Quarkus et Spring évolutifs, et dans ' +
-    'leur exploitation fiable, du développement à la production, sur Kubernetes et OpenShift. Profil opérationnel alliant ' +
-    'développement, investigation en production et prise de décisions techniques dans des contextes multi-équipes.',
+  about: {
+    lead:
+      'Une pépite old school. J’ai appris le métier avant que l’IA n’écrive du code : architecture propre, SOLID, ' +
+      'design patterns, TDD, des revues de code franches, et la discipline de livrer en production sans mauvaises surprises.',
+    twist: 'Maaais… je ne suis pas vraiment old school.',
+    body:
+      'Je suis aussi architecte agentique. J’allie plus de 10 ans d’ingénierie Java aux modèles et agents d’IA pour ' +
+      'pousser la créativité plus loin — et rendre vos systèmes Java plus stables, plus rapides et plus élégants.',
+    context: 'Banque, assurance et institutions européennes · Quarkus, Spring, Kafka, Kubernetes et OpenShift.',
+    oldSchool: { label: 'Old school', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
+    newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
+  },
+  aiSkills: [
+    { tool: 'Claude', vendor: 'Anthropic', logo: 'logos/claude.svg', level: 'Architecte agentique', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    logo: 'logos/openai.svg', level: 'Prompt engineer' },
+  ],
   experiences: experiences('Aujourd’hui', [
     {
       company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'Externe',
@@ -479,7 +522,7 @@ const AR: CvContent = {
   label: 'العربية',
   pageTitle: 'فاخر الهمامي — قائد تقني',
   ui: {
-    about: 'نبذة', experience: 'الخبرة المهنية', skills: 'المهارات', education: 'التعليم والشهادات',
+    aiSkills: 'مهارات الذكاء الاصطناعي', about: 'نبذة', experience: 'الخبرة المهنية', skills: 'المهارات', education: 'التعليم والشهادات',
     creative: 'مشاريع مميّزة', languages: 'اللغات',
     degrees: 'الشهادات الجامعية', certifications: 'الشهادات المهنية', verify: 'التحقق عبر Credly',
     current: 'حالياً', currently: 'حالياً', at: 'في', native: 'اللغة الأم',
@@ -501,12 +544,22 @@ const AR: CvContent = {
     workPermit: 'تصريح العمل: لوكسمبورغي',
     born: 'مواليد 1992 ({age} سنة)',
   },
-  about:
-    'قائد تقني ومهندس Java أول بخبرة تزيد عن 10 سنوات في تصميم أنظمة المؤسسات وتطويرها في القطاع البنكي ' +
-    'والتأمين والمؤسسات الأوروبية. يقود فرق الواجهات الخلفية (backend) بصفته المسؤول عن الشيفرة المصدرية ومراجعتها، ' +
-    'ويضع معايير الجودة والأداء والأمان. متخصص في تحديث المنصات القديمة وتحويلها إلى خدمات مصغّرة قابلة للتوسع ' +
-    'باستخدام Quarkus وSpring، وتشغيلها بموثوقية من التطوير إلى الإنتاج على Kubernetes وOpenShift. ' +
-    'يجمع بين التطوير العملي والتحقيق في مشاكل الإنتاج واتخاذ القرارات التقنية في بيئات متعددة الفرق.',
+  about: {
+    lead:
+      'جوهرة من المدرسة القديمة. تعلّمت الحرفة قبل أن يبدأ الذكاء الاصطناعي بكتابة الشيفرة: البنية النظيفة ومبادئ SOLID ' +
+      'وأنماط التصميم والتطوير الموجّه بالاختبارات (TDD) ومراجعات الشيفرة الصريحة، وانضباط النشر في الإنتاج دون مفاجآت.',
+    twist: 'لكن… لستُ من المدرسة القديمة تماماً.',
+    body:
+      'أنا أيضاً مهندس أنظمة وكيلية (Agentic Architect). أجمع بين أكثر من 10 سنوات من هندسة Java ونماذج الذكاء ' +
+      'الاصطناعي ووكلائه لأدفع الإبداع إلى الأمام، ولأجعل أنظمة Java لديكم أكثر استقراراً وسرعةً وأناقة.',
+    context: 'القطاع البنكي والتأمين والمؤسسات الأوروبية · Quarkus وSpring وKafka وKubernetes وOpenShift.',
+    oldSchool: { label: 'المدرسة القديمة', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
+    newSchool: { label: 'المدرسة الجديدة', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
+  },
+  aiSkills: [
+    { tool: 'Claude', vendor: 'Anthropic', logo: 'logos/claude.svg', level: 'مهندس أنظمة وكيلية', top: true },
+    { tool: 'Codex',  vendor: 'OpenAI',    logo: 'logos/openai.svg', level: 'مهندس أوامر (Prompt engineer)' },
+  ],
   experiences: experiences('حتى الآن', [
     {
       company: 'LALUX', location: 'لوكسمبورغ', role: 'قائد تقني', type: 'متعاقد خارجي',

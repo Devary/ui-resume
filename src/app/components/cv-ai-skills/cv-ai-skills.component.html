@@ -1,0 +1,19 @@
+<section class="section-card" appSpotlight>
+  <header class="section-head">
+    <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></svg>
+    <h2 class="section-title small">{{ t().ui.aiSkills }}</h2>
+  </header>
+
+  <ul class="tools">
+    @for (skill of t().aiSkills; track skill.tool) {
+      <li class="tool" [class.top]="skill.top">
+        <span class="tile"><img [src]="skill.logo" [alt]="skill.vendor + ' ' + skill.tool" loading="lazy" /></span>
+        <span class="who">
+          <span class="name">{{ skill.tool }}</span>
+          <span class="vendor">{{ skill.vendor }}</span>
+        </span>
+        <span class="level">{{ skill.level }}</span>
+      </li>
+    }
+  </ul>
+</section>

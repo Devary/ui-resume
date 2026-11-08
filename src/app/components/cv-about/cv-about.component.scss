@@ -2,9 +2,133 @@
   display: block;
 }
 
-.about-text {
+.lead {
   margin: 0;
   color: var(--cv-ink-2);
   font-size: 1.02rem;
   line-height: 1.7;
+}
+
+// The turn of the story: big, in the accent gradient, with a spark.
+.twist {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.1rem 0;
+  font-family: var(--cv-font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+
+  span {
+    background: var(--cv-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.spark {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--cv-accent);
+  animation: twinkle 2.8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: rotate(0) scale(1); opacity: 1; }
+  50%      { transform: rotate(18deg) scale(0.85); opacity: 0.7; }
+}
+
+.body {
+  margin: 0;
+  color: var(--cv-ink);
+  font-size: 1.06rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+// Old school + new school: the two sets of tags side by side.
+.schools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+}
+
+.school {
+  height: 100%;
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--cv-border);
+  border-radius: var(--cv-radius);
+  background: var(--cv-surface-2);
+
+  &.new {
+    border-color: var(--cv-accent-ring);
+    background: var(--cv-accent-soft);
+
+    .school-label { color: var(--cv-accent); }
+
+    .chip {
+      border-color: var(--cv-accent-ring);
+      background: var(--cv-surface);
+      color: var(--cv-accent);
+    }
+  }
+}
+
+.school-label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cv-ink-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.plus {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--cv-gradient);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 6px 16px var(--cv-accent-ring);
+}
+
+.context {
+  margin: 1.1rem 0 0;
+  color: var(--cv-ink-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .schools { grid-template-columns: minmax(0, 1fr); }
+
+  .plus { justify-self: center; }
+}
+
+@media print {
+  .spark { display: none; }
+
+  .twist span {
+    background: none;
+    color: var(--cv-accent);
+  }
+
+  .school { padding: 0; border: none; background: none; }
+
+  .plus { display: none; }
 }

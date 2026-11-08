@@ -1,0 +1,114 @@
+:host {
+  display: block;
+}
+
+.section-head {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title.small { font-size: 1.05rem; }
+
+.spark {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: var(--cv-accent);
+}
+
+.tools {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// One tool: its initial on a tile, the name and maker, and the level on the end.
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--cv-border);
+  border-radius: var(--cv-radius);
+  background: var(--cv-surface-2);
+  transition: transform 0.2s, border-color 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--cv-accent-ring);
+  }
+}
+
+// The tool's logo on a white tile, which stays white in dark mode so the mark keeps its colours.
+.tile {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0.4rem;
+  border-radius: 10px;
+  border: 1px solid var(--cv-border);
+  background: #fff;
+  box-shadow: var(--cv-shadow);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.who {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.name {
+  font-weight: 650;
+  color: var(--cv-ink);
+}
+
+.vendor {
+  font-size: 0.75rem;
+  color: var(--cv-ink-muted);
+}
+
+.level {
+  flex: none;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--cv-accent-ring);
+  border-radius: var(--cv-radius-full);
+  background: var(--cv-surface);
+  color: var(--cv-accent);
+  font-size: 0.75rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+// The highest level: a ring round the logo, and the gradient on the level.
+.top {
+  border-color: var(--cv-accent-ring);
+
+  .tile { box-shadow: 0 0 0 3px var(--cv-accent-soft), 0 6px 16px var(--cv-accent-ring); }
+
+  .level {
+    border: none;
+    background: var(--cv-gradient);
+    color: #fff;
+    box-shadow: 0 4px 12px var(--cv-accent-ring);
+  }
+}
+
+@media print {
+  .tool { padding: 0.3rem 0; border: none; background: none; }
+
+  .tile,
+  .top .tile { box-shadow: none; }
+
+  .top .level { background: none; color: var(--cv-accent); border: 1px solid var(--cv-accent-ring); box-shadow: none; }
+}
