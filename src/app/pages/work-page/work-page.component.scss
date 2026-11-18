@@ -3,7 +3,8 @@
 .work-page {
   position: relative;
   z-index: 1;
-  max-width: 860px;
+  width: 100%;
+  max-width: 1760px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -68,6 +69,74 @@
   max-width: 65ch;
   color: var(--cv-ink-2);
   font-size: 1.02rem;
+}
+
+.head { max-width: 90ch; }
+
+// Description on the left, diagram next to it (stacked, diagram first, on narrow screens).
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.diagram { order: -1; }
+
+@media (min-width: 1100px) {
+  .cols { grid-template-columns: minmax(340px, 4fr) minmax(0, 8fr); }
+  .diagram { order: 0; position: sticky; top: 1.25rem; }
+}
+
+// Readable description: titled blocks, short lines, bullets.
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.block {
+  padding-inline-start: 1rem;
+  border-inline-start: 2px solid var(--cv-accent-ring);
+}
+
+.block-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.4rem;
+  font-family: var(--cv-font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--cv-ink);
+
+  .num {
+    display: inline-grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--cv-accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+}
+
+.block-text {
+  margin: 0;
+  color: var(--cv-ink-2);
+  line-height: 1.55;
+}
+
+.block-list {
+  margin: 0;
+  padding-inline-start: 1.15rem;
+  color: var(--cv-ink-2);
+  line-height: 1.5;
+
+  li { margin: 0.25rem 0; }
+  li::marker { color: var(--cv-accent); }
 }
 
 .prose p {
