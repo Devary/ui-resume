@@ -371,16 +371,47 @@ const EN: CvContent = {
       slug: 'jqcd',
       title: 'JQCD — Jira Query Centralized Database', year: '2023', context: 'Vermeg',
       description: 'Tool to extract and centralize all Jira queries delivered to Vermeg clients from 2008 to the present, enabling cross-project analysis and reporting.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'Goal', text: 'A tool that extracts and centralizes all the Jira queries delivered to Vermeg clients, from 2008 to the present.' },
+          { title: 'What it does', items: ['Extracts the queries delivered to Vermeg clients from Jira', 'Centralizes them in a single database', 'Makes cross-project analysis and reporting possible'] },
+          { title: 'Why it matters', text: 'Queries delivered over many years and projects become one set that can be searched, compared and reported on.' },
+        ],
+        diagram: 'works/jqcd-en.svg',
+        diagramAlt: 'Animated diagram: Jira queries are extracted, centralized in one database, then used for cross-project analysis and reporting.',
+      },
     },
     {
       slug: 'virtual-links',
       title: 'Virtual Links', year: '2023', context: 'Vermeg',
       description: 'Batch system creating a relationship graph across approximately 2,300 non-relational database entities, enabling navigation and impact analysis of otherwise disconnected records.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'Goal', text: 'A batch system that connects records of a non-relational database that are otherwise disconnected.' },
+          { title: 'What it does', items: ['Builds a relationship graph across about 2,300 non-relational database entities', 'Runs as a batch system', 'Lets users navigate from a record to the records related to it', 'Supports impact analysis: what a record is linked to'] },
+          { title: 'Why it matters', text: 'Without the links, these records could not be followed from one to the other. The graph makes the relationships visible.' },
+        ],
+        diagram: 'works/virtual-links-en.svg',
+        diagramAlt: 'Animated diagram: a batch reads about 2,300 non-relational entities and builds a relationship graph used for navigation and impact analysis.',
+      },
     },
     {
       slug: 'devops-system',
       title: 'DevOps System', year: '2018', context: 'Dewinter',
       description: 'Automated CI/CD pipeline replacing manual FTP-based deployments by integrating Jenkins and Git, significantly reducing deployment time and human error.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'Goal', text: 'An automated CI/CD pipeline that replaces manual, FTP-based deployments.' },
+          { title: 'Before and after', items: ['Before: deployments were manual, files uploaded over FTP', 'After: Jenkins and Git automate the delivery from a push to the servers'] },
+          { title: 'Result', text: 'Significantly reduced deployment time and human error.' },
+          { title: 'Stack', items: ['Jenkins and Git', 'Web applications built with Java, JavaScript, HTML5 and CSS'] },
+        ],
+        diagram: 'works/devops-system-en.svg',
+        diagramAlt: 'Animated diagram: before, manual FTP uploads; after, a push to Git triggers Jenkins which deploys automatically to the servers.',
+      },
     },
   ],
   languages: [
@@ -578,16 +609,47 @@ const FR: CvContent = {
       slug: 'jqcd',
       title: 'JQCD — Base centralisée des requêtes Jira', year: '2023', context: 'Vermeg',
       description: 'Outil d’extraction et de centralisation de toutes les requêtes Jira livrées aux clients de Vermeg depuis 2008, permettant l’analyse et le reporting transverses aux projets.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'Objectif', text: 'Un outil qui extrait et centralise toutes les requêtes Jira livrées aux clients de Vermeg, de 2008 à aujourd’hui.' },
+          { title: 'Ce qu’il fait', items: ['Extrait de Jira les requêtes livrées aux clients de Vermeg', 'Les centralise dans une base unique', 'Rend possibles l’analyse inter-projets et le reporting'] },
+          { title: 'Pourquoi c’est utile', text: 'Les requêtes livrées sur de nombreuses années et projets forment un seul ensemble où l’on peut chercher, comparer et produire des rapports.' },
+        ],
+        diagram: 'works/jqcd-fr.svg',
+        diagramAlt: 'Schéma animé : les requêtes Jira sont extraites, centralisées dans une base unique, puis utilisées pour l’analyse inter-projets et le reporting.',
+      },
     },
     {
       slug: 'virtual-links',
       title: 'Virtual Links', year: '2023', context: 'Vermeg',
       description: 'Traitement batch construisant un graphe de relations entre environ 2 300 entités de bases de données non relationnelles, permettant la navigation et l’analyse d’impact entre des enregistrements jusque-là déconnectés.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'Objectif', text: 'Un système de batch qui relie des enregistrements d’une base non relationnelle qui, sinon, restent déconnectés.' },
+          { title: 'Ce qu’il fait', items: ['Construit un graphe de relations sur environ 2 300 entités d’une base non relationnelle', 'Fonctionne comme un système de batch', 'Permet de naviguer d’un enregistrement vers les enregistrements liés', 'Permet l’analyse d’impact : à quoi un enregistrement est lié'] },
+          { title: 'Pourquoi c’est utile', text: 'Sans ces liens, on ne pouvait pas suivre ces enregistrements de l’un à l’autre. Le graphe rend les relations visibles.' },
+        ],
+        diagram: 'works/virtual-links-fr.svg',
+        diagramAlt: 'Schéma animé : un batch lit environ 2 300 entités non relationnelles et construit un graphe de relations utilisé pour la navigation et l’analyse d’impact.',
+      },
     },
     {
       slug: 'devops-system',
       title: 'Système DevOps', year: '2018', context: 'Dewinter',
       description: 'Pipeline CI/CD automatisé remplaçant les déploiements manuels par FTP grâce à l’intégration de Jenkins et Git, réduisant fortement le temps de déploiement et les erreurs humaines.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'Objectif', text: 'Un pipeline CI/CD automatisé qui remplace les déploiements manuels par FTP.' },
+          { title: 'Avant et après', items: ['Avant : déploiements manuels, fichiers envoyés par FTP', 'Après : Jenkins et Git automatisent la livraison, du push jusqu’aux serveurs'] },
+          { title: 'Résultat', text: 'Réduction significative du temps de déploiement et des erreurs humaines.' },
+          { title: 'Stack', items: ['Jenkins et Git', 'Applications web en Java, JavaScript, HTML5 et CSS'] },
+        ],
+        diagram: 'works/devops-system-fr.svg',
+        diagramAlt: 'Schéma animé : avant, envois FTP manuels ; après, un push sur Git déclenche Jenkins qui déploie automatiquement sur les serveurs.',
+      },
     },
   ],
   languages: [
@@ -785,16 +847,47 @@ const AR: CvContent = {
       slug: 'jqcd',
       title: 'JQCD — قاعدة بيانات مركزية لاستعلامات Jira', year: '2023', context: 'Vermeg',
       description: 'أداة لاستخراج وتجميع جميع استعلامات Jira المسلّمة لعملاء Vermeg منذ 2008 حتى اليوم، ما يتيح التحليل وإعداد التقارير على مستوى المشاريع.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'الهدف', text: 'أداة تستخرج وتجمع كل استعلامات Jira المسلَّمة إلى عملاء Vermeg، من 2008 حتى اليوم.' },
+          { title: 'ما تفعله', items: ['تستخرج من Jira الاستعلامات المسلَّمة إلى عملاء Vermeg', 'تجمعها في قاعدة بيانات واحدة', 'تتيح التحليل عبر المشاريع وإعداد التقارير'] },
+          { title: 'لماذا هي مفيدة', text: 'تصبح الاستعلامات المسلَّمة عبر سنوات ومشاريع كثيرة مجموعة واحدة يمكن البحث فيها ومقارنتها وإعداد تقارير عنها.' },
+        ],
+        diagram: 'works/jqcd-ar.svg',
+        diagramAlt: 'مخطط متحرك: تُستخرج استعلامات Jira وتُجمع في قاعدة بيانات واحدة ثم تُستخدم للتحليل عبر المشاريع والتقارير.',
+      },
     },
     {
       slug: 'virtual-links',
       title: 'Virtual Links', year: '2023', context: 'Vermeg',
       description: 'نظام معالجة دفعية يبني شبكة علاقات بين نحو 2,300 كيان في قواعد بيانات غير علائقية، ما يتيح التنقل وتحليل الأثر بين سجلات كانت منفصلة.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'الهدف', text: 'نظام دفعات (batch) يربط سجلات قاعدة بيانات غير علائقية تبقى بدونه منفصلة.' },
+          { title: 'ما يفعله', items: ['يبني مخطط علاقات عبر نحو 2300 كيان في قاعدة بيانات غير علائقية', 'يعمل كنظام دفعات (batch)', 'يتيح التنقل من سجل إلى السجلات المرتبطة به', 'يدعم تحليل الأثر: بماذا يرتبط السجل'] },
+          { title: 'لماذا هو مفيد', text: 'بدون هذه الروابط لم يكن ممكناً تتبّع هذه السجلات من واحد إلى آخر. يجعل المخطط العلاقات مرئية.' },
+        ],
+        diagram: 'works/virtual-links-ar.svg',
+        diagramAlt: 'مخطط متحرك: يقرأ batch نحو 2300 كيان غير علائقي ويبني مخطط علاقات يُستخدم للتنقل وتحليل الأثر.',
+      },
     },
     {
       slug: 'devops-system',
       title: 'نظام DevOps', year: '2018', context: 'Dewinter',
       description: 'خط CI/CD مؤتمت يحلّ محل النشر اليدوي عبر FTP بدمج Jenkins وGit، ما قلّل بشكل كبير من وقت النشر والأخطاء البشرية.',
+      details: {
+        paragraphs: [],
+        sections: [
+          { title: 'الهدف', text: 'خط CI/CD آلي يحلّ محلّ عمليات النشر اليدوية عبر FTP.' },
+          { title: 'قبل وبعد', items: ['قبل: عمليات نشر يدوية، تُرفع فيها الملفات عبر FTP', 'بعد: يؤتمت Jenkins وGit التسليم من الدفع حتى الخوادم'] },
+          { title: 'النتيجة', text: 'انخفاض كبير في وقت النشر وفي الأخطاء البشرية.' },
+          { title: 'التقنيات', items: ['Jenkins وGit', 'تطبيقات ويب بـ Java وJavaScript وHTML5 وCSS'] },
+        ],
+        diagram: 'works/devops-system-ar.svg',
+        diagramAlt: 'مخطط متحرك: قبلاً رفع يدوي عبر FTP؛ والآن يطلق الدفع إلى Git عملية Jenkins التي تنشر آلياً على الخوادم.',
+      },
     },
   ],
   languages: [
