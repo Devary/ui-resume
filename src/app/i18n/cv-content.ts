@@ -360,6 +360,8 @@ const EN: CvContent = {
           "Delivery. After the image is pushed, Jenkins triggers a Rundeck job that runs a deployment script from my infra repository. The script fills the Kubernetes templates (Deployment, Service, Traefik routes, ServiceMonitor), prepares the application's secret path and login role in Vault, and applies them. Prometheus then scrapes the service metrics and Grafana displays them.",
           'Workflow, end to end: push to GitHub, Jenkins discovers and builds, tests and quality gates run, artifacts and images are published, Rundeck deploys to k3s, Vault supplies the secrets and Prometheus and Grafana watch the result. Host names and addresses on this page are partly masked on purpose.',
         ],
+        diagram: 'works/my-lab-en.svg',
+        diagramAlt: 'Animated diagram of the lab: push to GitHub, Jenkins builds and tests, SonarQube, JFrog and Docker, Rundeck deploys to the k3s cluster running Traefik, Quarkus, Kafka, Vault, Prometheus and Grafana; FreeIPA and Mailcow around.',
       },
     },
     {
@@ -564,6 +566,8 @@ const FR: CvContent = {
           'Livraison. Une fois l’image poussée, Jenkins déclenche un job Rundeck qui exécute un script de déploiement de mon dépôt infra. Le script complète les modèles Kubernetes (Deployment, Service, routes Traefik, ServiceMonitor), prépare le chemin de secrets et le rôle de connexion de l’application dans Vault, puis les applique. Prometheus collecte ensuite les métriques du service et Grafana les affiche.',
           'Le flux de bout en bout : push sur GitHub, Jenkins découvre et construit, tests et contrôles qualité, publication des artefacts et des images, déploiement par Rundeck sur k3s, secrets fournis par Vault, résultat surveillé par Prometheus et Grafana. Les noms d’hôtes et adresses de cette page sont volontairement masqués en partie.',
         ],
+        diagram: 'works/my-lab-fr.svg',
+        diagramAlt: 'Schéma animé du lab : push sur GitHub, Jenkins construit et teste, SonarQube, JFrog et Docker, Rundeck déploie sur le cluster k3s (Traefik, Quarkus, Kafka, Vault, Prometheus, Grafana) ; FreeIPA et Mailcow autour.',
       },
     },
     {
@@ -768,6 +772,8 @@ const AR: CvContent = {
           'التسليم. بعد دفع الصورة يطلق Jenkins مهمة Rundeck تنفّذ سكربت نشر من مستودع infra الخاص بي. يملأ السكربت قوالب Kubernetes (Deployment وService ومسارات Traefik وServiceMonitor) ويجهّز مسار أسرار التطبيق ودور تسجيل دخوله في Vault ثم يطبّقها. بعدها يجمع Prometheus مقاييس الخدمة ويعرضها Grafana.',
           'المسار من البداية إلى النهاية: دفع إلى GitHub، فاكتشاف Jenkins وبناؤه، ثم الاختبارات وبوابات الجودة، ونشر الحزم والصور، ثم نشر Rundeck على k3s، مع أسرار من Vault ومراقبة النتيجة عبر Prometheus وGrafana. أسماء المضيفين والعناوين في هذه الصفحة مخفية جزئياً عن قصد.',
         ],
+        diagram: 'works/my-lab-ar.svg',
+        diagramAlt: 'مخطط متحرك للمختبر: دفع إلى GitHub، وJenkins يبني ويختبر، وSonarQube وJFrog وDocker، ثم Rundeck ينشر على عنقود k3s الذي يشغّل Traefik وQuarkus وKafka وVault وPrometheus وGrafana؛ مع FreeIPA وMailcow.',
       },
     },
     {
