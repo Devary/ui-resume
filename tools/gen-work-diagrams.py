@@ -64,30 +64,32 @@ class Diagram:
           f'{txt(60,56,s.head,19,"#e2e8f0","start",700)}'+''.join(s.back)+''.join(s.edges)+''.join(s.nodes)+'</svg>')
 
 def jqcd(lg):
-    T={'en':dict(h='JQCD · Vermeg · 2023',jira='Jira',jsub='client queries · 2008 → today',ext='Extraction',esub='all delivered queries',db='Central database',dsub='one place for everything',an='Cross-project analysis',rp='Reporting',x='extract',c='centralize',a='analyze',r='report'),
-       'fr':dict(h='JQCD · Vermeg · 2023',jira='Jira',jsub='requêtes clients · 2008 → aujourd’hui',ext='Extraction',esub='toutes les requêtes livrées',db='Base centralisée',dsub='un seul endroit',an='Analyse inter-projets',rp='Reporting',x='extraire',c='centraliser',a='analyser',r='reporter'),
-       'ar':dict(h='JQCD · Vermeg · 2023',jira='Jira',jsub='استعلامات العملاء · 2008 ← اليوم',ext='الاستخراج',esub='كل الاستعلامات المسلَّمة',db='قاعدة بيانات مركزية',dsub='مكان واحد لكل شيء',an='تحليل عبر المشاريع',rp='التقارير',x='استخراج',c='تجميع',a='تحليل',r='تقرير')}[lg]
+    T={'en':dict(h='JQCD · Vermeg · 2023 · part of Virtual Links',jira='Jira',jsub='client queries · 2008 → today',ext='JQCD',esub='extracts all delivered queries',db='PostgreSQL',dsub='all extracted queries',an='Cross-project analysis',rp='Reporting',vl='Virtual Links',vsub='maps these queries',x='extract',c='store',a='analyze',r='report',u='used by'),
+       'fr':dict(h='JQCD · Vermeg · 2023 · partie de Virtual Links',jira='Jira',jsub='requêtes clients · 2008 → aujourd’hui',ext='JQCD',esub='extrait toutes les requêtes livrées',db='PostgreSQL',dsub='toutes les requêtes extraites',an='Analyse inter-projets',rp='Reporting',vl='Virtual Links',vsub='mappe ces requêtes',x='extraire',c='stocker',a='analyser',r='reporter',u='utilisé par'),
+       'ar':dict(h='JQCD · Vermeg · 2023 · جزء من Virtual Links',jira='Jira',jsub='استعلامات العملاء · 2008 ← اليوم',ext='JQCD',esub='يستخرج كل الاستعلامات المسلَّمة',db='PostgreSQL',dsub='كل الاستعلامات المستخرجة',an='تحليل عبر المشاريع',rp='التقارير',vl='Virtual Links',vsub='يربط هذه الاستعلامات',x='استخراج',c='تخزين',a='تحليل',r='تقرير',u='تستخدمه')}[lg]
     d=Diagram(lg,T['h'])
     d.edge('M226,300 L432,300',0.0,2.4,T['x'],330,282)
     d.edge('M528,300 L732,300',2.4,4.8,T['c'],630,282)
-    d.edge('M828,282 C930,282 940,190 1034,190',4.8,7.2,T['a'],930,214,'start')
-    d.edge('M828,318 C930,318 940,410 1034,410',4.8,7.2,T['r'],930,392,'start')
+    d.edge('M828,282 C930,282 940,130 1034,130',4.8,7.2,T['a'],930,184,'start')
+    d.edge('M828,300 L1034,300',4.8,7.2,T['r'],931,284)
+    d.edge('M828,318 C930,318 940,470 1034,470',4.8,7.2,T['u'],930,426,'start',color='#a78bfa')
     d.node(icon('jira',180,300,92),180,300,92,T['jira'],T['jsub'])
     d.node(glyph('gear',480,300,92,'#0ea5e9'),480,300,92,T['ext'],T['esub'],2.4)
-    d.node(glyph('db',780,300,92,'#2563eb'),780,300,92,T['db'],T['dsub'],4.8)
-    d.node(glyph('chart',1080,190,84,'#16a34a'),1080,190,84,T['an'],None,7.2)
-    d.node(glyph('doc',1080,410,84,'#d97706'),1080,410,84,T['rp'],None,7.2)
-    return d.svg(520)
+    d.node(icon('postgresql',780,300,92),780,300,92,T['db'],T['dsub'],4.8)
+    d.node(glyph('chart',1080,130,84,'#16a34a'),1080,130,84,T['an'],None,7.2)
+    d.node(glyph('doc',1080,300,84,'#d97706'),1080,300,84,T['rp'],None,7.2)
+    d.node(glyph('graph',1080,470,84,'#7c3aed'),1080,470,84,T['vl'],T['vsub'],7.2)
+    return d.svg(600)
 def virtual(lg):
-    T={'en':dict(h='Virtual Links · Vermeg · 2023',ora='Oracle DB',orasub='no primary / foreign keys',xml='XML files',xmlsub='tables and relationships',ent='Code entities',entsub='incl. abstract classes',jira='Jira queries',jirasub='from the JQCD project',
-         bat='Mapping batch',batsub='abstract class → id check',g='Entity graph',gsub='≈ 2,300 entities',lar='Laravel app (MVC)',larsub='graph as a JS relational model',se='Search',sesub='start → end entities',pa='Join paths',pasub='possible ways between them',qu='Ready query',qusub='copy and run',
-         e1='read',e2='resolve',e3='map',e4='load',e5='search',e6='suggest',e7='known query → direct'),
-       'fr':dict(h='Virtual Links · Vermeg · 2023',ora='Base Oracle',orasub='sans clés primaires / étrangères',xml='Fichiers XML',xmlsub='tables et relations',ent='Entités du code',entsub='dont classes abstraites',jira='Requêtes Jira',jirasub='du projet JQCD',
-         bat='Batch de mapping',batsub='classe abstraite → test de l’id',g='Graphe d’entités',gsub='≈ 2 300 entités',lar='Application Laravel (MVC)',larsub='graphe en base relationnelle JS',se='Recherche',sesub='entité de départ → arrivée',pa='Chemins de jointure',pasub='les chemins possibles entre elles',qu='Requête prête',qusub='à copier et exécuter',
-         e1='lire',e2='résoudre',e3='mapper',e4='charger',e5='chercher',e6='suggérer',e7='requête connue → direct'),
-       'ar':dict(h='Virtual Links · Vermeg · 2023',ora='قاعدة Oracle',orasub='بلا مفاتيح أساسية / أجنبية',xml='ملفات XML',xmlsub='الجداول والعلاقات',ent='كيانات الشيفرة',entsub='ومنها الأصناف المجرّدة',jira='استعلامات Jira',jirasub='من مشروع JQCD',
-         bat='Batch الربط',batsub='صنف مجرّد ← فحص المعرّف',g='مخطط الكيانات',gsub='≈ 2300 كيان',lar='تطبيق Laravel (MVC)',larsub='المخطط كقاعدة علائقية بـ JS',se='البحث',sesub='كيان البداية ← النهاية',pa='مسارات الربط',pasub='الطرق الممكنة بينها',qu='استعلام جاهز',qusub='للنسخ والتنفيذ',
-         e1='قراءة',e2='حلّ',e3='ربط',e4='تحميل',e5='بحث',e6='اقتراح',e7='استعلام معروف ← مباشرة')}[lg]
+    T={'en':dict(h='Virtual Links · Vermeg · 2023',ora='Oracle DB',orasub='no primary / foreign keys',xml='XML files',xmlsub='tables and relationships',ent='Code entities',entsub='incl. abstract classes',jira='Jira queries',jirasub='extracted by JQCD',
+         bat='Mapping batch',batsub='abstract class → id check',g='PostgreSQL',gsub='entity graph ≈ 2,300 entities + queries',lar='Laravel app (MVC)',larsub='graph as a JS relational model',se='Search',sesub='start → end entities',pa='Join paths',pasub='possible ways between them',qu='Ready query',qusub='copy and run',
+         e1='read',e2='resolve',e3='store',e4='load',e5='search',e6='suggest',e7='known query → direct'),
+       'fr':dict(h='Virtual Links · Vermeg · 2023',ora='Base Oracle',orasub='sans clés primaires / étrangères',xml='Fichiers XML',xmlsub='tables et relations',ent='Entités du code',entsub='dont classes abstraites',jira='Requêtes Jira',jirasub='extraites par JQCD',
+         bat='Batch de mapping',batsub='classe abstraite → test de l’id',g='PostgreSQL',gsub='graphe ≈ 2 300 entités + requêtes',lar='Application Laravel (MVC)',larsub='graphe en base relationnelle JS',se='Recherche',sesub='entité de départ → arrivée',pa='Chemins de jointure',pasub='les chemins possibles entre elles',qu='Requête prête',qusub='à copier et exécuter',
+         e1='lire',e2='résoudre',e3='stocker',e4='charger',e5='chercher',e6='suggérer',e7='requête connue → direct'),
+       'ar':dict(h='Virtual Links · Vermeg · 2023',ora='قاعدة Oracle',orasub='بلا مفاتيح أساسية / أجنبية',xml='ملفات XML',xmlsub='الجداول والعلاقات',ent='كيانات الشيفرة',entsub='ومنها الأصناف المجرّدة',jira='استعلامات Jira',jirasub='يستخرجها JQCD',
+         bat='Batch الربط',batsub='صنف مجرّد ← فحص المعرّف',g='PostgreSQL',gsub='مخطط ≈ 2300 كيان + الاستعلامات',lar='تطبيق Laravel (MVC)',larsub='المخطط كقاعدة علائقية بـ JS',se='البحث',sesub='كيان البداية ← النهاية',pa='مسارات الربط',pasub='الطرق الممكنة بينها',qu='استعلام جاهز',qusub='للنسخ والتنفيذ',
+         e1='قراءة',e2='حلّ',e3='تخزين',e4='تحميل',e5='بحث',e6='اقتراح',e7='استعلام معروف ← مباشرة')}[lg]
     d=Diagram(lg,T['h'])
     # four sources on top converge on the mapping batch
     src=[(150,'oracle',T['ora'],T['orasub']),(380,None,T['xml'],T['xmlsub']),(610,None,T['ent'],T['entsub']),(840,'jira',T['jira'],T['jirasub'])]
@@ -103,9 +105,7 @@ def virtual(lg):
     d.nodes.append(glyph('gear',420,330,88,'#0ea5e9')); d.nodes.append(txt(420,398,T['bat'],16)); d.nodes.append(txt(420,418,T['batsub'],13,'#94a3b8'))
     d.edge('M466,330 L588,330',1.6,3.4,T['e3'],527,312)
     d.ring(634,330,88,88,3.4)
-    d.nodes.append(glyph('graph',634,330,88,'#7c3aed')); d.nodes.append(txt(634,398,T['g'],16)); d.nodes.append(txt(634,418,T['gsub'],13,'#94a3b8'))
-    for (px,py,dl) in [(622,308,0),(658,305,1.2),(634,330,2.4),(622,354,3.6),(662,352,4.8)]:
-        d.nodes.append(f'<circle cx="{px}" cy="{py}" r="3" fill="#a78bfa" opacity="0"><animate attributeName="opacity" values="0;.9;0" dur="6s" begin="{dl}s" repeatCount="indefinite"/></circle>')
+    d.nodes.append(icon('postgresql',634,330,88)); d.nodes.append(txt(634,398,T['g'],16)); d.nodes.append(txt(634,418,T['gsub'],13,'#94a3b8'))
     d.edge('M680,330 L810,330',3.4,5.0,T['e4'],745,312)
     d.node(icon('laravel',856,330,92),856,330,92,T['lar'],T['larsub'],5.0)
     d.edge('M904,330 L1032,330',5.0,6.4,T['e5'],968,312)
