@@ -134,16 +134,16 @@ export interface CvContent {
 // ── Shared: the same in every language ─────────────────────────────────────────
 const SKILLS = {
   languages:    ['Java 8–17', 'Java EE', 'Spring Core', 'Spring Boot', 'Spring MVC', 'Spring Security', 'Spring Data', 'Spring AOP',
-                 'Quarkus', 'Kafka Streams', 'Keycloak', 'JavaScript', 'jQuery', 'NodeJS', 'ExpressJS',
+                 'Quarkus', 'Kafka Streams', 'Keycloak', 'Angular', 'TypeScript', 'JavaScript', 'jQuery', 'NodeJS', 'ExpressJS',
                  'RESTful API', 'SOAP', 'HTML5', 'CSS', 'JSON', 'XML', 'WSDL', 'XSD', 'XPDL'],
   databases:    ['Oracle', 'PostgreSQL', 'Redis', 'ElasticSearch'],
   architecture: ['Microservices', 'Microfrontends', 'MVC', 'Semi-monolithic', 'Monolithic'],
   patterns:     ['Chassis Design', 'CQRS', 'SAGA', 'Event Sourcing'],
-  devops:       ['Docker', 'Kubernetes', 'OpenShift', 'GitHub Actions', 'Jenkins', 'Grafana', 'Rundeck', 'XLDeploy', 'XL Release', 'Containerization'],
+  devops:       ['Docker', 'Kubernetes', 'OpenShift', 'GitHub Actions', 'Jenkins', 'Grafana', 'Kibana', 'Splunk', 'Rundeck', 'XLDeploy', 'XL Release', 'Containerization'],
   practices:    ['BDD', 'TDD', 'Agile', 'Scrum', 'Functional Reactive Programming'],
   build:        ['Maven', 'NPM', 'Yarn', 'Composer', 'Nexus', 'JFrog Artifactory'],
   versioning:   ['Git', 'SVN'],
-  tools:        ['IntelliJ IDEA', 'DataGrip', 'Oracle SQL Developer', 'PL/SQL', 'JBoss 6 & 7', 'Postman', 'SoapUI', 'MINIO',
+  tools:        ['IntelliJ IDEA', 'DataGrip', 'Oracle SQL Developer', 'PL/SQL', 'JBoss 6 & 7', 'Tomcat', 'Swagger / OpenAPI', 'Postman', 'SoapUI', 'MINIO',
                  'Jira', 'Confluence', 'Azure DevOps', 'Apache POI'],
 };
 type SkillKey = keyof typeof SKILLS;
@@ -221,7 +221,7 @@ const EN: CvContent = {
       label: 'Right now',
       text: 'Running an enterprise-grade personal lab with AI agents: identity management, Kubernetes, CI/CD and mail, built and operated end to end.',
     },
-    context: 'Banking, insurance and EU institutions · Quarkus, Spring, Kafka, Kubernetes and OpenShift.',
+    context: 'Banking (payments, SWIFT), Life / non-Life insurance (SOLIFE) and EU institutions · Quarkus, Spring, Kafka, Kubernetes and OpenShift.',
     oldSchool: { label: 'Old school', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
@@ -231,29 +231,36 @@ const EN: CvContent = {
   ],
   experiences: experiences('Present', [
     {
-      company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'External',
-      project: 'EasyApp (main mobile, web and backend application) & DKV',
+      company: 'LALUX', location: 'Luxembourg', role: 'Lead & Technical Reference', type: 'External',
+      project: 'EasyApp (main mobile, web and backend application) & DKV — Life / non-Life insurance',
       tasks: [
         'Lead a Quarkus backend team of two senior developers',
+        'Develop the Angular frontend for the web part of the applications',
+        'Migrate Spring Boot projects to Quarkus',
         'Decommission the DKV services',
         'Work on reimbursements, claims, insurance policies, mobile payments, documents and document management systems (DMS)',
-        'Own and maintain the codebase: code reviews, coding standards and technical decisions',
+        'Took part in the migration of Payconiq to Wero (mobile payments)',
+        'Own and maintain the codebase: code reviews, coding standards, technical and architecture decisions',
         'Drive performance and security across the services',
         'Configure Quarkus integrations with Keycloak, Oracle Database, Kafka Streams and Grafana',
+        'Expose Swagger (OpenAPI) endpoints to document the APIs',
         'Implement XML processing with XSD validation and SOAP web services',
         'Lead production investigations and root-cause analysis',
+        'Analyse and monitor logs with Elasticsearch, Kibana and Splunk',
         'Manage dev, test and production environments on OpenShift',
         'Set up and maintain CI/CD pipelines with GitHub Actions',
       ],
     },
     {
       company: 'Societe Generale', location: 'Esch-sur-Alzette, Luxembourg', role: 'Technical Expert', type: 'External',
-      project: 'Main Banking Payments Platform',
+      project: 'Main Banking Payments Platform (banking payments & SWIFT)',
       tasks: [
         'Migrated artifact repository from Nexus to JFrog Artifactory + Xray',
         'Refactored blocking services into reactive endpoints',
         'Investigated production performance issues using logs and monitoring',
-        'Adapted CI/CD pipelines to new delivery architecture',
+        'Contributed to the existing architecture and technical decisions',
+        'Exposed Swagger (OpenAPI) endpoints to document the APIs',
+        'Worked on Tomcat servers: configuration, deployment and incident investigation',
         'Evaluated Spring vs Quarkus native image proof of concept',
         'Contributed to evolution of legacy payment workflows into SOA',
       ],
@@ -273,7 +280,8 @@ const EN: CvContent = {
       company: 'European Parliament', location: 'Kirchberg, Luxembourg', role: 'Senior Software Engineer', type: 'External',
       project: 'EP-VOTE',
       tasks: [
-        'Integrated applications into unified microfrontend architecture',
+        'Contributed to the unified microfrontend architecture and integrated applications',
+        'Exposed Swagger (OpenAPI) endpoints to document the APIs',
         'Developed reactive services using CQRS, SAGA and Event Sourcing',
         'Implemented CI/CD automation pipelines',
         'Mentored developers on clean code and testing',
@@ -282,12 +290,13 @@ const EN: CvContent = {
     },
     {
       company: 'VERMEG', location: 'Tunis, Tunisia', role: 'Team Lead → Software Engineer', type: 'Permanent',
-      project: 'SOLIFE — Core Insurance & Asset Management Platform',
+      project: 'SOLIFE — Life & Investment Insurance Platform',
       subRoles: [
         {
           title: 'Team Lead', period: '01/2023 – 01/2024',
           tasks: [
-            'Led team of 5 developers delivering features for life insurance platform',
+            'Led team of 5 developers delivering features for the SOLIFE life insurance platform',
+            'Clients: Generali, Allianz, Cardif BNP Paribas, GlobalCapital, Suravenir',
             'Coordinated estimations and technical discussions with stakeholders',
             'Technical analysis and ticket dispatching',
             'Managed complex production issues and high-priority corrections',
@@ -297,6 +306,12 @@ const EN: CvContent = {
         {
           title: 'Software Engineer', period: '01/2019 – 01/2023',
           tasks: [
+            'Clients: NNbe, AXA Luxembourg, BNP Paribas',
+            'SOLIFE functional areas: fund management, fund valuation, accounting entries, billing, treasury management, retroactive policy processing',
+            'Maintained existing batches and created new batches',
+            'Delivered binary patches (hotfixes)',
+            'Delivered queries to identify volumetry and to correct data',
+            'Worked on JBoss servers (versions 6 and 7): configuration, deployment and incident investigation',
             'Developed REST services and database logic in high-volume financial environment',
             'Investigated root-cause production issues',
             'Implemented release packaging and deployment processes',
@@ -314,7 +329,7 @@ const EN: CvContent = {
       ],
     },
     {
-      company: 'Genioworx', location: 'Tunis, Tunisia', role: 'Software Engineer Junior / Intern', type: 'Permanent',
+      company: 'Genioworx', location: 'Tunis, Tunisia', role: 'Junior Software Engineer', type: 'Permanent',
       tasks: [
         'Developed Java backend services and ORM mappings',
         'Integrated Angular dashboards with backend data',
@@ -400,7 +415,7 @@ const FR: CvContent = {
       label: 'En ce moment',
       text: 'Je fais tourner un lab personnel de niveau entreprise avec des agents IA : gestion des identités, Kubernetes, CI/CD et messagerie, construits et exploités de bout en bout.',
     },
-    context: 'Banque, assurance et institutions européennes · Quarkus, Spring, Kafka, Kubernetes et OpenShift.',
+    context: 'Banque (paiements, SWIFT), assurance Vie / non-Vie (SOLIFE) et institutions européennes · Quarkus, Spring, Kafka, Kubernetes et OpenShift.',
     oldSchool: { label: 'Old school', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'New school', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
@@ -410,29 +425,36 @@ const FR: CvContent = {
   ],
   experiences: experiences('Aujourd’hui', [
     {
-      company: 'LALUX', location: 'Luxembourg', role: 'Technical Lead', type: 'Externe',
-      project: 'EasyApp (application principale mobile, web et backend) & DKV',
+      company: 'LALUX', location: 'Luxembourg', role: 'Lead & référent technique', type: 'Externe',
+      project: 'EasyApp (application principale mobile, web et backend) & DKV — assurance Vie / non-Vie',
       tasks: [
         'Direction d’une équipe backend Quarkus de deux développeurs seniors',
+        'Développement frontend avec Angular pour la partie web des applications',
+        'Migration de projets Spring Boot vers Quarkus',
         'Décommissionnement des services DKV',
         'Travail sur les remboursements, les sinistres, les polices, les paiements mobiles, les documents et les systèmes GED',
-        'Responsable de la base de code : revues de code, standards de développement et décisions techniques',
+        'Participation à la migration de Payconiq vers Wero (paiements mobiles)',
+        'Responsable de la base de code : revues de code, standards de développement, décisions techniques et d’architecture',
         'Pilotage de la performance et de la sécurité des services',
         'Configuration des intégrations Quarkus avec Keycloak, Oracle Database, Kafka Streams et Grafana',
+        'Exposition d’endpoints Swagger (OpenAPI) pour documenter les API',
         'Traitement XML avec validation XSD et services web SOAP',
         'Conduite des investigations en production et des analyses de causes racines',
+        'Analyse et supervision des logs avec Elasticsearch, Kibana et Splunk',
         'Gestion des environnements de développement, de test et de production sur OpenShift',
         'Mise en place et maintenance des pipelines CI/CD avec GitHub Actions',
       ],
     },
     {
       company: 'Société Générale', location: 'Esch-sur-Alzette, Luxembourg', role: 'Expert technique', type: 'Externe',
-      project: 'Plateforme principale de paiements bancaires',
+      project: 'Plateforme principale de paiements bancaires (paiements et SWIFT)',
       tasks: [
         'Migration du dépôt d’artefacts de Nexus vers JFrog Artifactory + Xray',
         'Refonte de services bloquants en endpoints réactifs',
         'Investigation de problèmes de performance en production à l’aide des logs et du monitoring',
-        'Adaptation des pipelines CI/CD à la nouvelle architecture de livraison',
+        'Contribution à l’architecture existante et aux décisions techniques',
+        'Exposition d’endpoints Swagger (OpenAPI) pour documenter les API',
+        'Travail sur les serveurs Tomcat : configuration, déploiement et investigation des incidents',
         'Évaluation d’une preuve de concept Spring vs Quarkus en image native',
         'Contribution à l’évolution des workflows de paiement historiques vers une architecture SOA',
       ],
@@ -452,7 +474,8 @@ const FR: CvContent = {
       company: 'Parlement européen', location: 'Kirchberg, Luxembourg', role: 'Ingénieur logiciel senior', type: 'Externe',
       project: 'EP-VOTE',
       tasks: [
-        'Intégration d’applications dans une architecture microfrontend unifiée',
+        'Contribution à l’architecture microfrontend unifiée et intégration des applications',
+        'Exposition d’endpoints Swagger (OpenAPI) pour documenter les API',
         'Développement de services réactifs avec CQRS, SAGA et Event Sourcing',
         'Mise en place de pipelines d’automatisation CI/CD',
         'Accompagnement des développeurs sur le clean code et les tests',
@@ -461,12 +484,13 @@ const FR: CvContent = {
     },
     {
       company: 'VERMEG', location: 'Tunis, Tunisie', role: 'Chef d’équipe → Ingénieur logiciel', type: 'CDI',
-      project: 'SOLIFE — Plateforme d’assurance et de gestion d’actifs',
+      project: 'SOLIFE — Plateforme d’assurance Vie et d’investissement',
       subRoles: [
         {
           title: 'Chef d’équipe', period: '01/2023 – 01/2024',
           tasks: [
-            'Encadrement d’une équipe de 5 développeurs livrant des fonctionnalités pour une plateforme d’assurance vie',
+            'Encadrement d’une équipe de 5 développeurs livrant des fonctionnalités pour la plateforme d’assurance vie SOLIFE',
+            'Clients : Generali, Allianz, Cardif BNP Paribas, GlobalCapital, Suravenir',
             'Coordination des estimations et des échanges techniques avec les parties prenantes',
             'Analyse technique et répartition des tickets',
             'Gestion d’incidents de production complexes et de corrections prioritaires',
@@ -476,6 +500,12 @@ const FR: CvContent = {
         {
           title: 'Ingénieur logiciel', period: '01/2019 – 01/2023',
           tasks: [
+            'Clients : NNbe, AXA Luxembourg, BNP Paribas',
+            'Domaines fonctionnels SOLIFE : gestion de fonds, valorisation des fonds, écritures comptables, billing, gestion de trésorerie, rétroactivité des polices',
+            'Maintenance des batchs existants et création de nouveaux batchs',
+            'Livraison de patchs binaires (hotfix)',
+            'Livraison de requêtes d’identification de volumétrie et de correction de données',
+            'Travail sur les serveurs JBoss (versions 6 et 7) : configuration, déploiement et investigation des incidents',
             'Développement de services REST et de logique base de données dans un environnement financier à fort volume',
             'Investigation des causes racines d’incidents de production',
             'Mise en place des processus de packaging et de déploiement des livraisons',
@@ -493,7 +523,7 @@ const FR: CvContent = {
       ],
     },
     {
-      company: 'Genioworx', location: 'Tunis, Tunisie', role: 'Ingénieur logiciel junior / stagiaire', type: 'CDI',
+      company: 'Genioworx', location: 'Tunis, Tunisie', role: 'Ingénieur logiciel junior', type: 'CDI',
       tasks: [
         'Développement de services backend Java et de mappings ORM',
         'Intégration de tableaux de bord Angular avec les données backend',
@@ -579,7 +609,7 @@ const AR: CvContent = {
       label: 'حالياً',
       text: 'أدير مختبراً شخصياً بمستوى المؤسسات مع وكلاء الذكاء الاصطناعي: إدارة الهويات وKubernetes وCI/CD والبريد الإلكتروني، أبنيها وأشغّلها من البداية إلى النهاية.',
     },
-    context: 'القطاع البنكي والتأمين والمؤسسات الأوروبية · Quarkus وSpring وKafka وKubernetes وOpenShift.',
+    context: 'القطاع البنكي (المدفوعات وSWIFT) وتأمين الحياة وغير الحياة (SOLIFE) والمؤسسات الأوروبية · Quarkus وSpring وKafka وKubernetes وOpenShift.',
     oldSchool: { label: 'المدرسة القديمة', items: ['Clean Architecture', 'SOLID', 'Design Patterns', 'TDD', 'Code Review', 'Scrum'] },
     newSchool: { label: 'المدرسة الجديدة', items: ['AI Agents', 'LLMs', 'Agentic Workflows', 'AI-assisted Engineering', 'MCP'] },
   },
@@ -589,29 +619,36 @@ const AR: CvContent = {
   ],
   experiences: experiences('حتى الآن', [
     {
-      company: 'LALUX', location: 'لوكسمبورغ', role: 'قائد تقني', type: 'متعاقد خارجي',
-      project: 'EasyApp (التطبيق الرئيسي للهاتف المحمول والويب والواجهة الخلفية) و DKV',
+      company: 'LALUX', location: 'لوكسمبورغ', role: 'قائد ومرجع تقني', type: 'متعاقد خارجي',
+      project: 'EasyApp (التطبيق الرئيسي للهاتف المحمول والويب والواجهة الخلفية) و DKV — تأمين الحياة وتأمين غير الحياة',
       tasks: [
         'قيادة فريق backend يعمل بـ Quarkus ويضم مطوّرَين اثنين من ذوي الخبرة',
+        'تطوير الواجهة الأمامية بـ Angular لجزء الويب من التطبيقات',
+        'ترحيل مشاريع Spring Boot إلى Quarkus',
         'الإيقاف التدريجي لخدمات DKV (decommissioning)',
         'العمل على التعويضات والمطالبات ووثائق التأمين والدفع عبر الهاتف المحمول والمستندات وأنظمة إدارة الوثائق (GED)',
-        'الإشراف على الشيفرة المصدرية وصيانتها: مراجعة الشيفرة ومعايير البرمجة والقرارات التقنية',
+        'المشاركة في ترحيل Payconiq إلى Wero (الدفع عبر الهاتف المحمول)',
+        'الإشراف على الشيفرة المصدرية وصيانتها: مراجعة الشيفرة ومعايير البرمجة والقرارات التقنية والمعمارية',
         'قيادة جهود الأداء والأمان في مختلف الخدمات',
         'إعداد تكامل Quarkus مع Keycloak وOracle Database وKafka Streams وGrafana',
+        'إتاحة نقاط وصول Swagger (OpenAPI) لتوثيق واجهات API',
         'تنفيذ معالجة XML مع التحقق عبر XSD وخدمات الويب SOAP',
         'قيادة التحقيقات في بيئة الإنتاج وتحليل الأسباب الجذرية',
+        'تحليل السجلات ومراقبتها باستخدام Elasticsearch وKibana وSplunk',
         'إدارة بيئات التطوير والاختبار والإنتاج على OpenShift',
         'إعداد خطوط CI/CD وصيانتها باستخدام GitHub Actions',
       ],
     },
     {
       company: 'Société Générale', location: 'إش-سور-ألزيت، لوكسمبورغ', role: 'خبير تقني', type: 'متعاقد خارجي',
-      project: 'المنصة الرئيسية للمدفوعات البنكية',
+      project: 'المنصة الرئيسية للمدفوعات البنكية (المدفوعات وSWIFT)',
       tasks: [
         'ترحيل مستودع الحزم من Nexus إلى JFrog Artifactory + Xray',
         'إعادة هيكلة الخدمات المتزامنة (blocking) إلى نقاط وصول تفاعلية (reactive)',
         'التحقيق في مشاكل الأداء في الإنتاج باستخدام السجلات وأدوات المراقبة',
-        'تكييف خطوط CI/CD مع بنية التسليم الجديدة',
+        'المساهمة في البنية المعمارية القائمة وفي القرارات التقنية',
+        'إتاحة نقاط وصول Swagger (OpenAPI) لتوثيق واجهات API',
+        'العمل على خوادم Tomcat: الإعداد والنشر والتحقيق في الأعطال',
         'تقييم إثبات مفهوم يقارن بين Spring وQuarkus بالصورة الأصلية (native image)',
         'المساهمة في تطوير مسارات الدفع القديمة نحو بنية SOA',
       ],
@@ -631,7 +668,8 @@ const AR: CvContent = {
       company: 'البرلمان الأوروبي', location: 'كيرشبرغ، لوكسمبورغ', role: 'مهندس برمجيات أول', type: 'متعاقد خارجي',
       project: 'EP-VOTE',
       tasks: [
-        'دمج التطبيقات ضمن بنية microfrontend موحّدة',
+        'المساهمة في بنية microfrontend الموحّدة ودمج التطبيقات ضمنها',
+        'إتاحة نقاط وصول Swagger (OpenAPI) لتوثيق واجهات API',
         'تطوير خدمات تفاعلية باستخدام CQRS وSAGA وEvent Sourcing',
         'تنفيذ خطوط أتمتة CI/CD',
         'توجيه المطوّرين في كتابة شيفرة نظيفة وفي الاختبارات',
@@ -640,12 +678,13 @@ const AR: CvContent = {
     },
     {
       company: 'VERMEG', location: 'تونس العاصمة، تونس', role: 'قائد فريق ← مهندس برمجيات', type: 'عقد دائم',
-      project: 'SOLIFE — منصة التأمين وإدارة الأصول',
+      project: 'SOLIFE — منصة التأمين على الحياة والتأمين الاستثماري',
       subRoles: [
         {
           title: 'قائد فريق', period: '01/2023 – 01/2024',
           tasks: [
-            'قيادة فريق من 5 مطوّرين لتسليم ميزات منصة التأمين على الحياة',
+            'قيادة فريق من 5 مطوّرين لتسليم ميزات منصة التأمين على الحياة SOLIFE',
+            'العملاء: Generali وAllianz وCardif BNP Paribas وGlobalCapital وSuravenir',
             'تنسيق التقديرات والنقاشات التقنية مع الأطراف المعنية',
             'التحليل التقني وتوزيع المهام',
             'معالجة مشاكل الإنتاج المعقّدة والتصحيحات ذات الأولوية القصوى',
@@ -655,6 +694,12 @@ const AR: CvContent = {
         {
           title: 'مهندس برمجيات', period: '01/2019 – 01/2023',
           tasks: [
+            'العملاء: NNbe وAXA Luxembourg وBNP Paribas',
+            'المجالات الوظيفية في SOLIFE: إدارة الصناديق، تقييم الصناديق، القيود المحاسبية، الفوترة، إدارة الخزينة، المعالجة بأثر رجعي لوثائق التأمين',
+            'صيانة الدفعات (batches) القائمة وإنشاء دفعات جديدة',
+            'تسليم رقع ثنائية (hotfix)',
+            'تسليم استعلامات لتحديد الحجم ولتصحيح البيانات',
+            'العمل على خوادم JBoss (الإصداران 6 و7): الإعداد والنشر والتحقيق في الأعطال',
             'تطوير خدمات REST ومنطق قواعد البيانات في بيئة مالية عالية الحجم',
             'التحقيق في الأسباب الجذرية لمشاكل الإنتاج',
             'تنفيذ عمليات تحزيم الإصدارات ونشرها',
@@ -672,7 +717,7 @@ const AR: CvContent = {
       ],
     },
     {
-      company: 'Genioworx', location: 'تونس العاصمة، تونس', role: 'مهندس برمجيات مبتدئ / متدرّب', type: 'عقد دائم',
+      company: 'Genioworx', location: 'تونس العاصمة، تونس', role: 'مهندس برمجيات مبتدئ', type: 'عقد دائم',
       tasks: [
         'تطوير خدمات Java للواجهة الخلفية وربط ORM',
         'دمج لوحات Angular مع بيانات الواجهة الخلفية',
