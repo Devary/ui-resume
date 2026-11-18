@@ -4,11 +4,11 @@
 .cv-layout {
   position: relative;
   z-index: 1;
-  max-width: 1180px;
+  max-width: 1640px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
-  gap: 1.75rem;
+  grid-template-columns: minmax(0, 370px) minmax(0, 1fr);
+  gap: 2rem;
   align-items: start;
 }
 
@@ -18,6 +18,14 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+
+  // Taller than the window? It scrolls on its own, so nothing is out of reach.
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  padding: 0.3rem;
+  margin: -0.3rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cv-border-strong) transparent;
 }
 
 .cv-main {
@@ -31,7 +39,7 @@
 @media (max-width: 980px) {
   .cv-layout { grid-template-columns: minmax(0, 1fr); }
 
-  .cv-side { position: static; }
+  .cv-side { position: static; max-height: none; overflow: visible; padding: 0; margin: 0; }
 }
 
 @media print {
@@ -40,7 +48,7 @@
     max-width: none;
   }
 
-  .cv-side { position: static; }
+  .cv-side { position: static; max-height: none; overflow: visible; padding: 0; margin: 0; }
 
   .cv-side,
   .cv-main {

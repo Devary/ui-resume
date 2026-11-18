@@ -237,6 +237,20 @@
   color: var(--cv-ink);
 }
 
+// A wide screen: the tasks run in two columns instead of one long line each.
+@media (min-width: 1400px) {
+  .tasks {
+    display: block;
+    columns: 2;
+    column-gap: 2.25rem;
+
+    li {
+      break-inside: avoid;
+      margin-bottom: 0.45rem;
+    }
+  }
+}
+
 @media print {
   .entry { break-inside: avoid; }
 
