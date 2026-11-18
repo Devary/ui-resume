@@ -351,6 +351,16 @@ const EN: CvContent = {
       slug: 'my-lab',
       title: 'My Lab', year: 'Since 2024', context: 'Personal',
       description: 'Enterprise-grade personal lab run with AI agents: identity management with FreeIPA and integrated DNS, a Kubernetes (k3s) cluster behind Traefik, Jenkins CI/CD and a mail server, designed, built and operated end to end.',
+      details: {
+        paragraphs: [
+          'The lab runs on a single Fedora server (i•a, 192.•••.•••.41) and covers the whole path from identity to production: identity management and integrated DNS with FreeIPA, a single-node Kubernetes cluster (k3s) behind a Traefik ingress, Jenkins for CI/CD, a mail server, and a Kafka streaming platform. I designed, built and operate all of it myself, with AI agents working alongside me.',
+          'Identity and network. FreeIPA provides users, groups and DNS for the lab. Services are published on the cluster ingress under names of the form <service>.192.•••.•••.41.nip.io, so every deployment gets a stable address without touching the router.',
+          'Platform. k3s runs the workloads with local-path storage and Traefik routes, and the cluster also hosts Kafka (KRaft) with a web UI and a schema registry, a Harbor container registry, and Prometheus and Grafana for metrics. HashiCorp Vault stores the secrets: each application logs in with its Kubernetes service account and Quarkus reads its configuration directly from Vault. Outside the cluster, Mailcow provides the mail server (mail.vot•••••.com) and Verdaccio, run as a system service, hosts a private npm registry for my Angular libraries.',
+          'Build and quality. A GitHub App connects my GitHub account to Jenkins. One scanner job checks the whole account every minute and creates a pipeline for any repository that has a Jenkinsfile at its root, so a new project needs no Jenkins configuration. Pipelines run the tests with JaCoCo coverage (85% minimum), SonarQube analysis, JVM or native packaging, publication to JFrog Artifactory and then the Docker image build and push. Libraries are published to the private npm registry.',
+          "Delivery. After the image is pushed, Jenkins triggers a Rundeck job that runs a deployment script from my infra repository. The script fills the Kubernetes templates (Deployment, Service, Traefik routes, ServiceMonitor), prepares the application's secret path and login role in Vault, and applies them. Prometheus then scrapes the service metrics and Grafana displays them.",
+          'Workflow, end to end: push to GitHub, Jenkins discovers and builds, tests and quality gates run, artifacts and images are published, Rundeck deploys to k3s, Vault supplies the secrets and Prometheus and Grafana watch the result. Host names and addresses on this page are partly masked on purpose.',
+        ],
+      },
     },
     {
       slug: 'jqcd',
@@ -545,6 +555,16 @@ const FR: CvContent = {
       slug: 'my-lab',
       title: 'Mon lab', year: 'Depuis 2024', context: 'Personnel',
       description: 'Lab personnel de niveau entreprise piloté avec des agents IA : gestion des identités avec FreeIPA et DNS intégré, cluster Kubernetes (k3s) derrière Traefik, CI/CD Jenkins et serveur de messagerie, conçus, construits et exploités de bout en bout.',
+      details: {
+        paragraphs: [
+          'Le lab tourne sur un seul serveur Fedora (i•a, 192.•••.•••.41) et couvre tout le chemin, de l’identité à la production : gestion des identités et DNS intégré avec FreeIPA, un cluster Kubernetes mono-nœud (k3s) derrière un ingress Traefik, Jenkins pour la CI/CD, un serveur de messagerie et une plateforme de streaming Kafka. Je l’ai conçu, construit et je l’exploite moi-même, avec des agents IA à mes côtés.',
+          'Identité et réseau. FreeIPA fournit les utilisateurs, les groupes et le DNS du lab. Les services sont publiés sur l’ingress du cluster sous des noms de la forme <service>.192.•••.•••.41.nip.io : chaque déploiement obtient ainsi une adresse stable sans toucher au routeur.',
+          'Plateforme. k3s exécute les charges de travail avec un stockage local-path et des routes Traefik. Le cluster héberge aussi Kafka (KRaft) avec une interface web et un registre de schémas, un registre de conteneurs Harbor, ainsi que Prometheus et Grafana pour les métriques. HashiCorp Vault conserve les secrets : chaque application s’authentifie avec son compte de service Kubernetes et Quarkus lit sa configuration directement dans Vault. Hors du cluster, Mailcow fournit le serveur de messagerie (mail.vot•••••.com) et Verdaccio, exécuté comme service système, héberge un registre npm privé pour mes bibliothèques Angular.',
+          'Build et qualité. Une GitHub App relie mon compte GitHub à Jenkins. Un job de scan vérifie tout le compte chaque minute et crée un pipeline pour tout dépôt ayant un Jenkinsfile à sa racine : un nouveau projet n’a donc besoin d’aucune configuration Jenkins. Les pipelines exécutent les tests avec la couverture JaCoCo (85 % minimum), l’analyse SonarQube, le packaging JVM ou natif, la publication sur JFrog Artifactory, puis la construction et le push de l’image Docker. Les bibliothèques sont publiées sur le registre npm privé.',
+          'Livraison. Une fois l’image poussée, Jenkins déclenche un job Rundeck qui exécute un script de déploiement de mon dépôt infra. Le script complète les modèles Kubernetes (Deployment, Service, routes Traefik, ServiceMonitor), prépare le chemin de secrets et le rôle de connexion de l’application dans Vault, puis les applique. Prometheus collecte ensuite les métriques du service et Grafana les affiche.',
+          'Le flux de bout en bout : push sur GitHub, Jenkins découvre et construit, tests et contrôles qualité, publication des artefacts et des images, déploiement par Rundeck sur k3s, secrets fournis par Vault, résultat surveillé par Prometheus et Grafana. Les noms d’hôtes et adresses de cette page sont volontairement masqués en partie.',
+        ],
+      },
     },
     {
       slug: 'jqcd',
@@ -739,6 +759,16 @@ const AR: CvContent = {
       slug: 'my-lab',
       title: 'مختبري', year: 'منذ 2024', context: 'شخصي',
       description: 'مختبر شخصي بمستوى المؤسسات أديره مع وكلاء الذكاء الاصطناعي: إدارة الهويات عبر FreeIPA مع DNS مدمج، وعنقود Kubernetes (k3s) خلف Traefik، وخطوط CI/CD عبر Jenkins، وخادم بريد إلكتروني، صمّمتها وبنيتها وأشغّلها من البداية إلى النهاية.',
+      details: {
+        paragraphs: [
+          'يعمل المختبر على خادم Fedora واحد (i•a، 192.•••.•••.41) ويغطي المسار كاملاً من الهوية إلى الإنتاج: إدارة الهويات وDNS المدمج عبر FreeIPA، وعنقود Kubernetes بعقدة واحدة (k3s) خلف مدخل Traefik، وJenkins للتكامل والنشر المستمرين، وخادم بريد إلكتروني، ومنصة بث Kafka. صمّمتُ كل ذلك وبنيته وأشغّله بنفسي، مع وكلاء الذكاء الاصطناعي إلى جانبي.',
+          'الهوية والشبكة. يوفّر FreeIPA المستخدمين والمجموعات وDNS للمختبر. تُنشر الخدمات على مدخل العنقود بأسماء على الصيغة <service>.192.•••.•••.41.nip.io، فينال كل نشر عنواناً ثابتاً دون المساس بالموجّه.',
+          'المنصة. يشغّل k3s الأحمال بتخزين local-path ومسارات Traefik، ويستضيف العنقود أيضاً Kafka (KRaft) مع واجهة ويب وسجلّ مخططات، وسجلّ حاويات Harbor، وPrometheus وGrafana للمقاييس. يحفظ HashiCorp Vault الأسرار: يسجّل كل تطبيق دخوله بحساب الخدمة في Kubernetes ويقرأ Quarkus إعداداته مباشرة من Vault. خارج العنقود يوفّر Mailcow خادم البريد (mail.vot•••••.com) ويستضيف Verdaccio، المشغَّل كخدمة نظام، سجلّ npm خاصاً لمكتباتي المبنية بـ Angular.',
+          'البناء والجودة. يربط GitHub App حسابي على GitHub بـ Jenkins. تفحص مهمة مسح الحساب كاملاً كل دقيقة وتنشئ خط معالجة لأي مستودع فيه Jenkinsfile في جذره، فلا يحتاج المشروع الجديد إلى أي إعداد في Jenkins. تشغّل الخطوط الاختبارات مع تغطية JaCoCo (85% كحد أدنى) وتحليل SonarQube والتحزيم JVM أو الأصلي والنشر على JFrog Artifactory ثم بناء صورة Docker ودفعها. تُنشر المكتبات على سجلّ npm الخاص.',
+          'التسليم. بعد دفع الصورة يطلق Jenkins مهمة Rundeck تنفّذ سكربت نشر من مستودع infra الخاص بي. يملأ السكربت قوالب Kubernetes (Deployment وService ومسارات Traefik وServiceMonitor) ويجهّز مسار أسرار التطبيق ودور تسجيل دخوله في Vault ثم يطبّقها. بعدها يجمع Prometheus مقاييس الخدمة ويعرضها Grafana.',
+          'المسار من البداية إلى النهاية: دفع إلى GitHub، فاكتشاف Jenkins وبناؤه، ثم الاختبارات وبوابات الجودة، ونشر الحزم والصور، ثم نشر Rundeck على k3s، مع أسرار من Vault ومراقبة النتيجة عبر Prometheus وGrafana. أسماء المضيفين والعناوين في هذه الصفحة مخفية جزئياً عن قصد.',
+        ],
+      },
     },
     {
       slug: 'jqcd',
