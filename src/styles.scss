@@ -114,6 +114,8 @@ a { color: inherit; }
   padding: 1.75rem 1.9rem;
   transition: border-color 0.3s, box-shadow 0.3s;
 
+  @media (min-width: 1400px) { padding: 2rem 2.4rem; }
+
   @media (hover: hover) {
     &:hover {
       border-color: var(--cv-accent-ring);
