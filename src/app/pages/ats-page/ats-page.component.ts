@@ -24,9 +24,9 @@ export class AtsPageComponent implements OnDestroy {
   readonly ats = computed(() => this.t().ats);
 
   readonly files: AtsFile[] = [
-    { code: 'en', name: 'English',  dir: 'ltr', base: 'ats/Fakher-Hammami-ATS-EN' },
-    { code: 'fr', name: 'Français', dir: 'ltr', base: 'ats/Fakher-Hammami-ATS-FR' },
-    { code: 'ar', name: 'العربية',  dir: 'rtl', base: 'ats/Fakher-Hammami-ATS-AR' },
+    { code: 'en', name: 'English',  dir: 'ltr', base: 'ats/Fakher-Hammami-ATS-2026-EN' },
+    { code: 'fr', name: 'Français', dir: 'ltr', base: 'ats/Fakher-Hammami-ATS-2026-FR' },
+    { code: 'ar', name: 'العربية',  dir: 'rtl', base: 'ats/Fakher-Hammami-ATS-2026-AR' },
   ];
 
   constructor() {

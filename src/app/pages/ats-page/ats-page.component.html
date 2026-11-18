@@ -14,13 +14,13 @@
     @for (f of files; track f.code) {
       <section class="section-card card rise" appSpotlight>
         <h2 class="lang" [attr.lang]="f.code" [attr.dir]="f.dir">{{ f.name }}</h2>
-        <p class="file"><bdi>Fakher-Hammami-ATS-{{ f.code.toUpperCase() }}</bdi></p>
+        <p class="file"><bdi>Fakher-Hammami-ATS-2026-{{ f.code.toUpperCase() }}</bdi></p>
         <div class="actions">
-          <a class="dl primary" [href]="f.base + '.pdf'" [attr.download]="'Fakher-Hammami-ATS-' + f.code.toUpperCase() + '.pdf'">
+          <a class="dl primary" [href]="f.base + '.pdf'" [attr.download]="'Fakher-Hammami-ATS-2026-' + f.code.toUpperCase() + '.pdf'">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14" /></svg>
             {{ ats().pdf }}
           </a>
-          <a class="dl" [href]="f.base + '.docx'" [attr.download]="'Fakher-Hammami-ATS-' + f.code.toUpperCase() + '.docx'">
+          <a class="dl" [href]="f.base + '.docx'" [attr.download]="'Fakher-Hammami-ATS-2026-' + f.code.toUpperCase() + '.docx'">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14" /></svg>
             {{ ats().docx }}
           </a>
