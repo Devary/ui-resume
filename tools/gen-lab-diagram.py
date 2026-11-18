@@ -6,17 +6,17 @@ from xml.sax.saxutils import escape
 HERE=os.path.dirname(os.path.abspath(__file__)); OUT=os.path.join(HERE,'..','public','works')
 ICON=json.load(open(os.path.join(HERE,'lab-icons.json')))
 L={
-'en':dict(dev='Me + AI agents',github='GitHub + GitHub App',jenkins='Jenkins · CI/CD',sonar='SonarQube · quality',jfrog='JFrog · artifacts',docker='Docker · image',rundeck='Rundeck · deploy',
+'en':dict(dev='Me + AI agents',github='GitHub + GitHub App',jenkins='Jenkins · CI/CD',sonar='SonarQube · quality',jfrog='JFrog · artifacts',docker='Docker · JVM / native image',infra='infra repo · deploy.sh',script='script',rundeck='Rundeck · deploy',
   verdaccio='Verdaccio · private npm',vault='Vault · secrets',img2='push image',cluster='k3s cluster · Traefik ingress',ipa='FreeIPA · identity & DNS',fedora='Fedora server',mail='Mailcow · mail',
   push='push',scan='scan every 60 s',test='tests · coverage',pack='package · publish',img='build image',dep='deploy job',apply='kubectl apply',libs='libraries',
   ingress='ingress',secrets='secrets',events='events',sql='data',metrics='metrics',users='users · groups · DNS',smtp='SMTP · IMAP',font='Helvetica, Arial, sans-serif',dir='ltr',lang='en'),
-'fr':dict(dev='Moi + agents IA',github='GitHub + GitHub App',jenkins='Jenkins · CI/CD',sonar='SonarQube · qualité',jfrog='JFrog · artefacts',docker='Docker · image',rundeck='Rundeck · déploiement',
+'fr':dict(dev='Moi + agents IA',github='GitHub + GitHub App',jenkins='Jenkins · CI/CD',sonar='SonarQube · qualité',jfrog='JFrog · artefacts',docker='Docker · image JVM / native',infra='dépôt infra · deploy.sh',script='script',rundeck='Rundeck · déploiement',
   verdaccio='Verdaccio · npm privé',vault='Vault · secrets',img2='push de l’image',cluster='Cluster k3s · ingress Traefik',ipa='FreeIPA · identité & DNS',fedora='Serveur Fedora',mail='Mailcow · messagerie',
-  push='push',scan='scan toutes les 60 s',test='tests · couverture',pack='package · publication',img='build image',dep='job de déploiement',apply='kubectl apply',libs='bibliothèques',
+  push='push',scan='scan 60 s',test='tests · couverture',pack='package · publication',img='build image',dep='job de déploiement',apply='kubectl apply',libs='bibliothèques',
   ingress='ingress',secrets='secrets',events='événements',sql='données',metrics='métriques',users='utilisateurs · groupes · DNS',smtp='SMTP · IMAP',font='Helvetica, Arial, sans-serif',dir='ltr',lang='fr'),
-'ar':dict(dev='أنا + الذكاء الاصطناعي',github='GitHub + GitHub App',jenkins='Jenkins · CI/CD',sonar='SonarQube · الجودة',jfrog='JFrog · الحزم',docker='Docker · الصورة',rundeck='Rundeck · النشر',
+'ar':dict(dev='أنا + الذكاء الاصطناعي',github='GitHub + GitHub App',jenkins='Jenkins · CI/CD',sonar='SonarQube · الجودة',jfrog='JFrog · الحزم',docker='Docker · صورة JVM / native',infra='مستودع infra · deploy.sh',script='السكربت',rundeck='Rundeck · النشر',
   verdaccio='Verdaccio · npm خاص',vault='Vault · الأسرار',img2='دفع الصورة',cluster='عنقود k3s · مدخل Traefik',ipa='FreeIPA · الهوية وDNS',fedora='خادم Fedora',mail='Mailcow · البريد',
-  push='دفع',scan='مسح كل 60 ثانية',test='اختبارات · تغطية',pack='تحزيم · نشر',img='بناء الصورة',dep='مهمة النشر',apply='kubectl apply',libs='المكتبات',
+  push='دفع',scan='مسح 60 ث',test='اختبارات · تغطية',pack='تحزيم · نشر',img='بناء الصورة',dep='مهمة النشر',apply='kubectl apply',libs='المكتبات',
   ingress='مدخل',secrets='أسرار',events='أحداث',sql='بيانات',metrics='مقاييس',users='مستخدمون · مجموعات · DNS',smtp='SMTP · IMAP',font="'Segoe UI','Noto Sans Arabic',Tahoma,Arial,sans-serif",dir='rtl',lang='ar'),
 }
 CYCLE=15.0
@@ -51,8 +51,8 @@ def build(lg):
         a=t(arrive); 
         body.append(f'<rect x="{cx-w/2-5}" y="{cy-h/2-5}" width="{w+10}" height="{h+10}" rx="{rx+4}" fill="none" stroke="#38bdf8" stroke-width="3" opacity="0"><animate attributeName="opacity" dur="{CYCLE}s" repeatCount="indefinite" values="0;0;1;0;0" keyTimes="0;{round(a-0.004,4)};{a};{round(a+0.07,4)};1"/></rect>')
     # nodes (rings first so tiles draw above)
-    N=dict(dev=(110,300,84),github=(280,300,84),jenkins=(480,300,96),sonar=(690,118,84),jfrog=(690,300,84),docker=(690,466,84),rundeck=(840,300,84),verdaccio=(480,492,84),vault=(330,130,84))
-    arr=dict(github=1.5,jenkins=3.0,sonar=4.8,jfrog=6.0,docker=7.2,rundeck=8.8,verdaccio=4.8,vault=4.5)
+    N=dict(dev=(110,300,84),github=(280,300,84),jenkins=(480,300,96),sonar=(690,118,84),jfrog=(690,300,84),docker=(690,466,84),rundeck=(840,300,84),verdaccio=(480,492,84),vault=(330,130,84),infra=(870,140,84))
+    arr=dict(github=1.5,jenkins=3.0,sonar=4.8,jfrog=6.0,docker=7.2,rundeck=8.8,verdaccio=4.8,vault=4.5,infra=7.0)
     for k,(x,y,s) in N.items():
         if k in arr: ring(x,y,s,s,arr[k])
     # cluster frame first, so the edges that enter it are drawn above
@@ -66,10 +66,12 @@ def build(lg):
     body.append(label(704,232,T['pack'],14.5,'#93c5fd','start'))
     path('M690,380 L690,420',6.0,7.2,None)
     body.append(label(676,404,T['img'],14.5,'#93c5fd','end'))
-    path('M734,466 C780,466 780,312 796,306',7.2,8.8,None)
-    body.append(label(776,420,T['dep'],14.5,'#93c5fd','start'))
+    path('M734,466 C762,466 762,332 796,322',7.2,8.8,None)
+    body.append(label(786,452,T['dep'],14.5,'#93c5fd','start'))
     path('M736,490 C850,520 930,470 990,430',7.2,9.0,None)
     body.append(label(850,534,T['img2'],14.5,'#93c5fd','start'))
+    path('M866,186 L848,254',7.4,8.8,None,dot=True)
+    body.append(label(868,226,T['script'],14.5,'#93c5fd','start'))
     path('M884,300 L976,300',8.8,10.3,T['apply'],930,282)
     path('M480,384 L480,446',3.0,4.8,None)
     body.append(label(494,418,T['libs'],14.5,'#93c5fd','start'))
@@ -105,7 +107,8 @@ def build(lg):
         elif k=='rundeck': body.append(icon('rundeck',x,y,s))
         elif k=='verdaccio': body.append(icon('verdaccio',x,y,s))
         elif k=='vault': body.append(icon('vault',x,y,s,'#111827'))
-        body.append(label(x,(y-s/2-12) if k=='vault' else (y+s/2+22),T[k],16,'#e2e8f0'))
+        elif k=='infra': body.append(icon('github',x,y,s))
+        body.append(label(x,(y-s/2-12) if k in ('vault','infra') else (y+s/2+22),T[k],16,'#e2e8f0'))
     # bottom strip
     body.append('<rect x="40" y="570" width="1200" height="132" rx="20" fill="#0d1a30" stroke="#1e3a5f" stroke-width="1.5"/>')
     body.append(glyph('ipa',150,628,70,'#2563eb')); body.append(label(150,680,T['ipa'],16,'#e2e8f0'))
