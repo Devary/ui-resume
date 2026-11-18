@@ -385,16 +385,18 @@ const EN: CvContent = {
     {
       slug: 'virtual-links',
       title: 'Virtual Links', year: '2023', context: 'Vermeg',
-      description: 'Batch system creating a relationship graph across approximately 2,300 non-relational database entities, enabling navigation and impact analysis of otherwise disconnected records.',
+      description: 'Batch system and Laravel application that rebuild the relationships of an Oracle database without primary or foreign keys: a graph of about 2,300 entities, with join paths and ready-to-use queries between any two entities.',
       details: {
         paragraphs: [],
         sections: [
-          { title: 'Goal', text: 'A batch system that connects records of a non-relational database that are otherwise disconnected.' },
-          { title: 'What it does', items: ['Builds a relationship graph across about 2,300 non-relational database entities', 'Runs as a batch system', 'Lets users navigate from a record to the records related to it', 'Supports impact analysis: what a record is linked to'] },
-          { title: 'Why it matters', text: 'Without the links, these records could not be followed from one to the other. The graph makes the relationships visible.' },
+          { title: 'Goal', text: 'Make the relationships of a database that has no foreign keys usable: pick a starting entity and the entities to reach, and get the join path as a ready query.' },
+          { title: 'The problem', items: ['An Oracle database with no primary or foreign keys', 'The relationships live outside the database, in XML files that define the table structures and the links between them', 'A relation is a link between two classes (entities) in the code', 'An entity can be an abstract class inherited by many classes, so it is hard to tell which table it relates to'] },
+          { title: 'How the batch maps it', items: ['Reads the XML files and the entities in the code', 'For an abstract class, checks where the id exists among the entities that inherit it, to find the real target', 'Also maps the old queries extracted from Jira (the JQCD project)', 'Result: a graph of about 2,300 entities'] },
+          { title: 'The application', items: ['A Laravel (MVC) application', 'Represents the entity graph in JavaScript as a relational database', 'Search: choose a starting entity and the ending entities', 'The system searches the graph and suggests the possible join paths between them', 'The user gets the query, ready to use'] },
+          { title: 'Shortcut', items: ['If the starting and ending entities appear in a query extracted from Jira or in a saved search, that query is offered directly'] },
         ],
         diagram: 'works/virtual-links-en.svg',
-        diagramAlt: 'Animated diagram: a batch reads about 2,300 non-relational entities and builds a relationship graph used for navigation and impact analysis.',
+        diagramAlt: 'Animated diagram: the Oracle database, XML files, code entities and Jira queries feed a mapping batch that builds an entity graph; a Laravel app loads it, the user searches start and end entities, gets join paths and a ready query, or a known query directly.',
       },
     },
     {
@@ -623,16 +625,18 @@ const FR: CvContent = {
     {
       slug: 'virtual-links',
       title: 'Virtual Links', year: '2023', context: 'Vermeg',
-      description: 'Traitement batch construisant un graphe de relations entre environ 2 300 entités de bases de données non relationnelles, permettant la navigation et l’analyse d’impact entre des enregistrements jusque-là déconnectés.',
+      description: 'Système de batch et application Laravel qui reconstituent les relations d’une base Oracle sans clés primaires ni étrangères : un graphe d’environ 2 300 entités, avec chemins de jointure et requêtes prêtes à l’emploi entre deux entités quelconques.',
       details: {
         paragraphs: [],
         sections: [
-          { title: 'Objectif', text: 'Un système de batch qui relie des enregistrements d’une base non relationnelle qui, sinon, restent déconnectés.' },
-          { title: 'Ce qu’il fait', items: ['Construit un graphe de relations sur environ 2 300 entités d’une base non relationnelle', 'Fonctionne comme un système de batch', 'Permet de naviguer d’un enregistrement vers les enregistrements liés', 'Permet l’analyse d’impact : à quoi un enregistrement est lié'] },
-          { title: 'Pourquoi c’est utile', text: 'Sans ces liens, on ne pouvait pas suivre ces enregistrements de l’un à l’autre. Le graphe rend les relations visibles.' },
+          { title: 'Objectif', text: 'Rendre exploitables les relations d’une base sans clés étrangères : choisir une entité de départ et les entités à atteindre, et obtenir le chemin de jointure sous forme de requête prête.' },
+          { title: 'Le problème', items: ['Une base Oracle sans clés primaires ni étrangères', 'Les relations vivent hors de la base, dans des fichiers XML qui définissent la structure des tables et les liens entre elles', 'Une relation est un lien entre deux classes (entités) du code', 'Une entité peut être une classe abstraite héritée par de nombreuses classes : difficile de savoir à quelle table elle se rattache'] },
+          { title: 'Comment le batch fait le mapping', items: ['Lit les fichiers XML et les entités du code', 'Pour une classe abstraite, vérifie où l’id existe parmi les entités qui en héritent, afin de trouver la vraie cible', 'Mappe aussi les anciennes requêtes extraites de Jira (le projet JQCD)', 'Résultat : un graphe d’environ 2 300 entités'] },
+          { title: 'L’application', items: ['Une application Laravel (MVC)', 'Représente le graphe d’entités en JavaScript comme une base relationnelle', 'Recherche : on choisit une entité de départ et les entités d’arrivée', 'Le système parcourt le graphe et suggère les chemins de jointure possibles entre elles', 'L’utilisateur obtient la requête, prête à l’emploi'] },
+          { title: 'Raccourci', items: ['Si les entités de départ et d’arrivée apparaissent dans une requête extraite de Jira ou dans une recherche enregistrée, cette requête est proposée directement'] },
         ],
         diagram: 'works/virtual-links-fr.svg',
-        diagramAlt: 'Schéma animé : un batch lit environ 2 300 entités non relationnelles et construit un graphe de relations utilisé pour la navigation et l’analyse d’impact.',
+        diagramAlt: 'Schéma animé : la base Oracle, les fichiers XML, les entités du code et les requêtes Jira alimentent un batch de mapping qui construit un graphe d’entités ; une application Laravel le charge, l’utilisateur cherche des entités de départ et d’arrivée, obtient des chemins de jointure et une requête prête, ou directement une requête connue.',
       },
     },
     {
@@ -861,16 +865,18 @@ const AR: CvContent = {
     {
       slug: 'virtual-links',
       title: 'Virtual Links', year: '2023', context: 'Vermeg',
-      description: 'نظام معالجة دفعية يبني شبكة علاقات بين نحو 2,300 كيان في قواعد بيانات غير علائقية، ما يتيح التنقل وتحليل الأثر بين سجلات كانت منفصلة.',
+      description: 'نظام دفعات (batch) وتطبيق Laravel يعيدان بناء علاقات قاعدة بيانات Oracle بلا مفاتيح أساسية ولا أجنبية: مخطط من نحو 2300 كيان، مع مسارات ربط واستعلامات جاهزة بين أي كيانين.',
       details: {
         paragraphs: [],
         sections: [
-          { title: 'الهدف', text: 'نظام دفعات (batch) يربط سجلات قاعدة بيانات غير علائقية تبقى بدونه منفصلة.' },
-          { title: 'ما يفعله', items: ['يبني مخطط علاقات عبر نحو 2300 كيان في قاعدة بيانات غير علائقية', 'يعمل كنظام دفعات (batch)', 'يتيح التنقل من سجل إلى السجلات المرتبطة به', 'يدعم تحليل الأثر: بماذا يرتبط السجل'] },
-          { title: 'لماذا هو مفيد', text: 'بدون هذه الروابط لم يكن ممكناً تتبّع هذه السجلات من واحد إلى آخر. يجعل المخطط العلاقات مرئية.' },
+          { title: 'الهدف', text: 'جعل علاقات قاعدة بيانات بلا مفاتيح أجنبية قابلة للاستخدام: اختيار كيان البداية والكيانات المراد بلوغها، والحصول على مسار الربط كاستعلام جاهز.' },
+          { title: 'المشكلة', items: ['قاعدة بيانات Oracle بلا مفاتيح أساسية ولا أجنبية', 'العلاقات خارج القاعدة، في ملفات XML تحدّد بنية الجداول والروابط بينها', 'العلاقة هي رابط بين صنفين (كيانين) في الشيفرة', 'قد يكون الكيان صنفاً مجرّداً ترثه أصناف كثيرة، فيصعب معرفة الجدول الذي يرتبط به'] },
+          { title: 'كيف يربط الـ batch', items: ['يقرأ ملفات XML والكيانات في الشيفرة', 'في حالة الصنف المجرّد، يتحقق من وجود المعرّف بين الكيانات التي ترثه لإيجاد الهدف الحقيقي', 'يربط أيضاً الاستعلامات القديمة المستخرجة من Jira (مشروع JQCD)', 'النتيجة: مخطط من نحو 2300 كيان'] },
+          { title: 'التطبيق', items: ['تطبيق Laravel (MVC)', 'يمثّل مخطط الكيانات في JavaScript كقاعدة بيانات علائقية', 'البحث: اختيار كيان البداية وكيانات النهاية', 'يبحث النظام في المخطط ويقترح مسارات الربط الممكنة بينها', 'يحصل المستخدم على الاستعلام جاهزاً للاستخدام'] },
+          { title: 'اختصار', items: ['إذا ظهر كيانا البداية والنهاية في استعلام مستخرج من Jira أو في بحث محفوظ، يُعرض هذا الاستعلام مباشرة'] },
         ],
         diagram: 'works/virtual-links-ar.svg',
-        diagramAlt: 'مخطط متحرك: يقرأ batch نحو 2300 كيان غير علائقي ويبني مخطط علاقات يُستخدم للتنقل وتحليل الأثر.',
+        diagramAlt: 'مخطط متحرك: قاعدة Oracle وملفات XML وكيانات الشيفرة واستعلامات Jira تغذّي batch للربط يبني مخطط كيانات؛ يحمّله تطبيق Laravel، فيبحث المستخدم عن كيانات البداية والنهاية ويحصل على مسارات الربط واستعلام جاهز، أو على استعلام معروف مباشرة.',
       },
     },
     {
