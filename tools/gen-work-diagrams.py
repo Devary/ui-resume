@@ -17,6 +17,10 @@ G={ # generic 24x24 glyphs, stroke style
  'target':'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/>',
  'server':'<rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M8 7h.01M8 17h.01"/>',
  'folder':'<path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2zM12 17v-6M9.5 13.5L12 11l2.5 2.5"/>',
+ 'xml':'<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/>',
+ 'cube':'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5"/>',
+ 'search':'<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/>',
+ 'route':'<circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M8 6h6a3 3 0 010 6h-4a3 3 0 000 6h6"/>',
  'dev':'<circle cx="12" cy="8" r="3.2"/><path d="M5 20c.8-4 3.5-6 7-6s6.2 2 7 6"/>',
 }
 def icon(key,cx,cy,s,bg='#f1f5f9',op=1):
@@ -75,29 +79,46 @@ def jqcd(lg):
     d.node(glyph('doc',1080,410,84,'#d97706'),1080,410,84,T['rp'],None,7.2)
     return d.svg(520)
 def virtual(lg):
-    T={'en':dict(h='Virtual Links · Vermeg · 2023',ent='Non-relational entities',esub='≈ 2,300 entities',b='Batch',bsub='discovers the relationships',g='Relationship graph',gsub='virtual links between records',nv='Navigation',im='Impact analysis',x='read',c='link',n='browse',i='trace'),
-       'fr':dict(h='Virtual Links · Vermeg · 2023',ent='Entités non relationnelles',esub='≈ 2 300 entités',b='Batch',bsub='découvre les relations',g='Graphe de relations',gsub='liens virtuels entre enregistrements',nv='Navigation',im='Analyse d’impact',x='lire',c='relier',n='naviguer',i='tracer'),
-       'ar':dict(h='Virtual Links · Vermeg · 2023',ent='كيانات غير علائقية',esub='≈ 2300 كيان',b='Batch',bsub='يكتشف العلاقات',g='مخطط العلاقات',gsub='روابط افتراضية بين السجلات',nv='التنقل',im='تحليل الأثر',x='قراءة',c='ربط',n='تصفّح',i='تتبّع')}[lg]
+    T={'en':dict(h='Virtual Links · Vermeg · 2023',ora='Oracle DB',orasub='no primary / foreign keys',xml='XML files',xmlsub='tables and relationships',ent='Code entities',entsub='incl. abstract classes',jira='Jira queries',jirasub='from the JQCD project',
+         bat='Mapping batch',batsub='abstract class → id check',g='Entity graph',gsub='≈ 2,300 entities',lar='Laravel app (MVC)',larsub='graph as a JS relational model',se='Search',sesub='start → end entities',pa='Join paths',pasub='possible ways between them',qu='Ready query',qusub='copy and run',
+         e1='read',e2='resolve',e3='map',e4='load',e5='search',e6='suggest',e7='known query → direct'),
+       'fr':dict(h='Virtual Links · Vermeg · 2023',ora='Base Oracle',orasub='sans clés primaires / étrangères',xml='Fichiers XML',xmlsub='tables et relations',ent='Entités du code',entsub='dont classes abstraites',jira='Requêtes Jira',jirasub='du projet JQCD',
+         bat='Batch de mapping',batsub='classe abstraite → test de l’id',g='Graphe d’entités',gsub='≈ 2 300 entités',lar='Application Laravel (MVC)',larsub='graphe en base relationnelle JS',se='Recherche',sesub='entité de départ → arrivée',pa='Chemins de jointure',pasub='les chemins possibles entre elles',qu='Requête prête',qusub='à copier et exécuter',
+         e1='lire',e2='résoudre',e3='mapper',e4='charger',e5='chercher',e6='suggérer',e7='requête connue → direct'),
+       'ar':dict(h='Virtual Links · Vermeg · 2023',ora='قاعدة Oracle',orasub='بلا مفاتيح أساسية / أجنبية',xml='ملفات XML',xmlsub='الجداول والعلاقات',ent='كيانات الشيفرة',entsub='ومنها الأصناف المجرّدة',jira='استعلامات Jira',jirasub='من مشروع JQCD',
+         bat='Batch الربط',batsub='صنف مجرّد ← فحص المعرّف',g='مخطط الكيانات',gsub='≈ 2300 كيان',lar='تطبيق Laravel (MVC)',larsub='المخطط كقاعدة علائقية بـ JS',se='البحث',sesub='كيان البداية ← النهاية',pa='مسارات الربط',pasub='الطرق الممكنة بينها',qu='استعلام جاهز',qusub='للنسخ والتنفيذ',
+         e1='قراءة',e2='حلّ',e3='ربط',e4='تحميل',e5='بحث',e6='اقتراح',e7='استعلام معروف ← مباشرة')}[lg]
     d=Diagram(lg,T['h'])
-    d.edge('M226,300 L432,300',0.0,2.4,T['x'],330,282)
-    d.edge('M528,300 L732,300',2.4,4.8,T['c'],630,282)
-    d.edge('M828,282 C930,282 940,190 1034,190',4.8,7.2,T['n'],930,214,'start')
-    d.edge('M828,318 C930,318 940,410 1034,410',4.8,7.2,T['i'],930,392,'start')
-    # a handful of small entity tiles standing for the ~2,300 entities
-    for k,(dx,dy) in enumerate([(-34,-30),(0,-30),(34,-30),(-34,4),(0,4),(34,4)]):
-        d.nodes.append(glyph('db',180+dx,300+dy,30,'#2563eb',.95))
-    d.nodes.append(txt(180,300+62,T['ent'],16)); d.nodes.append(txt(180,300+82,T['esub'],13,'#94a3b8'))
-    d.ring(480,300,92,92,2.4)
-    d.nodes.append(glyph('gear',480,300,92,'#0ea5e9')); d.nodes.append(txt(480,368,T['b'],16)); d.nodes.append(txt(480,388,T['bsub'],13,'#94a3b8'))
-    d.ring(780,300,92,92,4.8)
-    d.nodes.append(glyph('graph',780,300,92,'#7c3aed'))
-    # pulsing nodes inside the graph tile
-    for (px,py,dl) in [(768,277,0),(804,274,1.2),(780,300,2.4),(768,324,3.6),(808,322,4.8)]:
-        d.nodes.append(f'<circle cx="{px}" cy="{py}" r="3" fill="#a78bfa" opacity=".0"><animate attributeName="opacity" values="0;.9;0" dur="6s" begin="{dl}s" repeatCount="indefinite"/></circle>')
-    d.nodes.append(txt(780,368,T['g'],16)); d.nodes.append(txt(780,388,T['gsub'],13,'#94a3b8'))
-    d.node(glyph('compass',1080,190,84,'#16a34a'),1080,190,84,T['nv'],None,7.2)
-    d.node(glyph('target',1080,410,84,'#dc2626'),1080,410,84,T['im'],None,7.2)
-    return d.svg(520)
+    # four sources on top converge on the mapping batch
+    src=[(150,'oracle',T['ora'],T['orasub']),(380,None,T['xml'],T['xmlsub']),(610,None,T['ent'],T['entsub']),(840,'jira',T['jira'],T['jirasub'])]
+    kinds=[None,'xml','cube',None]
+    for k,(x,ic,lab,sub) in enumerate(src):
+        d.node(icon(ic,x,112,76) if ic else glyph(kinds[k],x,112,76,'#0ea5e9' if k==1 else '#7c3aed'),x,112,76,lab,sub,0.0 if False else None)
+    d.edge('M150,206 C150,260 360,250 380,286',0.0,1.6,None)
+    d.edge('M380,206 L400,284',0.0,1.6,None)
+    d.edge('M610,206 C610,260 470,250 440,286',0.0,1.6,None)
+    d.edge('M840,206 C840,262 520,250 468,290',0.0,1.6,None)
+    d.nodes.append(txt(268,246,T['e1'],14.5,'#93c5fd'))
+    d.ring(420,330,88,88,1.6)
+    d.nodes.append(glyph('gear',420,330,88,'#0ea5e9')); d.nodes.append(txt(420,398,T['bat'],16)); d.nodes.append(txt(420,418,T['batsub'],13,'#94a3b8'))
+    d.edge('M466,330 L588,330',1.6,3.4,T['e3'],527,312)
+    d.ring(634,330,88,88,3.4)
+    d.nodes.append(glyph('graph',634,330,88,'#7c3aed')); d.nodes.append(txt(634,398,T['g'],16)); d.nodes.append(txt(634,418,T['gsub'],13,'#94a3b8'))
+    for (px,py,dl) in [(622,308,0),(658,305,1.2),(634,330,2.4),(622,354,3.6),(662,352,4.8)]:
+        d.nodes.append(f'<circle cx="{px}" cy="{py}" r="3" fill="#a78bfa" opacity="0"><animate attributeName="opacity" values="0;.9;0" dur="6s" begin="{dl}s" repeatCount="indefinite"/></circle>')
+    d.edge('M680,330 L810,330',3.4,5.0,T['e4'],745,312)
+    d.node(icon('laravel',856,330,92),856,330,92,T['lar'],T['larsub'],5.0)
+    d.edge('M904,330 L1032,330',5.0,6.4,T['e5'],968,312)
+    d.node(glyph('search',1080,330,88,'#16a34a'),1080,330,88,T['se'],T['sesub'],6.4)
+    # row 3: join paths and the ready query
+    d.edge('M1064,376 C1040,470 960,500 906,518',6.4,8.2,T['e6'],1010,460,'start')
+    d.node(glyph('route',856,548,88,'#d97706'),856,548,88,T['pa'],T['pasub'],8.2)
+    d.edge('M810,548 L688,548',8.2,9.8,None)
+    d.node(glyph('doc',634,548,88,'#2563eb'),634,548,88,T['qu'],T['qusub'],9.8)
+    # shortcut: a known query / saved search is offered directly
+    d.edge('M1044,362 C1000,470 790,470 676,506',6.4,9.8,None,color='#4ade80',w=2.2)
+    d.nodes.append(f'<text x="852" y="492" font-size="14" fill="#86efac" text-anchor="middle" font-weight="600">{escape(T["e7"])}</text>')
+    return d.svg(660)
 def devops(lg):
     T={'en':dict(h='DevOps System · Dewinter · 2018',before='BEFORE',after='AFTER',dev='Developer',ftp='Manual FTP',srv='Server',git='Git',jk='Jenkins',env='Servers',ftpn='slow · error-prone',m='manual upload',p='push',tr='trigger',dp='automated deploy',r1='less deployment time',r2='less human error'),
        'fr':dict(h='DevOps System · Dewinter · 2018',before='AVANT',after='APRÈS',dev='Développeur',ftp='FTP manuel',srv='Serveur',git='Git',jk='Jenkins',env='Serveurs',ftpn='lent · source d’erreurs',m='envoi manuel',p='push',tr='déclenche',dp='déploiement automatisé',r1='moins de temps de déploiement',r2='moins d’erreurs humaines'),
