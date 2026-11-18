@@ -106,6 +106,8 @@ export interface CvContent {
   /** The name of this language in itself, for the switcher. */
   label:     string;
   pageTitle: string;
+  /** The unlisted /ats page: plain résumés for applicant tracking systems. */
+  ats: { title: string; lead: string; pdf: string; docx: string; notesTitle: string; notes: string[] };
   ui: {
     aiSkills: string; about: string; experience: string; skills: string; education: string; creative: string; languages: string;
     degrees: string; certifications: string; verify: string;
@@ -188,6 +190,7 @@ const experiences = (present: string, texts: JobText[]): Experience[] =>
 const EN: CvContent = {
   label: 'English',
   pageTitle: 'Fakher Hammami — Technical Lead',
+  ats: { title: 'ATS resumes', lead: 'Plain-text versions of my résumé, made to be read by applicant tracking systems: one column, no tables, no images, standard headings.', pdf: 'PDF', docx: 'Word (.docx)', notesTitle: 'Good to know', notes: ['Prefer the Word file when an application form asks you to upload a résumé.', 'The Arabic version is for human readers: most ATS read Arabic poorly.'] },
   ui: {
     aiSkills: 'AI Skills', about: 'About', experience: 'Experience', skills: 'Skills', education: 'Education & Certifications',
     creative: 'Creative Works', languages: 'Languages',
@@ -427,6 +430,7 @@ const EN: CvContent = {
 const FR: CvContent = {
   label: 'Français',
   pageTitle: 'Fakher Hammami — Technical Lead',
+  ats: { title: 'CV pour ATS', lead: 'Versions en texte simple de mon CV, conçues pour être lues par les logiciels de suivi des candidatures : une colonne, sans tableaux, sans images, avec des titres standard.', pdf: 'PDF', docx: 'Word (.docx)', notesTitle: 'Bon à savoir', notes: ['Préférez le fichier Word quand un formulaire de candidature demande de déposer un CV.', 'La version arabe est destinée aux lecteurs humains : la plupart des ATS lisent mal l’arabe.'] },
   ui: {
     aiSkills: 'Compétences IA', about: 'À propos', experience: 'Expérience', skills: 'Compétences', education: 'Formation & certifications',
     creative: 'Réalisations', languages: 'Langues',
@@ -667,6 +671,7 @@ const FR: CvContent = {
 const AR: CvContent = {
   label: 'العربية',
   pageTitle: 'فاخر الهمامي — قائد تقني',
+  ats: { title: 'سيرة ذاتية لأنظمة ATS', lead: 'نسخ نصية بسيطة من سيرتي الذاتية، مصمَّمة لتقرأها أنظمة تتبّع المتقدّمين: عمود واحد بلا جداول ولا صور وبعناوين قياسية.', pdf: 'PDF', docx: 'Word (.docx)', notesTitle: 'للعلم', notes: ['فضّل ملف Word عندما يطلب نموذج التقديم رفع سيرة ذاتية.', 'النسخة العربية موجّهة للقرّاء من البشر: أغلب أنظمة ATS تقرأ العربية بصعوبة.'] },
   ui: {
     aiSkills: 'مهارات الذكاء الاصطناعي', about: 'نبذة', experience: 'الخبرة المهنية', skills: 'المهارات', education: 'التعليم والشهادات',
     creative: 'مشاريع مميّزة', languages: 'اللغات',
