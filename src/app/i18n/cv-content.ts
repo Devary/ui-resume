@@ -223,7 +223,7 @@ const EN: CvContent = {
       'patterns, TDD, honest code reviews, and the discipline of shipping to production without surprises.',
     twist: 'Buuut… I’m not really old school.',
     body:
-      'I’m also an agentic architect. I pair 10+ years of Java engineering with AI models and agents to push ' +
+      'I’m also an agentic architect. I pair 11 years of Java engineering with AI models and agents to push ' +
       'creativity further — and to make your Java systems more stable, faster and more elegant. With AI or ' +
       'without it, the engineering stays solid: I know when to hand a task to an agent, and when to write it myself.',
     lab: {
@@ -464,7 +464,7 @@ const FR: CvContent = {
       'design patterns, TDD, des revues de code franches, et la discipline de livrer en production sans mauvaises surprises.',
     twist: 'Maaais… je ne suis pas vraiment old school.',
     body:
-      'Je suis aussi architecte agentique. J’allie plus de 10 ans d’ingénierie Java aux modèles et agents d’IA pour ' +
+      'Je suis aussi architecte agentique. J’allie 11 ans d’ingénierie Java aux modèles et agents d’IA pour ' +
       'pousser la créativité plus loin — et rendre vos systèmes Java plus stables, plus rapides et plus élégants. ' +
       'Avec ou sans IA, l’ingénierie reste solide : je sais quand confier une tâche à un agent, et quand l’écrire moi-même.',
     lab: {
@@ -705,7 +705,7 @@ const AR: CvContent = {
       'وأنماط التصميم والتطوير الموجّه بالاختبارات (TDD) ومراجعات الشيفرة الصريحة، وانضباط النشر في الإنتاج دون مفاجآت.',
     twist: 'لكن… لستُ من المدرسة القديمة تماماً.',
     body:
-      'أنا أيضاً مهندس أنظمة وكيلية (Agentic Architect). أجمع بين أكثر من 10 سنوات من هندسة Java ونماذج الذكاء ' +
+      'أنا أيضاً مهندس أنظمة وكيلية (Agentic Architect). أجمع بين 11 سنة من هندسة Java ونماذج الذكاء ' +
       'الاصطناعي ووكلائه لأدفع الإبداع إلى الأمام، ولأجعل أنظمة Java لديكم أكثر استقراراً وسرعةً وأناقة. ' +
       'مع الذكاء الاصطناعي أو بدونه، تبقى الهندسة متينة: أعرف متى أُسند المهمة إلى وكيل، ومتى أكتبها بنفسي.',
     lab: {

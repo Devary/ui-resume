@@ -55,7 +55,7 @@ export class CvHeroComponent {
   readonly stats = computed(() => {
     const ui = this.t().ui;
     return [
-      { value: '10+', label: ui.years },
+      { value: '11', label: ui.years },
       { value: '7',   label: ui.companies },
       { value: '2',   label: ui.certs },
     ];
