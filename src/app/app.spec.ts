@@ -50,7 +50,7 @@ describe('App', () => {
     expect(el.querySelector('.contacts')?.textContent).not.toContain('661 151 092');
 
     const downloads = [...el.querySelectorAll<HTMLAnchorElement>('.downloads a')].map((a) => a.getAttribute('href'));
-    expect(downloads).toEqual(['cv/Fakher-Hammami-CV.pdf']);
+    expect(downloads).toEqual(['cv/Fakher-Hammami-Europass-2026-EN.pdf']);
 
     const logos = [...el.querySelectorAll<HTMLImageElement>('.badge.logo img')].map((img) => img.getAttribute('src'));
     expect(logos).toEqual(['logos/lalux.png', 'logos/societe-generale.svg', 'logos/cjeu.svg', 'logos/european-parliament.svg', 'logos/vermeg.png']);
@@ -125,8 +125,21 @@ describe('App', () => {
     const { el } = await open('/works/virtual-links');
     expect(el.querySelector('.title')?.textContent).toContain('Virtual Links');
     expect([...el.querySelectorAll('.section-title')].map((t) => t.textContent?.trim())).toEqual(['Technical description', 'Diagram']);
-    expect(el.querySelectorAll('.soon').length).toBe(2);
+    expect(el.querySelectorAll('.soon').length).toBe(0);
+    expect(el.querySelectorAll('.block').length).toBeGreaterThanOrEqual(4);
+    expect(el.querySelector('app-zoomable-image img')?.getAttribute('src')).toBe('works/virtual-links-en.svg');
     expect(el.querySelector('.back')?.getAttribute('href')).toBe('/');
+  });
+
+  it('downloads the CV in the language of the page', async () => {
+    const { el, harness } = await open();
+    const link = () => el.querySelector<HTMLAnchorElement>('.downloads a')?.getAttribute('href');
+    expect(link()).toBe('cv/Fakher-Hammami-Europass-2026-EN.pdf');
+    for (const [lang, file] of [['fr', 'FR'], ['ar', 'AR']] as const) {
+      TestBed.inject(LanguageStore).setLang(lang);
+      harness.detectChanges();
+      expect(link()).toBe(`cv/Fakher-Hammami-Europass-2026-${file}.pdf`);
+    }
   });
 
   it('switches between light and dark from the toolbar', () => {

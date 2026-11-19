@@ -22,7 +22,7 @@
   </dl>
 
   <div class="downloads no-print">
-    <a class="dl primary" href="cv/Fakher-Hammami-CV.pdf" download="Fakher-Hammami-CV.pdf" [attr.title]="t().ui.filesNote || null">
+    <a class="dl primary" [href]="'cv/' + t().ui.cvFile" [attr.download]="t().ui.cvFile" [attr.title]="t().ui.filesNote || null">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path [attr.d]="icons.download" /></svg>
       {{ t().ui.downloadCv }}
     </a>

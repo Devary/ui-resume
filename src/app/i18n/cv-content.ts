@@ -114,6 +114,8 @@ export interface CvContent {
     current: string; currently: string; at: string; native: string;
     years: string; companies: string; certs: string;
     downloadCv: string; filesNote: string;
+    /** The CV file to download in this language, under public/cv. */
+    cvFile: string;
     details: string; backToCv: string; technicalDescription: string; diagram: string; comingSoon: string;
     zoomIn: string; zoomOut: string; resetZoom: string; openDiagram: string; close: string; notFound: string;
     printTitle: string; lightMode: string; darkMode: string; toLight: string; toDark: string; language: string;
@@ -197,7 +199,7 @@ const EN: CvContent = {
     degrees: 'Degrees', certifications: 'Certifications', verify: 'Verify on Credly',
     current: 'Current', currently: 'Currently', at: 'at', native: 'Native',
     years: 'Years', companies: 'Companies', certs: 'Certifications',
-    downloadCv: 'Download CV', filesNote: '',
+    downloadCv: 'Download CV', filesNote: '', cvFile: 'Fakher-Hammami-Europass-2026-EN.pdf',
     details: 'Technical details', backToCv: 'Back to the CV', technicalDescription: 'Technical description', diagram: 'Diagram',
     comingSoon: 'Coming soon.', zoomIn: 'Zoom in', zoomOut: 'Zoom out', resetZoom: 'Reset zoom', openDiagram: 'Open the diagram full screen',
     close: 'Close', notFound: 'This project does not exist.',
@@ -438,7 +440,7 @@ const FR: CvContent = {
     current: 'Actuel', currently: 'Actuellement', at: 'chez', native: 'Langue maternelle',
     years: 'Ans', companies: 'Entreprises', certs: 'Certifications',
     downloadCv: 'Télécharger le CV',
-    filesNote: 'Version anglaise',
+    filesNote: '', cvFile: 'Fakher-Hammami-Europass-2026-FR.pdf',
     details: 'Détails techniques', backToCv: 'Retour au CV', technicalDescription: 'Description technique', diagram: 'Schéma',
     comingSoon: 'Bientôt disponible.', zoomIn: 'Zoomer', zoomOut: 'Dézoomer', resetZoom: 'Réinitialiser le zoom', openDiagram: 'Ouvrir le schéma en plein écran',
     close: 'Fermer', notFound: 'Ce projet n’existe pas.',
@@ -679,7 +681,7 @@ const AR: CvContent = {
     current: 'حالياً', currently: 'حالياً', at: 'في', native: 'اللغة الأم',
     years: 'سنوات', companies: 'شركات', certs: 'شهادات',
     downloadCv: 'تحميل السيرة الذاتية',
-    filesNote: 'النسخة الإنجليزية',
+    filesNote: '', cvFile: 'Fakher-Hammami-Europass-2026-AR.pdf',
     details: 'التفاصيل التقنية', backToCv: 'العودة إلى السيرة الذاتية', technicalDescription: 'الوصف التقني', diagram: 'المخطط',
     comingSoon: 'قريباً.', zoomIn: 'تكبير', zoomOut: 'تصغير', resetZoom: 'إعادة الضبط', openDiagram: 'فتح المخطط بملء الشاشة',
     close: 'إغلاق', notFound: 'هذا المشروع غير موجود.',
