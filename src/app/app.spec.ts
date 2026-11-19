@@ -44,7 +44,7 @@ describe('App', () => {
   it('shows the key figures, the website, the one CV download and the employer badges', async () => {
     const { el } = await open();
     const stats = [...el.querySelectorAll('.stat')].map((s) => `${s.querySelector('dd')?.textContent} ${s.querySelector('dt')?.textContent}`);
-    expect(stats).toEqual(['10+ Years', '7 Companies', '2 Certifications']);
+    expect(stats).toEqual(['11 Years', '7 Companies', '2 Certifications']);
     expect(el.querySelector<HTMLAnchorElement>('.contacts a[href="https://www.veegine.com"]')?.textContent).toBe('www.veegine.com');
     expect(el.querySelector('.contacts')?.textContent).toMatch(/Born 1992 \(\d{2}\)/);
     expect(el.querySelector('.contacts')?.textContent).not.toContain('661 151 092');
