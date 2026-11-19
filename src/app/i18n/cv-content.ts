@@ -194,7 +194,7 @@ const EN: CvContent = {
   pageTitle: 'Fakher Hammami — Technical Lead',
   ats: { title: 'ATS resumes', lead: 'Plain-text versions of my résumé, made to be read by applicant tracking systems: one column, no tables, no images, standard headings.', pdf: 'PDF', docx: 'Word (.docx)', notesTitle: 'Good to know', notes: ['Prefer the Word file when an application form asks you to upload a résumé.', 'The Arabic version is for human readers: most ATS read Arabic poorly.'] },
   ui: {
-    aiSkills: 'AI Skills', about: 'About', experience: 'Experience', skills: 'Skills', education: 'Education & Certifications',
+    aiSkills: 'AI Skills', about: 'About', experience: 'Experience', skills: 'Skills', education: 'Education',
     creative: 'Creative Works', languages: 'Languages',
     degrees: 'Degrees', certifications: 'Certifications', verify: 'Verify on Credly',
     current: 'Current', currently: 'Currently', at: 'at', native: 'Native',
@@ -434,7 +434,7 @@ const FR: CvContent = {
   pageTitle: 'Fakher Hammami — Technical Lead',
   ats: { title: 'CV pour ATS', lead: 'Versions en texte simple de mon CV, conçues pour être lues par les logiciels de suivi des candidatures : une colonne, sans tableaux, sans images, avec des titres standard.', pdf: 'PDF', docx: 'Word (.docx)', notesTitle: 'Bon à savoir', notes: ['Préférez le fichier Word quand un formulaire de candidature demande de déposer un CV.', 'La version arabe est destinée aux lecteurs humains : la plupart des ATS lisent mal l’arabe.'] },
   ui: {
-    aiSkills: 'Compétences IA', about: 'À propos', experience: 'Expérience', skills: 'Compétences', education: 'Formation & certifications',
+    aiSkills: 'Compétences IA', about: 'À propos', experience: 'Expérience', skills: 'Compétences', education: 'Formation',
     creative: 'Réalisations', languages: 'Langues',
     degrees: 'Diplômes', certifications: 'Certifications', verify: 'Vérifier sur Credly',
     current: 'Actuel', currently: 'Actuellement', at: 'chez', native: 'Langue maternelle',
@@ -675,7 +675,7 @@ const AR: CvContent = {
   pageTitle: 'فاخر الهمامي — قائد تقني',
   ats: { title: 'سيرة ذاتية لأنظمة ATS', lead: 'نسخ نصية بسيطة من سيرتي الذاتية، مصمَّمة لتقرأها أنظمة تتبّع المتقدّمين: عمود واحد بلا جداول ولا صور وبعناوين قياسية.', pdf: 'PDF', docx: 'Word (.docx)', notesTitle: 'للعلم', notes: ['فضّل ملف Word عندما يطلب نموذج التقديم رفع سيرة ذاتية.', 'النسخة العربية موجّهة للقرّاء من البشر: أغلب أنظمة ATS تقرأ العربية بصعوبة.'] },
   ui: {
-    aiSkills: 'مهارات الذكاء الاصطناعي', about: 'نبذة', experience: 'الخبرة المهنية', skills: 'المهارات', education: 'التعليم والشهادات',
+    aiSkills: 'مهارات الذكاء الاصطناعي', about: 'نبذة', experience: 'الخبرة المهنية', skills: 'المهارات', education: 'التعليم',
     creative: 'مشاريع مميّزة', languages: 'اللغات',
     degrees: 'الشهادات الجامعية', certifications: 'الشهادات المهنية', verify: 'التحقق عبر Credly',
     current: 'حالياً', currently: 'حالياً', at: 'في', native: 'اللغة الأم',
