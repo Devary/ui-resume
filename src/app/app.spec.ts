@@ -79,7 +79,7 @@ describe('App', () => {
   it('lists every section, numbered', async () => {
     const { el } = await open();
     const titles = [...el.querySelectorAll('.section-title')].map((t) => t.textContent?.trim());
-    expect(titles).toEqual(['AI Skills', 'Languages', 'About', 'Experience', 'Skills', 'Education & Certifications', 'Creative Works']);
+    expect(titles).toEqual(['AI Skills', 'Languages', 'About', 'Experience', 'Skills', 'Education', 'Certifications', 'Creative Works']);
   });
 
   it('switches the CV to French, then to Arabic read right to left', async () => {

@@ -31,12 +31,16 @@
     transition: opacity 0.15s;
   }
 
-  &:hover {
-    border-color: var(--cv-accent-ring);
-    transform: translateY(-2px);
-    box-shadow: var(--cv-shadow);
+  // Only where there is a real pointer: on a touch screen the first tap would otherwise be spent on
+  // the hover state and the link would not open.
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--cv-accent-ring);
+      transform: translateY(-2px);
+      box-shadow: var(--cv-shadow);
 
-    &::before { opacity: 1; }
+      &::before { opacity: 1; }
+    }
   }
 }
 
@@ -103,6 +107,8 @@
     [dir='rtl'] & { transform: scaleX(-1); }
   }
 
-  .work:hover & svg { transform: translateX(3px); }
-  [dir='rtl'] .work:hover & svg { transform: scaleX(-1) translateX(3px); }
+  @media (hover: hover) {
+    .work:hover & svg { transform: translateX(3px); }
+    [dir='rtl'] .work:hover & svg { transform: scaleX(-1) translateX(3px); }
+  }
 }
