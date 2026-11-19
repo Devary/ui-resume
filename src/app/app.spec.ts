@@ -100,6 +100,26 @@ describe('App', () => {
     expect(document.documentElement.dir).toBe('rtl');
   });
 
+  it('offers phone buttons to jump to the top or the bottom of the page', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const el = fixture.nativeElement as HTMLElement;
+    const labels = () => [...el.querySelectorAll('.scroll-btn')].map((b) => b.getAttribute('aria-label'));
+
+    // At the top there is nothing to go up to.
+    Object.defineProperty(window, 'scrollY', { value: 0, configurable: true });
+    Object.defineProperty(document.documentElement, 'scrollHeight', { value: 5000, configurable: true });
+    window.dispatchEvent(new Event('scroll'));
+    fixture.detectChanges();
+    expect(labels()).toEqual(['Go to bottom']);
+
+    // In the middle: both ways.
+    Object.defineProperty(window, 'scrollY', { value: 1500, configurable: true });
+    window.dispatchEvent(new Event('scroll'));
+    fixture.detectChanges();
+    expect(labels()).toEqual(['Back to top', 'Go to bottom']);
+  });
+
   it('picks the language from the toolbar menu', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();

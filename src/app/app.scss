@@ -58,6 +58,51 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+// ── Phones: up / down buttons, bottom corner on the reading end (hidden on bigger screens) ──
+.scroll-nav {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .scroll-nav {
+    position: fixed;
+    inset-inline-end: 0.75rem;
+    bottom: 1rem;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .scroll-btn {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 1px solid var(--cv-border-strong);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--cv-surface) 82%, transparent);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--cv-shadow);
+    color: var(--cv-ink-2);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    &:active { background: var(--cv-accent-soft); color: var(--cv-accent); }
+  }
+}
+
 // ── Toolbar: language, PDF, theme; top corner on the reading end ──
 .toolbar {
   position: fixed;
