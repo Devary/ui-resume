@@ -26,9 +26,34 @@ export class App implements OnInit {
   /** The language menu is open. */
   readonly langOpen    = signal(false);
 
+  /** The page is at its very top / very bottom: the matching phone button hides. */
+  readonly atTop       = signal(true);
+  readonly atBottom    = signal(false);
+
   /** "PDF": the browser's print dialog, where the print styles lay the CV out as one clean column. */
   print(): void {
     window.print();
+  }
+
+  /** Phone buttons: jump to the top or to the bottom of the page (smooth, unless motion is reduced). */
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: this.scrollBehavior() });
+  }
+
+  scrollToBottom(): void {
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: this.scrollBehavior() });
+  }
+
+  private scrollBehavior(): ScrollBehavior {
+    return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  }
+
+  @HostListener('window:scroll')
+  @HostListener('window:resize')
+  updateScrollState(): void {
+    const el = document.documentElement;
+    this.atTop.set(window.scrollY < 80);
+    this.atBottom.set(window.scrollY + window.innerHeight >= el.scrollHeight - 80);
   }
 
   chooseLang(lang: Lang): void {
@@ -50,6 +75,12 @@ export class App implements OnInit {
   }
 
   ngOnInit(): void {
+    // The page grows and shrinks as sections and routes load: keep the buttons right.
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(() => this.updateScrollState()).observe(document.body);
+    }
+    this.updateScrollState();
+
     if (this.isStandalone) return;
 
     window.addEventListener('message', (event: MessageEvent) => {

@@ -44,6 +44,20 @@
 
   <router-outlet />
 
+  <!-- Phones: a small way to the top or the bottom of any page. -->
+  <div class="scroll-nav no-print">
+    @if (!atTop()) {
+      <button type="button" class="scroll-btn" (click)="scrollToTop()" [attr.aria-label]="t().ui.scrollTop" [title]="t().ui.scrollTop">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" /></svg>
+      </button>
+    }
+    @if (!atBottom()) {
+      <button type="button" class="scroll-btn" (click)="scrollToBottom()" [attr.aria-label]="t().ui.scrollBottom" [title]="t().ui.scrollBottom">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+      </button>
+    }
+  </div>
+
   <footer class="cv-footer no-print">
     © {{ year }} {{ t().hero.name }} · <a href="https://www.fakher.dev">fakher.dev</a>
   </footer>
